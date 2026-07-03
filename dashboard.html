@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>infoX Analytica — Mobil Yatırım Uygulaması Analiz Aracı</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #08080e;
+  --bg2: #0e0e18;
+  --card: #12121e;
+  --card2: #181830;
+  --border: #1e1e36;
+  --text: #e2e8f0;
+  --muted: #7c7ca0;
+  --accent: #8b5cf6;
+  --accent2: #a78bfa;
+  --green: #22c55e;
+  --red: #ef4444;
+  --yellow: #f59e0b;
+  --blue: #3b82f6;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(0,0,0,.4);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:14px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  min-height: 100vh;
+}
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:var(--bg2); }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top:0; left:0; bottom:0;
+  z-index:100;
+}
+.sidebar-logo {
+  padding: 20px 18px 16px;
+  border-bottom:1px solid var(--border);
+}
+.sidebar-logo h1 { font-size:1.15rem; font-weight:700; color:#fff; }
+.sidebar-logo span { font-size:.7rem; color:var(--muted); letter-spacing:.3px; }
+.sidebar-nav { flex:1; padding:12px 10px; display:flex; flex-direction:column; gap:2px; }
+.sidebar-nav a {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; border-radius:8px;
+  color:var(--muted); text-decoration:none; font-size:.85rem; font-weight:500;
+  transition:all .15s; cursor:pointer;
+}
+.sidebar-nav a:hover { background:var(--card); color:var(--text); }
+.sidebar-nav a.active { background:var(--accent); color:#fff; }
+.sidebar-nav a .icon { width:18px; text-align:center; font-size:1rem; }
+.sidebar-bottom {
+  padding:14px 18px;
+  border-top:1px solid var(--border);
+  font-size:.72rem; color:var(--muted);
+}
+
+/* Main */
+.main {
+  margin-left:220px;
+  flex:1;
+  padding:28px 32px;
+  max-width:1400px;
+}
+
+/* Top bar */
+.topbar {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:28px; gap:16px;
+}
+.topbar h2 { font-size:1.25rem; font-weight:600; }
+.topbar-right { display:flex; align-items:center; gap:12px; }
+.search-input {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:8px; padding:8px 14px;
+  color:var(--text); font-size:.85rem; width:220px;
+  outline:none;
+}
+.search-input:focus { border-color:var(--accent); }
+.badge {
+  display:inline-block; padding:2px 10px; border-radius:20px;
+  font-size:.72rem; font-weight:600;
+}
+.badge-purple { background:rgba(139,92,246,.2); color:var(--accent2); }
+.badge-green { background:rgba(34,197,94,.15); color:var(--green); }
+.badge-red { background:rgba(239,68,68,.15); color:var(--red); }
+
+/* Tab content */
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+
+/* Metric row */
+.metrics {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+  gap:14px; margin-bottom:24px;
+}
+.metric-card {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  padding:16px 18px;
+}
+.metric-card .label { font-size:.72rem; color:var(--muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:.4px; }
+.metric-card .value { font-size:1.6rem; font-weight:700; }
+.metric-card .change { font-size:.78rem; margin-top:4px; }
+
+/* Cards */
+.card {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  padding:20px;
+}
+.card-title { font-size:.85rem; font-weight:600; color:var(--muted); margin-bottom:14px; text-transform:uppercase; letter-spacing:.4px; }
+
+/* Grid */
+.app-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(270px,1fr));
+  gap:12px;
+}
+.app-card {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  padding:14px 16px; cursor:pointer;
+  transition:border-color .15s, transform .1s;
+}
+.app-card:hover { border-color:var(--accent); transform:translateY(-1px); }
+.app-card .top { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.app-card .icon-placeholder {
+  width:36px; height:36px; border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:.9rem; color:#fff; flex-shrink:0;
+}
+.app-card .info { flex:1; min-width:0; }
+.app-card .info .name { font-weight:600; font-size:.9rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.app-card .info .dev { font-size:.72rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.app-card .rating-row { display:flex; align-items:center; gap:10px; margin-bottom:6px; font-size:.82rem; }
+.app-card .rating-row .stars { color:var(--yellow); }
+.app-card .rating-row .num { color:var(--muted); }
+.app-card .tags { display:flex; flex-wrap:wrap; gap:4px; }
+.app-card .tags span {
+  font-size:.68rem; padding:1px 7px; border-radius:4px;
+  background:var(--card2); color:var(--muted);
+}
+.app-card.primary { border-color:var(--accent); background:rgba(139,92,246,.06); }
+
+/* Spotlight */
+.spotlight {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:16px; margin-bottom:24px;
+}
+.spotlight-main {
+  background:linear-gradient(135deg, rgba(139,92,246,.12) 0%, rgba(59,130,246,.06) 100%);
+  border:1px solid var(--accent); border-radius:var(--radius);
+  padding:22px 24px;
+}
+.spotlight-main h3 { font-size:1.1rem; margin-bottom:4px; }
+.spotlight-main .sub { color:var(--muted); font-size:.82rem; margin-bottom:14px; }
+.spotlight-main .metrics-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.spotlight-main .metrics-grid .m { text-align:center; }
+.spotlight-main .metrics-grid .m .v { font-size:1.3rem; font-weight:700; }
+.spotlight-main .metrics-grid .m .l { font-size:.7rem; color:var(--muted); text-transform:uppercase; }
+.spotlight-side { display:flex; flex-direction:column; gap:10px; }
+.spotlight-side .stat {
+  background:var(--card); border:1px solid var(--border); border-radius:8px;
+  padding:10px 14px; display:flex; align-items:center; gap:12px;
+}
+.spotlight-side .stat .v { font-weight:700; font-size:.95rem; min-width:36px; text-align:right; }
+.spotlight-side .stat .l { font-size:.78rem; color:var(--muted); }
+
+/* Tables */
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:.82rem; }
+th { text-align:left; padding:10px 12px; color:var(--muted); font-weight:500; font-size:.72rem; text-transform:uppercase; letter-spacing:.4px; border-bottom:1px solid var(--border); }
+td { padding:10px 12px; border-bottom:1px solid var(--border); }
+tr:hover td { background:rgba(139,92,246,.04); }
+
+/* Charts */
+.chart-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+.chart-box { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
+.chart-box .ctitle { font-size:.8rem; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:.3px; }
+
+/* Feature matrix */
+.feat-cell { text-align:center; font-size:.8rem; }
+.feat-yes { color:var(--green); }
+.feat-no { color:var(--red); opacity:.5; }
+
+/* Sentiment bars */
+.sent-bar { display:flex; height:8px; border-radius:4px; overflow:hidden; margin:6px 0; }
+.sent-bar .pos { background:var(--green); }
+.sent-bar .neu { background:var(--yellow); }
+.sent-bar .neg { background:var(--red); }
+
+/* Modal */
+.modal-overlay {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
+  z-index:200; align-items:center; justify-content:center;
+}
+.modal-overlay.open { display:flex; }
+.modal {
+  background:var(--bg2); border:1px solid var(--border); border-radius:12px;
+  width:90%; max-width:700px; max-height:85vh; overflow-y:auto;
+  padding:24px 28px;
+}
+.modal-close { float:right; background:none; border:none; color:var(--muted); font-size:1.4rem; cursor:pointer; }
+.modal h3 { font-size:1.2rem; margin-bottom:4px; }
+.modal .sub { color:var(--muted); font-size:.85rem; margin-bottom:18px; }
+.modal .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
+.modal .info-grid .f { display:flex; flex-direction:column; gap:2px; }
+.modal .info-grid .f .l { font-size:.7rem; color:var(--muted); text-transform:uppercase; }
+.modal .info-grid .f .v { font-weight:600; }
+.modal .detail-features { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:16px; }
+.modal .detail-features span {
+  font-size:.75rem; padding:3px 10px; border-radius:6px;
+  background:var(--card2); color:var(--text);
+}
+.modal .modal-charts { margin-top:14px; }
+
+/* Review analysis cards */
+.review-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
+.tag-list { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { font-size:.72rem; padding:3px 10px; border-radius:6px; background:var(--card2); color:var(--muted); }
+.tag.pos { background:rgba(34,197,94,.1); color:var(--green); }
+.tag.neg { background:rgba(239,68,68,.1); color:var(--red); }
+.tag.req { background:rgba(59,130,246,.1); color:var(--blue); }
+
+/* Roadmap */
+.roadmap-item { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px 16px; margin-bottom:8px; }
+.roadmap-item .header { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+.roadmap-item .title { font-weight:600; font-size:.9rem; }
+.roadmap-item .desc { font-size:.8rem; color:var(--muted); line-height:1.4; }
+.roadmap-item .priority { font-size:.7rem; text-transform:uppercase; letter-spacing:.3px; }
+.priority-high { color:var(--red); }
+.priority-mid { color:var(--yellow); }
+.priority-low { color:var(--green); }
+
+@media(max-width:900px) {
+  .sidebar { display:none; }
+  .main { margin-left:0; padding:16px; }
+  .spotlight { grid-template-columns:1fr; }
+  .chart-row { grid-template-columns:1fr; }
+  .review-grid { grid-template-columns:1fr; }
+  .metrics { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <h1>infoX Analytica</h1>
+    <span>Mobil Yatırım Uygulaması Analiz Aracı</span>
+  </div>
+  <div class="sidebar-nav">
+    <a class="active" data-tab="overview"><span class="icon">&#9632;</span> Genel Bakış</a>
+    <a data-tab="apps"><span class="icon">&#9776;</span> Uygulamalar</a>
+    <a data-tab="competitors"><span class="icon">&#9878;</span> Rekabet Analizi</a>
+    <a data-tab="reviews"><span class="icon">&#9733;</span> Yorum Zekası</a>
+    <a data-tab="features"><span class="icon">&#9881;</span> Özellik Matrisi</a>
+    <a data-tab="trends"><span class="icon">&#9650;</span> Trendler</a>
+    <a data-tab="roadmap"><span class="icon">&#9998;</span> Stratejik Rapor</a>
+  </div>
+  <div class="sidebar-bottom">v2.0 &middot; Veri: App Store + Play Store</div>
+</nav>
+
+<div class="main">
+  <div class="topbar">
+    <h2 id="pageTitle">Genel Bakış</h2>
+    <div class="topbar-right">
+      <input class="search-input" id="globalSearch" placeholder="Uygulama ara..." oninput="filterApps()">
+    </div>
+  </div>
+
+  <!-- === TAB: OVERVIEW === -->
+  <div class="tab-content active" id="tab-overview">
+    <div class="spotlight" id="infoXSpotlight"></div>
+    <div class="metrics" id="overviewMetrics" style="grid-template-columns:repeat(4,1fr)"></div>
+    <div class="chart-row">
+      <div class="chart-box"><div class="ctitle">Yorum Duygu Dağılımı</div><div style="height:120px"><canvas id="ovReviewSentiment"></canvas></div></div>
+      <div class="chart-box"><div class="ctitle">Yorum & Değerlendirme Sayısı</div><div style="height:120px"><canvas id="ovReviewCounts"></canvas></div></div>
+    </div>
+    <div class="review-grid" id="ovPraisesComplaints"></div>
+    <div class="card" style="margin-bottom:16px"><div class="card-title">Kullanıcı Talep Ettiği Özellikler</div><div class="tag-list" id="ovFeatureRequests"></div></div>
+    <div class="chart-row">
+      <div class="chart-box"><div class="ctitle">Haftalık Yükleme Trendi</div><canvas id="ovWeeklyTrend" height="90"></canvas></div>
+      <div class="chart-box"><div class="ctitle">Aylık Yükleme Trendi</div><canvas id="ovMonthlyTrend" height="90"></canvas></div>
+    </div>
+    <div class="chart-box"><div class="ctitle">Rakiplere Karşı Puan Karşılaştırması</div><canvas id="ovCompRating" height="100"></canvas></div>
+  </div>
+
+  <!-- === TAB: APPS === -->
+  <div class="tab-content" id="tab-apps">
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap" id="appFilters"></div>
+    <div class="app-grid" id="appGrid"></div>
+  </div>
+
+  <!-- === TAB: COMPETITORS === -->
+  <div class="tab-content" id="tab-competitors">
+    <div class="metrics" id="compMetrics"></div>
+    <div class="chart-row">
+      <div class="chart-box"><div class="ctitle">Puan Karşılaştırması (iOS)</div><canvas id="compIosChart" height="100"></canvas></div>
+      <div class="chart-box"><div class="ctitle">Puan Karşılaştırması (Android)</div><canvas id="compAndroidChart" height="100"></canvas></div>
+    </div>
+    <div class="chart-box" style="margin-bottom:16px"><div class="ctitle">Yükleme Karşılaştırması</div><canvas id="compInstallChart" height="100"></canvas></div>
+    <div class="card"><div class="card-title">Feature Gap Matrix</div><div class="table-wrap" id="featureGapTable"></div></div>
+  </div>
+
+  <!-- === TAB: REVIEWS === -->
+  <div class="tab-content" id="tab-reviews">
+    <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap" id="reviewAppSelector"></div>
+    <div id="reviewContent"></div>
+  </div>
+
+  <!-- === TAB: FEATURES === -->
+  <div class="tab-content" id="tab-features">
+    <div class="card"><div class="card-title">Özellik Karşılaştırma Matrisi</div><div class="table-wrap" id="featureMatrixTable"></div></div>
+    <div class="chart-row" style="margin-top:16px">
+      <div class="chart-box"><div class="ctitle">Özellik Kapsama Skoru</div><canvas id="featureCoverageChart" height="110"></canvas></div>
+      <div class="chart-box"><div class="ctitle">Kategori Dağılımı</div><canvas id="featureCategoryChart" height="110"></canvas></div>
+    </div>
+  </div>
+
+  <!-- === TAB: TRENDS === -->
+  <div class="tab-content" id="tab-trends">
+    <div class="chart-box" style="margin-bottom:16px"><div class="ctitle">Haftalık Yükleme Trendi</div><canvas id="weeklyTrendChart" height="100"></canvas></div>
+    <div class="chart-box" style="margin-bottom:16px"><div class="ctitle">Aylık Yükleme Trendi</div><canvas id="monthlyTrendChart" height="100"></canvas></div>
+  </div>
+
+  <!-- === TAB: ROADMAP === -->
+  <div class="tab-content" id="tab-roadmap">
+    <div class="card" style="margin-bottom:16px"><div class="card-title">AI Destekli Stratejik Rapor</div><div id="roadmapContent"></div></div>
+    <div class="card"><div class="card-title">Öncelik Matrisi</div><div id="priorityMatrix"></div></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+let DATA = null;
+let reviewChart = null;
+const C = {
+  ios: '#8b5cf6', iosBg: 'rgba(139,92,246,.12)', iosGrd: {id:'iosGrd'},
+  and: '#22c55e', andBg: 'rgba(34,197,94,.12)', andGrd: {id:'andGrd'},
+  grid: 'rgba(255,255,255,.05)', text: '#7c7ca0'
+};
+
+function grd(ctx, area, c1, c2) {
+  if (!area || !area.top || !area.bottom) return c1;
+  try { const g = ctx.createLinearGradient(0,area.top,0,area.bottom); g.addColorStop(0,c1); g.addColorStop(1,c2||c1); return g; } catch(e) { return c1; }
+}
+
+function niceChart(ctxId, config) {
+  const el = document.getElementById(ctxId); if(!el) return null;
+  const base = {
+    responsive: true, maintainAspectRatio: false,
+    animation: { duration: 500, easing: 'easeOutQuart' },
+    interaction: { intersect: false, mode: 'index' },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#12121e', titleColor: '#e2e8f0', bodyColor: '#e2e8f0',
+        borderColor: '#2a2a4a', borderWidth: 1, padding: 10, cornerRadius: 8,
+        titleFont: { size: 11 }, bodyFont: { size: 12 }
+      }
+    },
+    scales: {
+      x: { grid: { color: C.grid, drawBorder: false }, ticks: { color: C.text, font: { size: 10 } } },
+      y: { beginAtZero: true, grid: { color: C.grid, drawBorder: false }, ticks: { color: C.text, font: { size: 10 }, callback: v => v>=1000?(v/1000).toFixed(v>=10000?0:1)+'B':v } }
+    }
+  };
+  if (config.stacked) base.scales.y.stacked = true;
+  // Deep merge
+  const opts = JSON.parse(JSON.stringify(base));
+  function merge(a,b) { if(!b) return a; Object.keys(b).forEach(k=>{ if(a[k]&&typeof a[k]==='object'&&!Array.isArray(a[k])&&typeof b[k]==='object'&&!Array.isArray(b[k])) merge(a[k],b[k]); else a[k]=b[k]; }); return a; }
+  return new Chart(el.getContext('2d'), merge(opts, config));
+}
+
+async function init() {
+  try {
+    const r = await fetch('data.json');
+    DATA = await r.json();
+  } catch(e) {
+    document.body.innerHTML = '<div style="padding:40px;text-align:center;color:var(--red)">Veri yüklenemedi: ' + e.message + '</div>';
+    return;
+  }
+  renderOverview();
+  setupNav();
+}
+
+/* Navigation + Lazy Tab Rendering */
+const R = {}; // tracks which tabs have been rendered
+const tabRender = {
+  apps: () => renderAppGrid(Object.values(DATA.apps)),
+  competitors: renderCompetitors,
+  reviews: () => renderReviewSection(DATA.apps.find(a=>a.primary)||DATA.apps[0]),
+  features: renderFeatureMatrix,
+  trends: renderTrends,
+  roadmap: renderRoadmap
+};
+function setupNav() {
+  R.overview = true; // already rendered in init
+  document.querySelectorAll('.sidebar-nav a').forEach(a => {
+    a.onclick = () => {
+      document.querySelectorAll('.sidebar-nav a').forEach(x=>x.classList.remove('active'));
+      a.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+      const tab = a.dataset.tab;
+      document.getElementById('tab-'+tab).classList.add('active');
+      document.getElementById('pageTitle').textContent = a.textContent.trim();
+      if (!R[tab] && tabRender[tab]) { tabRender[tab](); R[tab] = true; }
+    };
+  });
+}
+
+/* OVERVIEW — infoX Focused */
+function renderOverview() {
+  const apps = Object.values(DATA.apps);
+  const infoX = apps.find(a=>a.primary); if(!infoX) return;
+  const ios = infoX.stores.ios||{}; const and = infoX.stores.android||{}; const r = infoX.reviews_analysis||{};
+  const dt = DATA.download_trends;
+  const w = dt?.weekly?.datasets?.infox; const m = dt?.monthly?.datasets?.infox;
+
+  document.getElementById('infoXSpotlight').innerHTML = `
+    <div class="spotlight-main">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px">
+        <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;color:#fff">iX</div>
+        <div><h3 style="font-size:1.25rem">${infoX.name}</h3><div style="color:var(--muted);font-size:.78rem">${infoX.fullName} &middot; ${infoX.developer}</div></div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);margin-bottom:16px;line-height:1.5">${infoX.description||''}</p>
+      <div class="metrics-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        ${[
+          {v:ios.averageUserRating||'-',l:'iOS Puan',c:'#8b5cf6'},
+          {v:and.score||'-',l:'Android Puan',c:'#22c55e'},
+          {v:formatNum((ios.userRatingCount||0)+(and.reviews||0)),l:'Toplam Yorum',c:'#e2e8f0'},
+          {v:and.installs||'-',l:'Y\u00fckleme',c:'#f59e0b'}
+        ].map(x=>`<div class="m" style="text-align:center;background:rgba(255,255,255,.03);border-radius:8px;padding:8px"><div class="v" style="font-size:1.3rem;font-weight:700;color:${x.c}">${x.v}</div><div class="l" style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.3px">${x.l}</div></div>`).join('')}
+      </div>
+    </div>
+    <div class="spotlight-side">
+      ${[
+        {v:ios.version||'-',l:'iOS S\u00fcr\u00fcm'},
+        {v:and.version||'-',l:'Android S\u00fcr\u00fcm'},
+        {v:ios.contentAdvisoryRating||'-',l:'Ya\u015f S\u0131n.'},
+        {v:ios.minimumOsVersion||'-',l:'iOS Min'},
+        {v:infoX.features?infoX.features.length:0,l:'\u00d6zellik'},
+        {v:'%'+(r.positive_pct||0),l:'Pozitif'}
+      ].map(x=>`<div class="stat"><div class="v">${x.v}</div><div class="l">${x.l}</div></div>`).join('')}
+    </div>`;
+
+  document.getElementById('overviewMetrics').innerHTML = [
+    {v:'%'+(r.positive_pct||0),l:'Pozitif Yorum',c:'var(--green)'},
+    {v:'%'+(r.neutral_pct||0),l:'N\u00f6tr Yorum',c:'var(--yellow)'},
+    {v:'%'+(r.negative_pct||0),l:'Negatif Yorum',c:'var(--red)'},
+    {v:formatNum(r.total_reviews_analyzed||0),l:'\u0130ncelenen Yorum',c:'var(--text)'}
+  ].map(x=>`<div class="metric-card"><div class="label">${x.l}</div><div class="value" style="color:${x.c}">${x.v}</div></div>`).join('');
+
+  setTimeout(()=>{
+    niceChart('ovReviewSentiment',{type:'doughnut',data:{
+      labels:['Pozitif','N\u00f6tr','Negatif'],
+      datasets:[{data:[r.positive_pct||0,r.neutral_pct||0,r.negative_pct||0],backgroundColor:['#22c55e','#f59e0b','#ef4444'],borderWidth:0,borderColor:'transparent'}]
+    },plugins:{legend:{position:'right',labels:{color:C.text,boxWidth:10,font:{size:10}}}}});
+    niceChart('ovReviewCounts',{type:'bar',data:{
+      labels:['iOS','Android'],
+      datasets:[{
+        label:'De\u011ferlendirme',data:[ios.userRatingCount||0,and.reviews||0],
+        backgroundColor:[C.iosBg,C.andBg],
+        borderColor:[C.ios,C.and],borderWidth:1.5,borderRadius:4
+      }]
+    }});
+  },50);
+
+  document.getElementById('ovPraisesComplaints').innerHTML = `
+    <div class="card"><div class="card-title">\u00d6vg\u00fcler</div><div class="tag-list">${(r.top_praises||[]).map(t=>'<span class="tag pos">'+t+'</span>').join('')}</div></div>
+    <div class="card"><div class="card-title">\u015eikayetler</div><div class="tag-list">${(r.top_complaints||[]).map(t=>'<span class="tag neg">'+t+'</span>').join('')}</div></div>`;
+  document.getElementById('ovFeatureRequests').innerHTML = (r.feature_requests||[]).map(t=>'<span class="tag req">'+t+'</span>').join('');
+
+  if(w && m) {
+    const wl = dt.weekly.labels; const ml = dt.monthly.labels;
+    setTimeout(()=>{
+      niceChart('ovWeeklyTrend',{type:'line',data:{
+        labels:wl,datasets:[
+          {label:'iOS',data:w.ios,borderColor:C.ios,backgroundColor:ctx=>grd(ctx.chart.ctx,ctx.chart.chartArea,C.iosBg,'transparent'),borderWidth:2,fill:true,tension:.35,pointRadius:3,pointBackgroundColor:C.ios},
+          {label:'Android',data:w.android,borderColor:C.and,backgroundColor:ctx=>grd(ctx.chart.ctx,ctx.chart.chartArea,C.andBg,'transparent'),borderWidth:2,fill:true,tension:.35,pointRadius:3,pointBackgroundColor:C.and}
+        ]
+      },plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:12,font:{size:10},usePointStyle:true}}}});
+      niceChart('ovMonthlyTrend',{type:'line',data:{
+        labels:ml,datasets:[
+          {label:'iOS',data:m.ios,borderColor:C.ios,backgroundColor:ctx=>grd(ctx.chart.ctx,ctx.chart.chartArea,C.iosBg,'transparent'),borderWidth:2,fill:true,tension:.35,pointRadius:3,pointBackgroundColor:C.ios},
+          {label:'Android',data:m.android,borderColor:C.and,backgroundColor:ctx=>grd(ctx.chart.ctx,ctx.chart.chartArea,C.andBg,'transparent'),borderWidth:2,fill:true,tension:.35,pointRadius:3,pointBackgroundColor:C.and}
+        ]
+      },plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:12,font:{size:10},usePointStyle:true}}}});
+    },100);
+  } else {
+    ['ovWeeklyTrend','ovMonthlyTrend'].forEach(id=>{ const e=document.getElementById(id); if(e)e.parentElement.innerHTML='<div style="padding:20px;text-align:center;color:var(--muted);font-size:.85rem">Trend verisi bulunamad\u0131</div>'; });
+  }
+
+  setTimeout(()=>{
+    const comps = apps.filter(a=>a.stores.ios||a.stores.android).slice(0,8);
+    niceChart('ovCompRating',{type:'bar',data:{
+      labels:comps.map(a=>a.name),
+      datasets:[
+        {label:'iOS',data:comps.map(a=>a.stores.ios?.averageUserRating||null),backgroundColor:comps.map(a=>a.primary?'rgba(139,92,246,.6)':'rgba(59,130,246,.3)'),borderColor:comps.map(a=>a.primary?'#8b5cf6':'#3b82f6'),borderWidth:1.5,borderRadius:3},
+        {label:'Android',data:comps.map(a=>a.stores.android?.score||null),backgroundColor:comps.map(a=>a.primary?'rgba(139,92,246,.6)':'rgba(34,197,94,.3)'),borderColor:comps.map(a=>a.primary?'#8b5cf6':'#22c55e'),borderWidth:1.5,borderRadius:3}
+      ]
+    },plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:10,font:{size:10},usePointStyle:true}},scales:{y:{max:5}}}});
+  },100);
+}
+
+/* APPS */
+function renderAppGrid(list) {
+  const grid = document.getElementById('appGrid');
+  const filters = document.getElementById('appFilters');
+  const cats = [...new Set(list.map(a=>a.category||'Diğer'))];
+  filters.innerHTML = '<span class="badge badge-purple" style="cursor:pointer" onclick="filterApps(\'all\')">Tümü</span>' +
+    cats.map(c=>`<span class="badge badge-purple" style="cursor:pointer" onclick="filterApps('${c}')">${c}</span>`).join('');
+
+  grid.innerHTML = list.map(a => {
+    const ios = a.stores.ios||{};
+    const and = a.stores.android||{};
+    const avgScore = (ios.averageUserRating||0) > 0 && (and.score||0) > 0 ? ((ios.averageUserRating + and.score)/2).toFixed(1) : (ios.averageUserRating||and.score||'-');
+    const isPrimary = a.primary ? 'primary' : '';
+    const color = a.color || '#6366f1';
+    return `<div class="app-card ${isPrimary}" onclick="openModal('${a.id}')">
+      <div class="top">
+        <div class="icon-placeholder" style="background:${color}">${a.name.charAt(0).toUpperCase()}</div>
+        <div class="info">
+          <div class="name">${a.name} ${a.primary?'<span class="badge badge-purple" style="font-size:.6rem">PRIMARY</span>':''}</div>
+          <div class="dev">${a.developer||''}</div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <span>${renderStars(ios.averageUserRating||0)}</span>
+        <span class="num">${((ios.averageUserRating||0) > 0) ? 'iOS '+ios.averageUserRating.toFixed(1) : ''}${(and.score||0) > 0 ? (ios.averageUserRating?' &middot; ':'')+'Android '+and.score.toFixed(1) : ''}</span>
+      </div>
+      <div class="tags">${(a.features||[]).slice(0,4).map(f=>'<span>'+f+'</span>').join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+function filterApps(cat) {
+  const q = (document.getElementById('globalSearch').value||'').toLowerCase();
+  let list = Object.values(DATA.apps);
+  if(cat && cat !== 'all') list = list.filter(a=>(a.category||'')===cat);
+  if(q) list = list.filter(a=>a.name.toLowerCase().includes(q)||a.fullName.toLowerCase().includes(q)||(a.developer||'').toLowerCase().includes(q));
+  renderAppGrid(list);
+}
+
+/* COMPETITORS */
+function renderCompetitors() {
+  const apps = Object.values(DATA.apps).filter(a=>a.stores.ios||a.stores.android);
+  const top = apps.slice(0,10);
+
+  document.getElementById('compMetrics').innerHTML = `
+    <div class="metric-card"><div class="label">Rakip Uygulama</div><div class="value">${top.length}</div></div>
+    <div class="metric-card"><div class="label">Ort. iOS Puan</div><div class="value">${avg(top.map(a=>a.stores.ios?.averageUserRating).filter(r=>r)).toFixed(1)}</div></div>
+    <div class="metric-card"><div class="label">Ort. Android Puan</div><div class="value">${avg(top.map(a=>a.stores.android?.score).filter(r=>r)).toFixed(1)}</div></div>`;
+
+  const iosScores = top.map(a=>a.stores.ios?.averageUserRating||null);
+  const andScores = top.map(a=>a.stores.android?.score||null);
+  setTimeout(()=>{
+    niceChart('compIosChart',{type:'bar',data:{
+      labels:top.map(a=>a.name),
+      datasets:[{label:'iOS Puan',data:iosScores,backgroundColor:'rgba(139,92,246,.4)',borderColor:'#8b5cf6',borderWidth:1.5,borderRadius:3}]
+    },indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{max:5}}});
+    niceChart('compAndroidChart',{type:'bar',data:{
+      labels:top.map(a=>a.name),
+      datasets:[{label:'Android Puan',data:andScores,backgroundColor:'rgba(34,197,94,.4)',borderColor:'#22c55e',borderWidth:1.5,borderRadius:3}]
+    },indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{max:5}}});
+
+    const installLabels = ['<100K','100K-500K','500K-1M','1M+'];
+    const installData = installLabels.map(l=>apps.filter(a=>{const n=a.stores.android?.realInstalls||0;if(l==='<100K')return n>0&&n<100000;if(l==='100K-500K')return n>=100000&&n<500000;if(l==='500K-1M')return n>=500000&&n<1000000;return n>=1000000;}).length);
+    niceChart('compInstallChart',{type:'bar',data:{
+      labels:installLabels,datasets:[{label:'Uygulama',data:installData,backgroundColor:'rgba(139,92,246,.4)',borderColor:'#8b5cf6',borderWidth:1.5,borderRadius:4}]
+    }});
+  },50);
+
+  const featKeys = ['BIST İşlem','ABD Borsaları','Yatırım Fonu','Kripto Para','VİOP','Varant','AI Analiz','Canlı Veri','Swing Sinyal','Bilanço'];
+  const comps = apps.filter(a=>a.features&&a.features.length>0).slice(0,8);
+  const infoX = apps.find(a=>a.primary);
+  document.getElementById('featureGapTable').innerHTML = `<table><tr><th>Özellik</th>${comps.map(a=>'<th>'+a.name+'</th>').join('')}<th style="color:var(--accent)">infoX</th></tr>${featKeys.map(f=>`<tr><td style="font-weight:500">${f}</td>${comps.map(a=>'<td class="feat-cell">'+((a.features||[]).includes(f)?'<span class="feat-yes">&#10003;</span>':'<span class="feat-no">&#8212;</span>')+'</td>').join('')}<td class="feat-cell">${(infoX&&(infoX.features||[]).includes(f))?'<span class="feat-yes">&#10003;</span>':'<span class="feat-no">&#8212;</span>'}</td></tr>`).join('')}</table>`;
+}
+
+/* REVIEWS */
+function renderReviewSection(app) {
+  const allApps = DATA.apps||[];
+  const sel = document.getElementById('reviewAppSelector');
+  sel.innerHTML = allApps.map(a=>
+    `<span class="${a.id===app.id?'badge badge-purple':'badge'}" style="cursor:pointer;background:${a.id===app.id?'var(--accent)':'var(--card)'}" onclick="renderReviewSection(DATA.apps.find(x=>x.id==='${a.id}'))">${a.name}</span>`
+  ).join('');
+
+  if(reviewChart) reviewChart.destroy();
+  const r = app.reviews_analysis;
+  const ios = app.stores?.ios||{};
+  const and = app.stores?.android||{};
+
+  if(r) {
+    document.getElementById('reviewContent').innerHTML = `
+      <div class="metrics" style="grid-template-columns:repeat(4,1fr)">
+        <div class="metric-card"><div class="label">İncelenen Yorum</div><div class="value">${formatNum(r.total_reviews_analyzed)}</div></div>
+        <div class="metric-card"><div class="label">Pozitif</div><div class="value" style="color:var(--green)">%${r.positive_pct}</div></div>
+        <div class="metric-card"><div class="label">Nötr</div><div class="value" style="color:var(--yellow)">%${r.neutral_pct}</div></div>
+        <div class="metric-card"><div class="label">Negatif</div><div class="value" style="color:var(--red)">%${r.negative_pct}</div></div>
+      </div>
+      <div class="chart-box" style="margin-bottom:14px">
+        <div class="ctitle">Duygu Dağılımı</div>
+        <div style="height:40px"><canvas id="reviewSentimentChart"></canvas></div>
+      </div>
+      <div class="review-grid">
+        <div class="card"><div class="card-title">Övgüler</div><div class="tag-list">${(r.top_praises||[]).map(t=>'<span class="tag pos">'+t+'</span>').join('')}</div></div>
+        <div class="card"><div class="card-title">Şikayetler</div><div class="tag-list">${(r.top_complaints||[]).map(t=>'<span class="tag neg">'+t+'</span>').join('')}</div></div>
+      </div>
+      <div class="card"><div class="card-title">Talep Edilen Özellikler</div><div class="tag-list">${(r.feature_requests||[]).map(t=>'<span class="tag req">'+t+'</span>').join('')}</div></div>
+    `;
+    setTimeout(()=>{
+      reviewChart = niceChart('reviewSentimentChart',{type:'doughnut',data:{
+        labels:['Pozitif','Nötr','Negatif'],
+        datasets:[{data:[r.positive_pct,r.neutral_pct,r.negative_pct],backgroundColor:['#22c55e','#f59e0b','#ef4444'],borderWidth:0}]
+      },plugins:{legend:{position:'right',labels:{color:C.text,boxWidth:10,font:{size:10}}}}});
+    },50);
+  } else {
+    document.getElementById('reviewContent').innerHTML = `
+      <div class="metrics" style="grid-template-columns:repeat(4,1fr)">
+        <div class="metric-card"><div class="label">iOS Puan</div><div class="value" style="color:#8b5cf6">${ios.averageUserRating||'-'}</div></div>
+        <div class="metric-card"><div class="label">iOS Yorum</div><div class="value">${formatNum(ios.userRatingCount||0)}</div></div>
+        <div class="metric-card"><div class="label">Android Puan</div><div class="value" style="color:#22c55e">${and.score||'-'}</div></div>
+        <div class="metric-card"><div class="label">Android Yorum</div><div class="value">${formatNum(and.reviews||0)}</div></div>
+      </div>
+      <div class="chart-box" style="margin-bottom:14px">
+        <div class="ctitle">Mağaza Değerlendirmeleri</div>
+        <div style="height:180px"><canvas id="reviewSentimentChart"></canvas></div>
+      </div>
+      <div style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:12px">
+        Bu uygulama için detaylı yorum analizi bulunmuyor.<br>
+        Mağaza puanları ve yorum sayıları gösteriliyor.
+      </div>
+      <div class="card" style="margin-top:14px">
+        <div class="card-title">Uygulama Bilgileri</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:8px 0">
+          ${[
+            {l:'Geliştirici',v:app.developer||'-'},
+            {l:'Kategori',v:app.category||'-'},
+            {l:'Kuruluş',v:app.launch_date||'-'},
+            {l:'iOS Sürüm',v:ios.version||'-'},
+            {l:'Android Sürüm',v:and.version||'-'},
+            {l:'Android Yükleme',v:and.installs||'-'}
+          ].map(x=>`<div><div style="font-size:.7rem;color:var(--muted)">${x.l}</div><div style="font-weight:600">${x.v}</div></div>`).join('')}
+        </div>
+      </div>
+    `;
+    setTimeout(()=>{
+      reviewChart = niceChart('reviewSentimentChart',{type:'bar',data:{
+        labels:['iOS','Android'],
+        datasets:[{
+          label:'Puan',data:[ios.averageUserRating||0,and.score||0],
+          backgroundColor:['rgba(139,92,246,.4)','rgba(34,197,94,.4)'],
+          borderColor:['#8b5cf6','#22c55e'],borderWidth:1.5,borderRadius:4
+        }]
+      },plugins:{legend:{display:false}},scales:{y:{max:5}}});
+    },50);
+  }
+}
+
+/* FEATURES */
+function renderFeatureMatrix() {
+  const allFeatures = ['BIST İşlem','ABD Borsaları','Yatırım Fonu','Kripto Para','VİOP','Varant','Sertifika','Halka Arz','AI Analiz','Canlı Veri','Portföy Takibi','Teknik Analiz','Temel Analiz','Haber Takibi','Swing Sinyal','Bilanço','Temettü','Sıcaklık Haritası'];
+  const comps = Object.values(DATA.apps).filter(a=>a.features&&a.features.length>0);
+  const cats = [...new Set(comps.map(a=>a.category||'Diğer'))];
+
+  const headers = allFeatures;
+  document.getElementById('featureMatrixTable').innerHTML = `<table><tr><th>Uygulama</th>${headers.map(h=>'<th style="font-size:.65rem">'+h+'</th>').join('')}<th style="color:var(--accent)">Kapsama</th></tr>${
+    comps.map(a=>{
+      const coverage = allFeatures.filter(f=>(a.features||[]).includes(f)).length;
+      const pct = (coverage/allFeatures.length*100).toFixed(0);
+      return `<tr ${a.primary?'style="background:rgba(139,92,246,.06)"':''}><td style="font-weight:600">${a.name}</td>${
+        headers.map(h=>'<td class="feat-cell">'+((a.features||[]).includes(h)?'<span class="feat-yes">&#10003;</span>':'<span class="feat-no">&#8212;</span>')+'</td>').join('')
+      }<td style="text-align:center;font-weight:600;color:var(--accent)">%${pct}</td></tr>`;
+    }).join('')
+  }</table>`;
+
+  setTimeout(()=>{
+    niceChart('featureCoverageChart',{type:'bar',data:{
+      labels:comps.map(a=>a.name),
+      datasets:[{label:'Kapsama %',data:comps.map(a=>allFeatures.filter(f=>(a.features||[]).includes(f)).length/allFeatures.length*100),backgroundColor:comps.map(a=>a.primary?'rgba(139,92,246,.5)':'rgba(59,130,246,.3)'),borderColor:comps.map(a=>a.primary?'#8b5cf6':'#3b82f6'),borderWidth:1.5,borderRadius:3}]
+    },indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{max:100}}});
+    niceChart('featureCategoryChart',{type:'doughnut',data:{
+      labels:cats,datasets:[{data:cats.map(c=>comps.filter(a=>(a.category||'Diğer')===c).length),backgroundColor:['#8b5cf6','#3b82f6','#22c55e','#f59e0b','#ef4444','#ec4899','#14b8a6'],borderWidth:0,borderColor:'transparent'}]
+    },plugins:{legend:{position:'right',labels:{color:C.text,boxWidth:10,font:{size:10}}}}});
+  },50);
+}
+
+/* TRENDS */
+function renderTrends() {
+  const d = DATA.download_trends;
+  if(!d || !d.weekly || !d.monthly) {
+    document.querySelector('#tab-trends').innerHTML = '<p style="color:var(--muted)">Trend verisi bulunamadı.</p>';
+    return;
+  }
+  const wl = d.weekly.labels||[];
+  const ml = d.monthly.labels||[];
+  const names = Object.keys(d.weekly.datasets).slice(0,6);
+  const nl = {};
+  (DATA.apps||[]).forEach(a=>{ nl[a.id]=a.name; });
+  function sumPlat(obj) { const r={}; Object.keys(obj).forEach(k=>{ const item=obj[k]; r[k]=item.ios.map((v,i)=>v+item.android[i]); }); return r; }
+  const wt = sumPlat(d.weekly.datasets); const mt = sumPlat(d.monthly.datasets);
+  const colors = ['#8b5cf6','#3b82f6','#22c55e','#f59e0b','#ef4444','#ec4899'];
+  setTimeout(()=>{
+    niceChart('weeklyTrendChart',{type:'line',data:{
+      labels:wl,datasets:names.map((k,i)=>({
+        label:nl[k]||k,data:wt[k],
+        borderColor:colors[i],backgroundColor:colors[i]+'22',
+        borderWidth:2,fill:true,tension:.35,pointRadius:2,pointBackgroundColor:colors[i]
+      }))
+    },plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:10,font:{size:9},usePointStyle:true}}}});
+    niceChart('monthlyTrendChart',{type:'line',data:{
+      labels:ml,datasets:names.map((k,i)=>({
+        label:nl[k]||k,data:mt[k],
+        borderColor:colors[i],backgroundColor:colors[i]+'22',
+        borderWidth:2,fill:true,tension:.35,pointRadius:2,pointBackgroundColor:colors[i]
+      }))
+    },plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:10,font:{size:9},usePointStyle:true}}}});
+  },50);
+}
+
+/* ROADMAP */
+function renderRoadmap() {
+  const infoX = DATA.apps.find(a=>a.primary);
+  const r = infoX?.reviews_analysis;
+  const items = [];
+  if(r) {
+    const reqs = r.feature_requests||[];
+    const complaints = r.top_complaints||[];
+    complaints.forEach(c => {
+      items.push({title:c,desc:'Kullanıcı şikayetlerine göre önceliklendirildi.',priority:'high',source:'Şikayet'});
+    });
+    reqs.forEach((f,i) => {
+      items.push({title:f,desc:'Kullanıcı taleplerine göre eklenmeli.',priority:i<3?'high':'mid',source:'Talep'});
+    });
+  }
+  items.push({title:'PWA / Mobil Web Sürümü',desc:'Hızlı erişim için web tabanlı versiyon.',priority:'low',source:'Stratejik'});
+  items.push({title:'Karanlık Tema İyileştirmeleri',desc:'Mevcut temanın kullanıcı geri bildirimlerine göre revize edilmesi.',priority:'mid',source:'Kullanıcı'});
+  items.push({title:'AI Destekli Portföy Yöneticisi',desc:'Yapay zeka ile kişiselleştirilmiş portföy önerileri.',priority:'high',source:'Stratejik'});
+  items.push({title:'Sosyal Trading Özelliği',desc:'Topluluk tabanlı işlem paylaşımı ve takip.',priority:'low',source:'Stratejik'});
+  items.push({title:'Gelişmiş Haber Analitiği',desc:'KAP haberlerinin anlık analizi ve özet çıkarımı.',priority:'mid',source:'Talep'});
+  items.push({title:'Widget Desteği',desc:'Ana ekran widgetları ile hızlı portföy görünümü.',priority:'mid',source:'Talep'});
+
+  document.getElementById('roadmapContent').innerHTML = items.map(it=>`
+    <div class="roadmap-item">
+      <div class="header">
+        <span class="title">${it.title}</span>
+        <span class="priority priority-${it.priority}">${it.priority.toUpperCase()} &middot; ${it.source}</span>
+      </div>
+      <div class="desc">${it.desc}</div>
+    </div>
+  `).join('');
+
+  const priorityCounts = {high:items.filter(i=>i.priority==='high').length,mid:items.filter(i=>i.priority==='mid').length,low:items.filter(i=>i.priority==='low').length};
+  document.getElementById('priorityMatrix').innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+      <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:16px;text-align:center">
+        <div style="font-size:1.8rem;font-weight:700;color:var(--red)">${priorityCounts.high}</div>
+        <div style="font-size:.78rem;color:var(--muted);margin-top:4px">Yüksek Öncelik</div>
+      </div>
+      <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:16px;text-align:center">
+        <div style="font-size:1.8rem;font-weight:700;color:var(--yellow)">${priorityCounts.mid}</div>
+        <div style="font-size:.78rem;color:var(--muted);margin-top:4px">Orta Öncelik</div>
+      </div>
+      <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:16px;text-align:center">
+        <div style="font-size:1.8rem;font-weight:700;color:var(--green)">${priorityCounts.low}</div>
+        <div style="font-size:.78rem;color:var(--muted);margin-top:4px">Düşük Öncelik</div>
+      </div>
+    </div>
+  `;
+}
+
+/* MODAL */
+function openModal(id) {
+  const a = DATA.apps.find(x=>x.id===id);
+  if(!a) return;
+  const ios = a.stores.ios||{};
+  const and = a.stores.android||{};
+  document.getElementById('modalContent').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3>${a.name}</h3>
+    <div class="sub">${a.fullName} &middot; ${a.developer||''}</div>
+    <div class="info-grid">
+      <div class="f"><span class="l">iOS Puan</span><span class="v">${ios.averageUserRating?ios.averageUserRating+' ('+formatNum(ios.userRatingCount)+' değ.)':'-'}</span></div>
+      <div class="f"><span class="l">Android Puan</span><span class="v">${and.score?and.score+' ('+formatNum(and.reviews)+' yorum)':'-'}</span></div>
+      <div class="f"><span class="l">iOS Sürüm</span><span class="v">${ios.version||'-'}</span></div>
+      <div class="f"><span class="l">Android Sürüm</span><span class="v">${and.version||'-'}</span></div>
+      <div class="f"><span class="l">Kategori</span><span class="v">${a.category||'-'}</span></div>
+      <div class="f"><span class="l">Android Yükleme</span><span class="v">${and.installs||'-'}</span></div>
+      <div class="f"><span class="l">Geliştirici</span><span class="v">${a.developer||'-'}</span></div>
+      <div class="f"><span class="l">Hedef Kitle</span><span class="v">${(a.target_audience||[]).join(', ')}</span></div>
+    </div>
+    <p style="font-size:.82rem;color:var(--muted);margin-bottom:14px;line-height:1.5">${a.description||''}</p>
+    <div class="detail-features">${(a.features||[]).map(f=>'<span>'+f+'</span>').join('')}</div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+
+/* Helpers */
+function avg(arr) { const f=arr.filter(x=>x); return f.length?f.reduce((s,v)=>s+v,0)/f.length:0; }
+function formatNum(n) { if(!n) return '0'; if(n>=1000000) return (n/1000000).toFixed(1)+'M'; if(n>=1000) return (n/1000).toFixed(n>=10000?0:1)+'B'; return n.toLocaleString(); }
+function renderStars(r) { if(!r) return ''; const f=Math.floor(r),rem=r-f; let s=''; for(let i=0;i<f;i++) s+='&#9733;'; if(rem>=.5) s+='&#9733;'; return s; }
+function bucketScores(scores) {
+  const buckets = [0,0,0,0,0,0,0,0,0];
+  const labels = [1,1.5,2,2.5,3,3.5,4,4.5,5];
+  scores.forEach(s=>{
+    for(let i=labels.length-1;i>=0;i--) { if(s>=labels[i]-0.25) { buckets[i]++; break; } }
+  });
+  return buckets;
+}
+
+init();
+window.filterApps = filterApps;
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.renderReviewSection = renderReviewSection;
+</script>
+</body>
+</html>
