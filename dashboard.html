@@ -4,42 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>infoX Analytica — Mobil Yatırım Uygulaması Analiz Aracı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
 :root {
-  --bg: #08080e;
-  --bg2: #0e0e18;
-  --card: #12121e;
-  --card2: #181830;
-  --border: #1e1e36;
-  --text: #e2e8f0;
-  --muted: #7c7ca0;
-  --accent: #8b5cf6;
+  --bg: #f5f7fb;
+  --bg2: #ffffff;
+  --sidebar-bg: #ffffff;
+  --card: #ffffff;
+  --card2: #f0f2f8;
+  --card-hover: #fafbff;
+  --border: #e2e5ef;
+  --border-hover: #c5c9d9;
+  --text: #1a1a2e;
+  --text2: #374151;
+  --muted: #7c7caa;
+  --accent: #7c3aed;
   --accent2: #a78bfa;
-  --green: #22c55e;
+  --accent-light: rgba(124, 58, 237, 0.08);
+  --accent-border: rgba(124, 58, 237, 0.2);
+  --green: #10b981;
+  --green-bg: rgba(16, 185, 129, 0.1);
   --red: #ef4444;
+  --red-bg: rgba(239, 68, 68, 0.1);
   --yellow: #f59e0b;
+  --yellow-bg: rgba(245, 158, 11, 0.1);
   --blue: #3b82f6;
-  --radius: 10px;
-  --shadow: 0 2px 12px rgba(0,0,0,.4);
+  --blue-bg: rgba(59, 130, 246, 0.1);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,.04), 0 1px 2px rgba(0,0,0,.03);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.04), 0 2px 4px rgba(0,0,0,.03);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 * { margin:0; padding:0; box-sizing:border-box; }
-html { font-size:14px; }
+html { font-size:14px; scroll-behavior: smooth; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, system-ui, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   display: flex;
   min-height: 100vh;
+  line-height: 1.5;
 }
-::-webkit-scrollbar { width:6px; }
-::-webkit-scrollbar-track { background:var(--bg2); }
-::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+::selection { background: rgba(124,58,237,.2); color: var(--accent); }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:10px; }
+::-webkit-scrollbar-thumb:hover { background:var(--muted); }
 
-/* Sidebar */
+@keyframes fadeInUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
 .sidebar {
-  width: 220px;
-  background: var(--bg2);
+  width: 240px;
+  background: var(--sidebar-bg);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -48,208 +72,407 @@ body {
   z-index:100;
 }
 .sidebar-logo {
-  padding: 20px 18px 16px;
+  padding: 24px 20px 18px;
   border-bottom:1px solid var(--border);
+  position: relative;
 }
-.sidebar-logo h1 { font-size:1.15rem; font-weight:700; color:#fff; }
-.sidebar-logo span { font-size:.7rem; color:var(--muted); letter-spacing:.3px; }
-.sidebar-nav { flex:1; padding:12px 10px; display:flex; flex-direction:column; gap:2px; }
+.sidebar-logo h1 {
+  font-size:1.1rem; font-weight:800; color:var(--text);
+  letter-spacing: -0.3px;
+}
+.sidebar-logo h1 span { color: var(--accent); }
+.sidebar-logo span.sub { font-size:.68rem; color:var(--muted); letter-spacing:.4px; font-weight:400; display:block; margin-top:2px; }
+.sidebar-nav { flex:1; padding:12px 8px; display:flex; flex-direction:column; gap:2px; }
 .sidebar-nav a {
-  display:flex; align-items:center; gap:10px;
-  padding:10px 12px; border-radius:8px;
-  color:var(--muted); text-decoration:none; font-size:.85rem; font-weight:500;
-  transition:all .15s; cursor:pointer;
+  display:flex; align-items:center; gap:11px;
+  padding:10px 14px; border-radius:8px;
+  color:var(--muted); text-decoration:none; font-size:.82rem; font-weight:500;
+  transition:all var(--transition); cursor:pointer;
 }
-.sidebar-nav a:hover { background:var(--card); color:var(--text); }
-.sidebar-nav a.active { background:var(--accent); color:#fff; }
-.sidebar-nav a .icon { width:18px; text-align:center; font-size:1rem; }
+.sidebar-nav a:hover {
+  background:var(--accent-light);
+  color:var(--accent);
+}
+.sidebar-nav a.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+}
+.sidebar-nav a .icon {
+  width:20px; text-align:center; font-size:1rem;
+}
 .sidebar-bottom {
-  padding:14px 18px;
+  padding:14px 20px;
   border-top:1px solid var(--border);
-  font-size:.72rem; color:var(--muted);
+  font-size:.7rem; color:var(--muted);
 }
 
-/* Main */
 .main {
-  margin-left:220px;
+  margin-left:240px;
   flex:1;
-  padding:28px 32px;
-  max-width:1400px;
+  padding:32px 36px;
+  max-width:1440px;
 }
 
-/* Top bar */
 .topbar {
   display:flex; align-items:center; justify-content:space-between;
   margin-bottom:28px; gap:16px;
+  animation: fadeIn 0.3s ease;
 }
-.topbar h2 { font-size:1.25rem; font-weight:600; }
+.topbar h2 {
+  font-size:1.4rem; font-weight:700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
 .topbar-right { display:flex; align-items:center; gap:12px; }
 .search-input {
   background:var(--card); border:1px solid var(--border);
-  border-radius:8px; padding:8px 14px;
-  color:var(--text); font-size:.85rem; width:220px;
-  outline:none;
+  border-radius:10px; padding:9px 16px;
+  color:var(--text); font-size:.82rem; width:240px;
+  outline:none; transition: all var(--transition);
+  box-shadow: var(--shadow);
 }
-.search-input:focus { border-color:var(--accent); }
+.search-input:focus { border-color:var(--accent); box-shadow: 0 0 0 3px rgba(124,58,237,.1); }
+.search-input::placeholder { color:var(--muted); opacity:0.7; }
 .badge {
-  display:inline-block; padding:2px 10px; border-radius:20px;
-  font-size:.72rem; font-weight:600;
+  display:inline-block; padding:3px 12px; border-radius:20px;
+  font-size:.7rem; font-weight:600; letter-spacing:.2px;
 }
-.badge-purple { background:rgba(139,92,246,.2); color:var(--accent2); }
-.badge-green { background:rgba(34,197,94,.15); color:var(--green); }
-.badge-red { background:rgba(239,68,68,.15); color:var(--red); }
+.badge-purple { background:var(--accent-light); color:var(--accent); }
+.badge-green { background:var(--green-bg); color:var(--green); }
+.badge-red { background:var(--red-bg); color:var(--red); }
 
-/* Tab content */
-.tab-content { display:none; }
+.tab-content { display:none; animation: fadeIn 0.25s ease; }
 .tab-content.active { display:block; }
 
-/* Metric row */
 .metrics {
   display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
   gap:14px; margin-bottom:24px;
 }
 .metric-card {
   background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
-  padding:16px 18px;
+  padding:18px 20px;
+  box-shadow: var(--shadow);
+  transition:all var(--transition);
 }
-.metric-card .label { font-size:.72rem; color:var(--muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:.4px; }
-.metric-card .value { font-size:1.6rem; font-weight:700; }
+.metric-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.metric-card .label {
+  font-size:.7rem; color:var(--muted); margin-bottom:6px;
+  text-transform:uppercase; letter-spacing:.6px; font-weight:600;
+}
+.metric-card .value { font-size:1.7rem; font-weight:800; letter-spacing:-0.5px; color: var(--text); }
 .metric-card .change { font-size:.78rem; margin-top:4px; }
 
-/* Cards */
 .card {
   background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
-  padding:20px;
+  padding:22px;
+  box-shadow: var(--shadow);
+  transition:all var(--transition);
 }
-.card-title { font-size:.85rem; font-weight:600; color:var(--muted); margin-bottom:14px; text-transform:uppercase; letter-spacing:.4px; }
+.card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-md); }
+.card-title {
+  font-size:.75rem; font-weight:700; color:var(--muted);
+  margin-bottom:16px; text-transform:uppercase; letter-spacing:.6px;
+}
 
-/* Grid */
 .app-grid {
-  display:grid; grid-template-columns:repeat(auto-fill, minmax(270px,1fr));
-  gap:12px;
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:14px;
 }
 .app-card {
   background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
-  padding:14px 16px; cursor:pointer;
-  transition:border-color .15s, transform .1s;
+  padding:18px 20px; cursor:pointer;
+  transition:all var(--transition);
+  box-shadow: var(--shadow);
+  animation: fadeInUp 0.35s ease both;
 }
-.app-card:hover { border-color:var(--accent); transform:translateY(-1px); }
-.app-card .top { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.app-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(124,58,237,.1);
+  transform: translateY(-2px);
+}
+.app-card .top { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
 .app-card .icon-placeholder {
-  width:36px; height:36px; border-radius:8px;
+  width:40px; height:40px; border-radius:10px;
   display:flex; align-items:center; justify-content:center;
-  font-weight:700; font-size:.9rem; color:#fff; flex-shrink:0;
+  font-weight:800; font-size:1rem; color:#fff; flex-shrink:0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  transition: transform var(--transition);
 }
+.app-card:hover .icon-placeholder { transform: scale(1.05); }
 .app-card .info { flex:1; min-width:0; }
-.app-card .info .name { font-weight:600; font-size:.9rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.app-card .info .dev { font-size:.72rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.app-card .rating-row { display:flex; align-items:center; gap:10px; margin-bottom:6px; font-size:.82rem; }
-.app-card .rating-row .stars { color:var(--yellow); }
-.app-card .rating-row .num { color:var(--muted); }
+.app-card .info .name { font-weight:600; font-size:.9rem; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.app-card .info .dev { font-size:.7rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.app-card .rating-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; font-size:.82rem; }
+.app-card .rating-row .stars { color:var(--yellow); letter-spacing:1px; }
+.app-card .rating-row .num { color:var(--muted); font-size:.78rem; }
 .app-card .tags { display:flex; flex-wrap:wrap; gap:4px; }
 .app-card .tags span {
-  font-size:.68rem; padding:1px 7px; border-radius:4px;
+  font-size:.66rem; padding:2px 8px; border-radius:5px;
   background:var(--card2); color:var(--muted);
 }
-.app-card.primary { border-color:var(--accent); background:rgba(139,92,246,.06); }
+.app-card.primary {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(124,58,237,.04), rgba(99,102,241,.02));
+}
 
-/* Spotlight */
 .spotlight {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:16px; margin-bottom:24px;
+  display:grid; grid-template-columns:1.4fr 1fr;
+  gap:18px; margin-bottom:28px;
 }
 .spotlight-main {
-  background:linear-gradient(135deg, rgba(139,92,246,.12) 0%, rgba(59,130,246,.06) 100%);
-  border:1px solid var(--accent); border-radius:var(--radius);
-  padding:22px 24px;
+  background: linear-gradient(135deg, rgba(124,58,237,.06) 0%, rgba(59,130,246,.03) 100%);
+  border:1px solid var(--accent-border);
+  border-radius:var(--radius);
+  padding:26px 28px;
+  position: relative;
 }
-.spotlight-main h3 { font-size:1.1rem; margin-bottom:4px; }
-.spotlight-main .sub { color:var(--muted); font-size:.82rem; margin-bottom:14px; }
-.spotlight-main .metrics-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-.spotlight-main .metrics-grid .m { text-align:center; }
-.spotlight-main .metrics-grid .m .v { font-size:1.3rem; font-weight:700; }
-.spotlight-main .metrics-grid .m .l { font-size:.7rem; color:var(--muted); text-transform:uppercase; }
-.spotlight-side { display:flex; flex-direction:column; gap:10px; }
+.spotlight-main h3 { font-size:1.2rem; font-weight:700; color:var(--text); margin-bottom:2px; }
+.spotlight-main .sub { color:var(--muted); font-size:.8rem; margin-bottom:16px; }
+.spotlight-main .metrics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.spotlight-main .metrics-grid .m {
+  text-align:center;
+  background: rgba(255,255,255,.6);
+  border-radius:8px; padding:10px 6px;
+  border:1px solid var(--border);
+}
+.spotlight-main .metrics-grid .m .v { font-size:1.35rem; font-weight:700; color:var(--text); }
+.spotlight-main .metrics-grid .m .l { font-size:.62rem; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; font-weight:500; }
+.spotlight-side { display:flex; flex-direction:column; gap:8px; }
 .spotlight-side .stat {
   background:var(--card); border:1px solid var(--border); border-radius:8px;
-  padding:10px 14px; display:flex; align-items:center; gap:12px;
+  padding:11px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
 }
-.spotlight-side .stat .v { font-weight:700; font-size:.95rem; min-width:36px; text-align:right; }
+.spotlight-side .stat:hover {
+  border-color: var(--accent-border);
+  transform: translateX(3px);
+}
+.spotlight-side .stat .v { font-weight:700; font-size:.9rem; color:var(--text); min-width:36px; text-align:right; font-family: 'JetBrains Mono', monospace; letter-spacing:-0.3px; }
 .spotlight-side .stat .l { font-size:.78rem; color:var(--muted); }
 
-/* Tables */
-.table-wrap { overflow-x:auto; }
+.table-wrap { overflow-x:auto; border-radius: var(--radius-sm); }
+.table-wrap::-webkit-scrollbar { height:4px; }
+.table-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius:4px; }
 table { width:100%; border-collapse:collapse; font-size:.82rem; }
-th { text-align:left; padding:10px 12px; color:var(--muted); font-weight:500; font-size:.72rem; text-transform:uppercase; letter-spacing:.4px; border-bottom:1px solid var(--border); }
-td { padding:10px 12px; border-bottom:1px solid var(--border); }
-tr:hover td { background:rgba(139,92,246,.04); }
+th {
+  text-align:left; padding:12px 14px;
+  color:var(--muted); font-weight:600;
+  font-size:.68rem; text-transform:uppercase; letter-spacing:.5px;
+  border-bottom:1px solid var(--border);
+  background: var(--card2);
+}
+td { padding:11px 14px; border-bottom:1px solid var(--border); }
+tr { transition: background var(--transition); }
+tr:hover td { background:var(--accent-light); }
 
-/* Charts */
-.chart-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
-.chart-box { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
-.chart-box .ctitle { font-size:.8rem; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:.3px; }
+.chart-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px; }
+.chart-box {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  padding:20px;
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
+}
+.chart-box:hover { border-color: var(--border-hover); box-shadow: var(--shadow-md); }
+.chart-box .ctitle {
+  font-size:.73rem; font-weight:700; color:var(--muted);
+  margin-bottom:14px; text-transform:uppercase; letter-spacing:.5px;
+}
 
-/* Feature matrix */
-.feat-cell { text-align:center; font-size:.8rem; }
-.feat-yes { color:var(--green); }
-.feat-no { color:var(--red); opacity:.5; }
+.feat-cell { text-align:center; font-size:.78rem; }
+.feat-yes { color:var(--green); font-weight:600; }
+.feat-no { color:var(--red); opacity:.35; }
 
-/* Sentiment bars */
-.sent-bar { display:flex; height:8px; border-radius:4px; overflow:hidden; margin:6px 0; }
-.sent-bar .pos { background:var(--green); }
-.sent-bar .neu { background:var(--yellow); }
-.sent-bar .neg { background:var(--red); }
+.sent-bar { display:flex; height:8px; border-radius:6px; overflow:hidden; margin:6px 0; gap:2px; }
+.sent-bar .pos { background: var(--green); border-radius:6px; }
+.sent-bar .neu { background: var(--yellow); border-radius:6px; }
+.sent-bar .neg { background: var(--red); border-radius:6px; }
 
-/* Modal */
 .modal-overlay {
-  display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.4);
   z-index:200; align-items:center; justify-content:center;
+  animation: fadeIn 0.15s ease;
 }
 .modal-overlay.open { display:flex; }
 .modal {
-  background:var(--bg2); border:1px solid var(--border); border-radius:12px;
-  width:90%; max-width:700px; max-height:85vh; overflow-y:auto;
-  padding:24px 28px;
+  background: var(--bg2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  width:92%; max-width:720px; max-height:85vh; overflow-y:auto;
+  padding:28px 32px;
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.25s ease;
 }
-.modal-close { float:right; background:none; border:none; color:var(--muted); font-size:1.4rem; cursor:pointer; }
-.modal h3 { font-size:1.2rem; margin-bottom:4px; }
-.modal .sub { color:var(--muted); font-size:.85rem; margin-bottom:18px; }
-.modal .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
-.modal .info-grid .f { display:flex; flex-direction:column; gap:2px; }
-.modal .info-grid .f .l { font-size:.7rem; color:var(--muted); text-transform:uppercase; }
-.modal .info-grid .f .v { font-weight:600; }
-.modal .detail-features { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:16px; }
+.modal-close {
+  float:right;
+  background:var(--card2); border:none;
+  color:var(--muted); font-size:1.2rem; cursor:pointer;
+  width:32px; height:32px; border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  transition: all var(--transition);
+}
+.modal-close:hover { background:var(--red-bg); color:var(--red); }
+.modal h3 { font-size:1.3rem; font-weight:700; color:var(--text); margin-bottom:2px; letter-spacing:-0.3px; }
+.modal .sub { color:var(--muted); font-size:.85rem; margin-bottom:20px; }
+.modal .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+.modal .info-grid .f {
+  display:flex; flex-direction:column; gap:3px;
+  padding:10px 14px;
+  background: var(--card2);
+  border-radius:8px;
+}
+.modal .info-grid .f .l { font-size:.66rem; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; font-weight:500; }
+.modal .info-grid .f .v { font-weight:600; font-size:.85rem; color:var(--text); }
+.modal .detail-features { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:16px; }
 .modal .detail-features span {
-  font-size:.75rem; padding:3px 10px; border-radius:6px;
-  background:var(--card2); color:var(--text);
+  font-size:.73rem; padding:4px 12px; border-radius:7px;
+  background:var(--card2); color:var(--text2);
 }
 .modal .modal-charts { margin-top:14px; }
 
-/* Review analysis cards */
-.review-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
-.tag-list { display:flex; flex-wrap:wrap; gap:5px; }
-.tag { font-size:.72rem; padding:3px 10px; border-radius:6px; background:var(--card2); color:var(--muted); }
-.tag.pos { background:rgba(34,197,94,.1); color:var(--green); }
-.tag.neg { background:rgba(239,68,68,.1); color:var(--red); }
-.tag.req { background:rgba(59,130,246,.1); color:var(--blue); }
+.review-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:18px; }
+.tag-list { display:flex; flex-wrap:wrap; gap:6px; }
+.tag {
+  font-size:.7rem; padding:4px 12px; border-radius:7px;
+  background:var(--card2); color:var(--muted);
+  transition: all var(--transition);
+}
+.tag:hover { transform: translateY(-1px); }
+.tag.pos { background:var(--green-bg); color:var(--green); }
+.tag.neg { background:var(--red-bg); color:var(--red); }
+.tag.req { background:var(--blue-bg); color:var(--blue); }
 
-/* Roadmap */
-.roadmap-item { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px 16px; margin-bottom:8px; }
+.roadmap-item {
+  background:var(--card); border:1px solid var(--border); border-radius:10px;
+  padding:16px 20px; margin-bottom:10px;
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
+  animation: fadeInUp 0.3s ease both;
+}
+.roadmap-item:hover {
+  border-color: var(--accent-border);
+  transform: translateX(3px);
+}
 .roadmap-item .header { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
-.roadmap-item .title { font-weight:600; font-size:.9rem; }
-.roadmap-item .desc { font-size:.8rem; color:var(--muted); line-height:1.4; }
-.roadmap-item .priority { font-size:.7rem; text-transform:uppercase; letter-spacing:.3px; }
+.roadmap-item .title { font-weight:600; font-size:.9rem; color:var(--text); }
+.roadmap-item .desc { font-size:.78rem; color:var(--muted); line-height:1.5; }
+.roadmap-item .priority { font-size:.65rem; text-transform:uppercase; letter-spacing:.5px; font-weight:600; }
 .priority-high { color:var(--red); }
 .priority-mid { color:var(--yellow); }
 .priority-low { color:var(--green); }
 
+.loading-shimmer {
+  background: linear-gradient(90deg, var(--card2) 25%, var(--card) 50%, var(--card2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* === SCORING SLIDERS === */
+.slider-group { margin-bottom:16px; }
+.slider-group .slider-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.slider-group .slider-header .slider-label { font-size:.8rem; color:var(--muted); font-weight:500; }
+.slider-group .slider-header .slider-val { font-size:.85rem; font-weight:700; color:var(--accent); font-family:'JetBrains Mono',monospace; }
+input[type=range] { -webkit-appearance:none; width:100%; height:5px; border-radius:4px; background:var(--card2); outline:none; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:var(--accent); cursor:pointer; border:2px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,.15); transition:transform .15s; }
+input[type=range]::-webkit-slider-thumb:hover { transform:scale(1.15); }
+.rank-table { font-size:.82rem; }
+.rank-row { display:grid; grid-template-columns:28px 1fr 55px 55px 1fr; align-items:center; padding:8px 12px; border-bottom:1px solid var(--border); gap:8px; transition:background var(--transition); }
+.rank-row:hover { background:var(--accent-light); border-radius:6px; }
+.rank-row.header { font-size:.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; font-weight:600; border-bottom:2px solid var(--border); pointer-events:none; }
+.rank-row .rn { font-weight:800; font-size:.9rem; color:var(--text); text-align:center; }
+.rank-row .rname { font-weight:600; color:var(--text); font-size:.82rem; }
+.rank-row .rscore { text-align:right; font-weight:700; font-family:'JetBrains Mono',monospace; color:var(--accent); }
+.rank-row .rlevel { font-size:.7rem; text-align:center; }
+.rank-row .rbar { height:6px; border-radius:4px; background:var(--accent-light); overflow:hidden; }
+.rank-row .rbar .fill { height:100%; border-radius:4px; background:var(--accent); transition:width .5s ease; }
+.rgold { color:#f59e0b; }
+.rsilver { color:#94a3b8; }
+.rbronze { color:#cd7f32; }
+/* === COMPARE === */
+.comp-cbs { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
+.comp-cb {
+  display:flex; align-items:center; gap:6px; padding:6px 12px; border-radius:8px;
+  background:var(--card); border:1px solid var(--border); cursor:pointer;
+  font-size:.78rem; color:var(--text2); transition:all var(--transition); user-select:none;
+}
+.comp-cb:hover { border-color:var(--accent-border); background:var(--accent-light); }
+.comp-cb.checked { border-color:var(--accent); background:var(--accent-light); color:var(--accent); font-weight:600; }
+.comp-cb input { display:none; }
+/* === ANOMALIES === */
+.anom-card {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  padding:14px 18px; margin-bottom:10px; display:flex; align-items:center; gap:14px;
+  box-shadow:var(--shadow); transition:all var(--transition); animation:fadeInUp .3s ease both;
+}
+.anom-card:hover { border-color:var(--border-hover); transform:translateX(3px); }
+.anom-icon { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+.anom-icon.danger { background:var(--red-bg); color:var(--red); }
+.anom-icon.warn { background:var(--yellow-bg); color:var(--yellow); }
+.anom-icon.info { background:var(--blue-bg); color:var(--blue); }
+.anom-body { flex:1; min-width:0; }
+.anom-body .at { font-weight:600; font-size:.85rem; color:var(--text); }
+.anom-body .ad { font-size:.75rem; color:var(--muted); margin-top:2px; }
+.anom-body .am { font-size:.68rem; color:var(--muted); margin-top:3px; }
+/* === BENCHMARK === */
+.bench-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px; }
+.bench-card {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  padding:14px 16px; box-shadow:var(--shadow);
+}
+.bench-card .bl { font-size:.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; font-weight:500; margin-bottom:4px; }
+.bench-card .bv { font-size:1.2rem; font-weight:700; color:var(--text); }
+.bench-card .bs { font-size:.72rem; color:var(--muted); margin-top:2px; }
+.bpos { color:var(--green)!important; }
+.bneg { color:var(--red)!important; }
+.bneu { color:var(--yellow)!important; }
+/* === EXPORT === */
+.export-btn {
+  display:inline-flex; align-items:center; gap:5px;
+  background:var(--accent); color:#fff; border:none; padding:9px 14px; border-radius:10px;
+  font-size:.75rem; font-weight:600; cursor:pointer; white-space:nowrap;
+  transition:all var(--transition); box-shadow:0 2px 8px rgba(124,58,237,.2);
+}
+.export-btn:hover { background:var(--accent2); transform:translateY(-1px); box-shadow:0 4px 12px rgba(124,58,237,.3); }
+/* === TREND CONTROLS === */
+.trend-cbs { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+.trend-cb {
+  padding:4px 10px; border-radius:6px; font-size:.72rem;
+  background:var(--card); border:1px solid var(--border); cursor:pointer;
+  transition:all var(--transition); user-select:none; color:var(--muted);
+}
+.trend-cb:hover { border-color:var(--accent-border); }
+.trend-cb.checked { background:var(--accent-light); border-color:var(--accent); color:var(--accent); font-weight:600; }
+.trend-cb input { display:none; }
+.gpos { color:var(--green); font-weight:600; }
+.gneg { color:var(--red); font-weight:600; }
+
 @media(max-width:900px) {
   .sidebar { display:none; }
-  .main { margin-left:0; padding:16px; }
+  .main { margin-left:0; padding:18px; }
   .spotlight { grid-template-columns:1fr; }
+  .spotlight-main .metrics-grid { grid-template-columns:repeat(2,1fr); }
   .chart-row { grid-template-columns:1fr; }
   .review-grid { grid-template-columns:1fr; }
   .metrics { grid-template-columns:repeat(2,1fr); }
+  .app-grid { grid-template-columns:1fr; }
+  .topbar { flex-direction: column; align-items: stretch; }
+  .topbar-right { flex-direction: column; }
+  .search-input { width:100%; }
+  .modal { padding:20px; }
+  .modal .info-grid { grid-template-columns:1fr; }
+}
+
+@media(max-width:480px) {
+  .main { padding:14px; }
+  .metrics { grid-template-columns:1fr; }
+  .spotlight-main .metrics-grid { grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -267,6 +490,9 @@ tr:hover td { background:rgba(139,92,246,.04); }
     <a data-tab="features"><span class="icon">&#9881;</span> Özellik Matrisi</a>
     <a data-tab="trends"><span class="icon">&#9650;</span> Trendler</a>
     <a data-tab="roadmap"><span class="icon">&#9998;</span> Stratejik Rapor</a>
+    <a data-tab="scoring"><span class="icon">&#9733;</span> Skorlama</a>
+    <a data-tab="compare"><span class="icon">&#8644;</span> Karşılaştırma</a>
+    <a data-tab="anomalies"><span class="icon">&#9888;</span> Anomaliler</a>
   </div>
   <div class="sidebar-bottom">v2.0 &middot; Veri: App Store + Play Store</div>
 </nav>
@@ -276,6 +502,7 @@ tr:hover td { background:rgba(139,92,246,.04); }
     <h2 id="pageTitle">Genel Bakış</h2>
     <div class="topbar-right">
       <input class="search-input" id="globalSearch" placeholder="Uygulama ara..." oninput="filterApps()">
+      <button class="export-btn" onclick="exportCSV()">⬇ CSV</button>
     </div>
   </div>
 
@@ -284,8 +511,8 @@ tr:hover td { background:rgba(139,92,246,.04); }
     <div class="spotlight" id="infoXSpotlight"></div>
     <div class="metrics" id="overviewMetrics" style="grid-template-columns:repeat(4,1fr)"></div>
     <div class="chart-row">
-      <div class="chart-box"><div class="ctitle">Yorum Duygu Dağılımı</div><div style="height:120px"><canvas id="ovReviewSentiment"></canvas></div></div>
-      <div class="chart-box"><div class="ctitle">Yorum & Değerlendirme Sayısı</div><div style="height:120px"><canvas id="ovReviewCounts"></canvas></div></div>
+      <div class="chart-box"><div class="ctitle">Yorum Duygu Dağılımı</div><div style="height:200px;display:flex;align-items:center;justify-content:center"><canvas id="ovReviewSentiment" style="max-width:260px"></canvas></div></div>
+      <div class="chart-box"><div class="ctitle">Yorum & Değerlendirme Sayısı</div><div style="height:200px"><canvas id="ovReviewCounts"></canvas></div></div>
     </div>
     <div class="review-grid" id="ovPraisesComplaints"></div>
     <div class="card" style="margin-bottom:16px"><div class="card-title">Kullanıcı Talep Ettiği Özellikler</div><div class="tag-list" id="ovFeatureRequests"></div></div>
@@ -338,6 +565,44 @@ tr:hover td { background:rgba(139,92,246,.04); }
   <div class="tab-content" id="tab-roadmap">
     <div class="card" style="margin-bottom:16px"><div class="card-title">AI Destekli Stratejik Rapor</div><div id="roadmapContent"></div></div>
     <div class="card"><div class="card-title">Öncelik Matrisi</div><div id="priorityMatrix"></div></div>
+  </div>
+
+  <!-- === TAB: SCORING === -->
+  <div class="tab-content" id="tab-scoring">
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">Ağırlıklandırma — Aşağıdaki çubukları sürükleyerek her metriğin önemini belirleyin</div>
+      <div id="scoringSliders"></div>
+    </div>
+    <div class="chart-row">
+      <div class="card">
+        <div class="card-title">Sıralama</div>
+        <div class="table-wrap" id="scoringResults"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Skor Dağılımı (Katkıya Göre)</div>
+        <div style="height:240px"><canvas id="scoringChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === TAB: COMPARE === -->
+  <div class="tab-content" id="tab-compare">
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">Karşılaştırılacak Uygulamalar</div>
+      <div id="compareCheckboxes" class="comp-cbs"></div>
+      <button class="export-btn" onclick="renderCompare()">Karşılaştır ▶</button>
+      <button class="export-btn" style="background:var(--text2);margin-left:6px" onclick="document.querySelectorAll('#compareCheckboxes .comp-cb').forEach(c=>c.classList.toggle('checked',true))">Tümünü Seç</button>
+    </div>
+    <div id="compareResults"></div>
+  </div>
+
+  <!-- === TAB: ANOMALIES === -->
+  <div class="tab-content" id="tab-anomalies">
+    <div class="metrics" id="anomalyMetrics" style="grid-template-columns:repeat(4,1fr)"></div>
+    <div class="card">
+      <div class="card-title">Tespit Edilen Anomaliler</div>
+      <div id="anomalyList"></div>
+    </div>
   </div>
 </div>
 
@@ -406,7 +671,10 @@ const tabRender = {
   reviews: () => renderReviewSection(DATA.apps.find(a=>a.primary)||DATA.apps[0]),
   features: renderFeatureMatrix,
   trends: renderTrends,
-  roadmap: renderRoadmap
+  roadmap: renderRoadmap,
+  scoring: renderScoring,
+  compare: initCompareCheckboxes,
+  anomalies: renderAnomalies
 };
 function setupNav() {
   R.overview = true; // already rendered in init
@@ -468,8 +736,9 @@ function renderOverview() {
   setTimeout(()=>{
     niceChart('ovReviewSentiment',{type:'doughnut',data:{
       labels:['Pozitif','N\u00f6tr','Negatif'],
-      datasets:[{data:[r.positive_pct||0,r.neutral_pct||0,r.negative_pct||0],backgroundColor:['#22c55e','#f59e0b','#ef4444'],borderWidth:0,borderColor:'transparent'}]
-    },plugins:{legend:{position:'right',labels:{color:C.text,boxWidth:10,font:{size:10}}}}});
+      datasets:[{data:[r.positive_pct||0,r.neutral_pct||0,r.negative_pct||0],backgroundColor:['#22c55e','#f59e0b','#ef4444'],borderWidth:0,borderColor:'transparent',hoverOffset:8}]
+    },plugins:{legend:{position:'bottom',labels:{color:C.text,boxWidth:12,font:{size:11},usePointStyle:true,padding:12}}},cutout:'60%'});
+
     niceChart('ovReviewCounts',{type:'bar',data:{
       labels:['iOS','Android'],
       datasets:[{
@@ -556,10 +825,32 @@ function filterApps(cat) {
   renderAppGrid(list);
 }
 
-/* COMPETITORS */
+/* COMPETITORS + BENCHMARK */
 function renderCompetitors() {
   const apps = Object.values(DATA.apps).filter(a=>a.stores.ios||a.stores.android);
   const top = apps.slice(0,10);
+  // Benchmark section
+  ;(function(){
+    const infoX = apps.find(a=>a.primary); if(!infoX) return;
+    const iosR=apps.map(a=>a.stores.ios?.averageUserRating||0).filter(Boolean);
+    const andR=apps.map(a=>a.stores.android?.score||0).filter(Boolean);
+    const feats=apps.map(a=>(a.features||[]).length);
+    const grow=apps.map(a=>a.market_position?.growth_rate_monthly||0);
+    function av(arr){const f=arr.filter(x=>x);return f.length?f.reduce((s,v)=>s+v,0)/f.length:0;}
+    function mx(arr){const f=arr.filter(x=>x);return f.length?Math.max(...f):0;}
+    const mets=[
+      {l:'iOS Puanı',v:infoX.stores.ios?.averageUserRating||'-',a:av(iosR).toFixed(2),b:mx(iosR).toFixed(2),u:'/5'},
+      {l:'Android Puanı',v:infoX.stores.android?.score||'-',a:av(andR).toFixed(2),b:mx(andR).toFixed(2),u:'/5'},
+      {l:'Özellik',v:(infoX.features||[]).length,a:av(feats).toFixed(0),b:mx(feats),u:''},
+      {l:'Aylık Büyüme',v:'%'+(infoX.market_position?.growth_rate_monthly||0),a:'%'+av(grow).toFixed(1),b:'%'+mx(grow),u:''}
+    ];
+    const eb = document.getElementById('benchSection');
+    if(!eb){const s=document.createElement('div');s.id='benchSection';s.style.cssText='margin-bottom:16px';document.querySelector('#tab-competitors .chart-row').before(s);}
+    document.getElementById('benchSection').innerHTML=`<div class="card" style="border-color:var(--accent-border)"><div class="card-title">Benchmark — ${infoX.name} vs Sektör</div>
+      <div class="bench-grid">${mets.map(m=>'<div class="bench-card"><div class="bl">'+m.l+'</div><div class="bv">'+m.v+'<span style="font-size:.7rem;font-weight:400;color:var(--muted)"> '+m.u+'</span></div><div class="bs">Ort: '+m.a+' '+m.u+' &middot; En iyi: '+m.b+'</div></div>').join('')}</div>
+      <div style="height:200px"><canvas id="benchRadarChart"></canvas></div></div>`;
+    setTimeout(()=>renderBenchChart(apps,infoX),100);
+  })();
 
   document.getElementById('compMetrics').innerHTML = `
     <div class="metric-card"><div class="label">Rakip Uygulama</div><div class="value">${top.length}</div></div>
@@ -614,7 +905,7 @@ function renderReviewSection(app) {
       </div>
       <div class="chart-box" style="margin-bottom:14px">
         <div class="ctitle">Duygu Dağılımı</div>
-        <div style="height:40px"><canvas id="reviewSentimentChart"></canvas></div>
+        <div style="height:200px;display:flex;align-items:center;justify-content:center"><canvas id="reviewSentimentChart" style="max-width:260px"></canvas></div>
       </div>
       <div class="review-grid">
         <div class="card"><div class="card-title">Övgüler</div><div class="tag-list">${(r.top_praises||[]).map(t=>'<span class="tag pos">'+t+'</span>').join('')}</div></div>
@@ -625,8 +916,8 @@ function renderReviewSection(app) {
     setTimeout(()=>{
       reviewChart = niceChart('reviewSentimentChart',{type:'doughnut',data:{
         labels:['Pozitif','Nötr','Negatif'],
-        datasets:[{data:[r.positive_pct,r.neutral_pct,r.negative_pct],backgroundColor:['#22c55e','#f59e0b','#ef4444'],borderWidth:0}]
-      },plugins:{legend:{position:'right',labels:{color:C.text,boxWidth:10,font:{size:10}}}}});
+        datasets:[{data:[r.positive_pct,r.neutral_pct,r.negative_pct],backgroundColor:['#22c55e','#f59e0b','#ef4444'],borderWidth:0,borderColor:'transparent',hoverOffset:8}]
+      },plugins:{legend:{position:'bottom',labels:{color:C.text,boxWidth:12,font:{size:11},usePointStyle:true,padding:12}}},cutout:'60%'});
     },50);
   } else {
     document.getElementById('reviewContent').innerHTML = `
@@ -671,63 +962,220 @@ function renderReviewSection(app) {
   }
 }
 
-/* FEATURES */
+/* FEATURES — Optimized */
 function renderFeatureMatrix() {
-  const allFeatures = ['BIST İşlem','ABD Borsaları','Yatırım Fonu','Kripto Para','VİOP','Varant','Sertifika','Halka Arz','AI Analiz','Canlı Veri','Portföy Takibi','Teknik Analiz','Temel Analiz','Haber Takibi','Swing Sinyal','Bilanço','Temettü','Sıcaklık Haritası'];
-  const comps = Object.values(DATA.apps).filter(a=>a.features&&a.features.length>0);
-  const cats = [...new Set(comps.map(a=>a.category||'Diğer'))];
+  // Use structured feature_comparison data
+  const fc = DATA.feature_comparison;
+  if (!fc) { document.getElementById('featureMatrixTable').innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted)">Veri bulunamadı</div>'; return; }
 
-  const headers = allFeatures;
-  document.getElementById('featureMatrixTable').innerHTML = `<table><tr><th>Uygulama</th>${headers.map(h=>'<th style="font-size:.65rem">'+h+'</th>').join('')}<th style="color:var(--accent)">Kapsama</th></tr>${
-    comps.map(a=>{
-      const coverage = allFeatures.filter(f=>(a.features||[]).includes(f)).length;
-      const pct = (coverage/allFeatures.length*100).toFixed(0);
-      return `<tr ${a.primary?'style="background:rgba(139,92,246,.06)"':''}><td style="font-weight:600">${a.name}</td>${
-        headers.map(h=>'<td class="feat-cell">'+((a.features||[]).includes(h)?'<span class="feat-yes">&#10003;</span>':'<span class="feat-no">&#8212;</span>')+'</td>').join('')
-      }<td style="text-align:center;font-weight:600;color:var(--accent)">%${pct}</td></tr>`;
-    }).join('')
-  }</table>`;
+  const cats = fc.categories;
+  // Group features
+  const groups = {
+      'İşlem': ['BIST İşlem','ABD Borsası','Avrupa Borsası','VİOP','Varant','Forex','Kripto','Fon İşlem'],
+    'Analiz': ['Teknik Analiz','AI Analiz','Temel Analiz','TradingView'],
+    'Veri': ['KAP Haber','Ücretsiz Canlı Veri','Temettü Takip','Halka Arz','Portföy Yönetimi']
+  };
 
-  setTimeout(()=>{
+  // Build sorted list of apps by coverage
+  const appEntries = Object.entries(fc.apps).map(([id, bools]) => {
+    const app = DATA.apps.find(a => a.id === id);
+    if (!app) return null;
+    const coverage = bools.filter(Boolean).length;
+    return { id, app, bools, coverage, pct: (coverage / cats.length * 100).toFixed(0) };
+  }).filter(Boolean).sort((a, b) => b.coverage - a.coverage);
+
+  // Track which features are shown (default: all)
+  if (!window._featHidden) window._featHidden = {};
+
+  // Column toggle controls
+  const toggleHTML = cats.map((c, i) =>
+    `<span class="trend-cb ${window._featHidden[c]?'':'checked'}" onclick="toggleFeatCol(${i})"><input type="checkbox" ${window._featHidden[c]?'':'checked'}> ${c}</span>`
+  ).join('');
+
+  // Fixed mini toggle form
+  const toggleBar = `
+    <div style="margin-bottom:12px">
+      <div class="card-title" style="margin-bottom:8px">Görünen Kolonlar</div>
+      <div class="trend-cbs">${toggleHTML}</div>
+    </div>`;
+
+  // Build visible columns
+  const visibleCats = cats.filter((_, i) => !window._featHidden[cats[i]]);
+  const visibleGroups = {};
+  Object.entries(groups).forEach(([gName, gFeats]) => {
+    const vf = gFeats.filter(f => visibleCats.includes(f));
+    if (vf.length > 0) visibleGroups[gName] = vf;
+  });
+
+  // Render table
+  let html = toggleBar;
+  html += `<div class="table-wrap"><table style="font-size:.75rem"><tr>
+    <th style="position:sticky;left:0;z-index:2;background:var(--card2);min-width:100px">Uygulama</th>`;
+
+  // Category group headers
+  Object.entries(visibleGroups).forEach(([gName, gFeats]) => {
+    html += `<th colspan="${gFeats.length}" style="text-align:center;background:var(--accent-light);color:var(--accent);font-size:.62rem;border-bottom:2px solid var(--accent-border);padding:6px 4px">${gName}</th>`;
+  });
+  html += `<th style="color:var(--accent);min-width:70px">Kapsama</th></tr>`;
+
+  // Column names row
+  html += `<tr><th style="position:sticky;left:0;z-index:2;background:var(--card2)"></th>`;
+  Object.entries(visibleGroups).forEach(([_, gFeats]) => {
+    gFeats.forEach(f => {
+      html += `<th style="font-size:.6rem;writing-mode:vertical-lr;text-orientation:mixed;height:80px;padding:4px 2px;max-width:28px;min-width:24px;font-weight:500">${f.replace('İ','I').replace('ı','i')}</th>`;
+    });
+  });
+  html += `<th></th></tr>`;
+
+  // App rows
+  appEntries.forEach((entry, idx) => {
+    const a = entry.app;
+    const isP = a.primary;
+    html += `<tr ${isP?'style="background:rgba(139,92,246,.06)"':''}>`;
+    html += `<td style="font-weight:600;position:sticky;left:0;z-index:1;background:${isP?'rgba(139,92,246,.06)':'var(--card)'}">${isP?'<span style="color:var(--accent)">●</span> ':''}${a.name}</td>`;
+
+    Object.entries(visibleGroups).forEach(([_, gFeats]) => {
+      const booleans = entry.bools;
+      const catIdx = (featName) => cats.indexOf(featName);
+      gFeats.forEach(f => {
+        const idx2 = catIdx(f);
+        const has = idx2 >= 0 && booleans[idx2];
+        html += `<td style="text-align:center;padding:6px 2px;background:${has?'rgba(16,185,129,.12)':'transparent'};border-left:1px solid var(--border)">`;
+        html += has
+          ? `<span style="color:var(--green);font-weight:600;font-size:.8rem">●</span>`
+          : `<span style="color:var(--border);font-size:.6rem">—</span>`;
+        html += `</td>`;
+      });
+    });
+
+    const barW = Math.max(4, (entry.coverage / cats.length) * 100);
+    html += `<td style="text-align:center;padding:6px 8px"><div style="display:flex;align-items:center;gap:6px;justify-content:flex-end">
+      <span style="font-weight:700;color:var(--accent);font-size:.78rem">%${entry.pct}</span>
+      <div style="width:50px;height:5px;border-radius:3px;background:var(--accent-light);overflow:hidden"><div style="height:100%;width:${barW}%;background:var(--accent);border-radius:3px"></div></div>
+    </div></td>`;
+    html += `</tr>`;
+  });
+
+  html += `</table></div>`;
+
+  document.getElementById('featureMatrixTable').innerHTML = html;
+
+  // Coverage chart
+  setTimeout(() => {
+    const sorted = [...appEntries].sort((a,b)=>b.pct-a.pct);
     niceChart('featureCoverageChart',{type:'bar',data:{
-      labels:comps.map(a=>a.name),
-      datasets:[{label:'Kapsama %',data:comps.map(a=>allFeatures.filter(f=>(a.features||[]).includes(f)).length/allFeatures.length*100),backgroundColor:comps.map(a=>a.primary?'rgba(139,92,246,.5)':'rgba(59,130,246,.3)'),borderColor:comps.map(a=>a.primary?'#8b5cf6':'#3b82f6'),borderWidth:1.5,borderRadius:3}]
+      labels:sorted.map(e=>e.app.name),
+      datasets:[{label:'Kapsama %',data:sorted.map(e=>+e.pct),backgroundColor:sorted.map(e=>e.app.primary?'rgba(139,92,246,.5)':'rgba(59,130,246,.25)'),borderColor:sorted.map(e=>e.app.primary?'#8b5cf6':'#3b82f6'),borderWidth:1.5,borderRadius:3}]
     },indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{max:100}}});
-    niceChart('featureCategoryChart',{type:'doughnut',data:{
-      labels:cats,datasets:[{data:cats.map(c=>comps.filter(a=>(a.category||'Diğer')===c).length),backgroundColor:['#8b5cf6','#3b82f6','#22c55e','#f59e0b','#ef4444','#ec4899','#14b8a6'],borderWidth:0,borderColor:'transparent'}]
-    },plugins:{legend:{position:'right',labels:{color:C.text,boxWidth:10,font:{size:10}}}}});
-  },50);
-}
+  }, 100);
 
-/* TRENDS */
+  // Category doughnut
+  setTimeout(() => {
+    const catCounts = {};
+    Object.entries(fc.apps).forEach(([id, bools]) => {
+      const a = DATA.apps.find(x => x.id === id);
+      if (!a) return;
+      const cat = a.category || 'Diğer';
+      catCounts[cat] = (catCounts[cat] || 0) + 1;
+    });
+    const labels = Object.keys(catCounts);
+    const data = Object.values(catCounts);
+    niceChart('featureCategoryChart',{type:'doughnut',data:{
+      labels,datasets:[{data,backgroundColor:['#8b5cf6','#3b82f6','#22c55e','#f59e0b','#ef4444','#ec4899','#14b8a6'],borderWidth:0,borderColor:'transparent'}]
+    },plugins:{legend:{position:'right',labels:{color:C.text,boxWidth:10,font:{size:10}}}}});
+  }, 100);
+}
+window.toggleFeatCol = function(i) {
+  const c = DATA.feature_comparison.categories[i];
+  if (!window._featHidden) window._featHidden = {};
+  window._featHidden[c] = !window._featHidden[c];
+  renderFeatureMatrix();
+};
+
+/* TRENDS — Enhanced */
 function renderTrends() {
   const d = DATA.download_trends;
   if(!d || !d.weekly || !d.monthly) {
     document.querySelector('#tab-trends').innerHTML = '<p style="color:var(--muted)">Trend verisi bulunamadı.</p>';
     return;
   }
-  const wl = d.weekly.labels||[];
-  const ml = d.monthly.labels||[];
-  const names = Object.keys(d.weekly.datasets).slice(0,6);
-  const nl = {};
-  (DATA.apps||[]).forEach(a=>{ nl[a.id]=a.name; });
-  function sumPlat(obj) { const r={}; Object.keys(obj).forEach(k=>{ const item=obj[k]; r[k]=item.ios.map((v,i)=>v+item.android[i]); }); return r; }
-  const wt = sumPlat(d.weekly.datasets); const mt = sumPlat(d.monthly.datasets);
-  const colors = ['#8b5cf6','#3b82f6','#22c55e','#f59e0b','#ef4444','#ec4899'];
-  setTimeout(()=>{
-    niceChart('weeklyTrendChart',{type:'line',data:{
-      labels:wl,datasets:names.map((k,i)=>({
-        label:nl[k]||k,data:wt[k],
-        borderColor:colors[i],backgroundColor:colors[i]+'22',
-        borderWidth:2,fill:true,tension:.35,pointRadius:2,pointBackgroundColor:colors[i]
-      }))
+  const allNames = Object.keys(d.weekly.datasets);
+  const nl = {}; (DATA.apps||[]).forEach(a=>{ nl[a.id]=a.name; });
+
+  // App selection checkboxes
+  if (!document.getElementById('trendControls')) {
+    const ctrl = document.createElement('div'); ctrl.id = 'trendControls'; ctrl.className = 'trend-cbs';
+    document.querySelector('#tab-trends .chart-box').before(ctrl);
+  }
+  const trendColors = { infox:'#8b5cf6', midas:'#3b82f6', 'garanti-etrader':'#22c55e', 'zborsa':'#f59e0b', 'gedik-trader':'#ef4444', 'tradeall':'#ec4899', 'yafi':'#14b8a6', 'iscep':'#6366f1' };
+  document.getElementById('trendControls').innerHTML = allNames.map(k => `
+    <span class="trend-cb checked" data-tk="${k}" onclick="this.classList.toggle('checked');renderTrendChart()" style="${window._trendSel && !window._trendSel[k]?'':''}">
+      <input type="checkbox" checked> <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${trendColors[k]||'#888'}"></span> ${nl[k]||k}
+    </span>
+  `).join('');
+  window._trendSel = {}; allNames.forEach(k => window._trendSel[k] = true);
+
+  function sp(obj) { const r={}; Object.keys(obj).forEach(k=>{ const it=obj[k]; r[k]=it.ios.map((v,i)=>v+it.android[i]); }); return r; }
+  window._trendW = sp(d.weekly.datasets); window._trendM = sp(d.monthly.datasets);
+  window._trendWl = d.weekly.labels; window._trendMl = d.monthly.labels;
+  window._trendNames = allNames; window._trendNl = nl; window._trendColors = trendColors;
+  renderTrendChart();
+}
+
+let _trendChartW = null, _trendChartM = null;
+function renderTrendChart() {
+  const names = window._trendNames, wl = window._trendWl, ml = window._trendMl, wt = window._trendW, mt = window._trendM, nl = window._trendNl, tc = window._trendColors;
+  const sel = {}; document.querySelectorAll('#trendControls .trend-cb').forEach(c => { sel[c.dataset.tk] = c.classList.contains('checked'); });
+  window._trendSel = sel;
+  const selected = names.filter(k => sel[k]);
+
+  // Growth rate table
+  const grRows = selected.map(k => {
+    const dW = wt[k]; const dM = mt[k];
+    if (dW.length >= 2) {
+      const wow = ((dW[dW.length-1] - dW[dW.length-2]) / dW[dW.length-2] * 100);
+      const mom = dM.length >= 2 ? ((dM[dM.length-1] - dM[dM.length-2]) / dM[dM.length-2] * 100) : 0;
+      return { name: nl[k]||k, wow, mom, total: dW.reduce((s,v)=>s+v,0), color: tc[k]||'#888' };
+    }
+    return null;
+  }).filter(Boolean).sort((a,b)=>Math.abs(b.wow)-Math.abs(a.wow));
+
+  let growthHTML = '';
+  if (grRows.length > 0) {
+    growthHTML = `
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title">Büyüme Oranları</div>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Uygulama</th><th style="text-align:right">Haftalık (WoW)</th><th style="text-align:right">Aylık (MoM)</th><th style="text-align:right">Toplam (Haftalık)</th></tr>
+            ${grRows.map(r => `
+              <tr>
+                <td style="font-weight:600"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${r.color};margin-right:6px"></span>${r.name}</td>
+                <td style="text-align:right;font-family:'JetBrains Mono',monospace" class="${r.wow>=0?'gpos':'gneg'}">${r.wow>=0?'+':''}${r.wow.toFixed(1)}%</td>
+                <td style="text-align:right;font-family:'JetBrains Mono',monospace" class="${r.mom>=0?'gpos':'gneg'}">${r.mom>=0?'+':''}${r.mom.toFixed(1)}%</td>
+                <td style="text-align:right;font-family:'JetBrains Mono',monospace">${formatNum(r.total)}</td>
+              </tr>
+            `).join('')}
+          </table>
+        </div>
+      </div>`;
+  }
+  const existingGrowth = document.getElementById('trendGrowthTable');
+  if (existingGrowth) existingGrowth.innerHTML = growthHTML;
+  else if (growthHTML) {
+    const div = document.createElement('div'); div.id = 'trendGrowthTable'; div.innerHTML = growthHTML;
+    document.querySelector('#tab-trends').appendChild(div);
+  }
+
+  const ac = selected.length > 0 ? selected : names;
+  setTimeout(() => {
+    if (_trendChartW) _trendChartW.destroy(); if (_trendChartM) _trendChartM.destroy();
+    const colors = ['#8b5cf6','#3b82f6','#22c55e','#f59e0b','#ef4444','#ec4899','#14b8a6','#6366f1'];
+    _trendChartW = niceChart('weeklyTrendChart',{type:'line',data:{
+      labels:wl,datasets:ac.map((k,i)=>({ label:nl[k]||k, data:wt[k], borderColor:colors[i], backgroundColor:colors[i]+'22', borderWidth:2, fill:true, tension:.35, pointRadius:2, pointBackgroundColor:colors[i] }))
     },plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:10,font:{size:9},usePointStyle:true}}}});
-    niceChart('monthlyTrendChart',{type:'line',data:{
-      labels:ml,datasets:names.map((k,i)=>({
-        label:nl[k]||k,data:mt[k],
-        borderColor:colors[i],backgroundColor:colors[i]+'22',
-        borderWidth:2,fill:true,tension:.35,pointRadius:2,pointBackgroundColor:colors[i]
-      }))
+    _trendChartM = niceChart('monthlyTrendChart',{type:'line',data:{
+      labels:ml,datasets:ac.map((k,i)=>({ label:nl[k]||k, data:mt[k], borderColor:colors[i], backgroundColor:colors[i]+'22', borderWidth:2, fill:true, tension:.35, pointRadius:2, pointBackgroundColor:colors[i] }))
     },plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:10,font:{size:9},usePointStyle:true}}}});
   },50);
 }
@@ -823,11 +1271,144 @@ function bucketScores(scores) {
   return buckets;
 }
 
+/* === SCORING ENGINE === */
+function renderScoring() {
+  const apps = Object.values(DATA.apps).filter(a=>a.stores.ios||a.stores.android);
+  const dw = { iosRating:100, androidRating:120, reviews:80, features:100, growth:150, installs:100 };
+  const ml = { iosRating:'iOS Puanı', androidRating:'Android Puanı', reviews:'Toplam Yorum', features:'Özellik Sayısı', growth:'Aylık Büyüme %', installs:'Yükleme Sayısı' };
+  const md = { iosRating:'App Store (1-5)', androidRating:'Play Store (1-5)', reviews:'Değerlendirme adedi', features:'Özellik adedi', growth:'Aylık büyüme hızı', installs:'Android yükleme sayısı' };
+
+  document.getElementById('scoringSliders').innerHTML = Object.keys(dw).map(k=>`
+    <div class="slider-group">
+      <div class="slider-header"><span><span class="slider-label">${ml[k]}</span> <span style="font-size:.65rem;color:var(--muted)">${md[k]}</span></span><span class="slider-val" id="sv-${k}">${dw[k]}</span></div>
+      <input type="range" min="0" max="200" value="${dw[k]}" oninput="updateScoreWeight('${k}',this.value)">
+    </div>`).join('');
+  window._scoreWeights = {...dw};
+  computeScores();
+}
+function updateScoreWeight(key,val) {
+  window._scoreWeights[key]=+val; document.getElementById('sv-'+key).textContent=val; computeScores();
+}
+function computeScores() {
+  const apps=Object.values(DATA.apps).filter(a=>a.stores.ios||a.stores.android); const w=window._scoreWeights;
+  const mx = arr => { const m=Math.max(...arr); return m>0?m:1; };
+  const iosA=apps.map(a=>a.stores.ios?.averageUserRating||0), andA=apps.map(a=>a.stores.android?.score||0);
+  const totA=apps.map(a=>(a.stores.ios?.userRatingCount||0)+(a.stores.android?.reviews||0));
+  const feaA=apps.map(a=>(a.features||[]).length), grA=apps.map(a=>a.market_position?.growth_rate_monthly||0);
+  const insA=apps.map(a=>a.stores.android?.realInstalls||0);
+  const scored=apps.map(a=>{
+    const iosS=((a.stores.ios?.averageUserRating||0)/5)*100, andS=((a.stores.android?.score||0)/5)*100;
+    const revS=((a.stores.ios?.userRatingCount||0)+(a.stores.android?.reviews||0))/mx(totA)*100;
+    const feaS=((a.features||[]).length)/mx(feaA)*100, grS=(a.market_position?.growth_rate_monthly||0)/mx(grA)*100;
+    const inS=(a.stores.android?.realInstalls||0)/mx(insA)*100;
+    const tw=w.iosRating+w.androidRating+w.reviews+w.features+w.growth+w.installs;
+    const sc=(iosS*w.iosRating+andS*w.androidRating+revS*w.reviews+feaS*w.features+grS*w.growth+inS*w.installs)/tw;
+    return {app:a,s:sc,m:{iosS,andS,revS,feaS,grS,inS}};
+  }).sort((a,b)=>b.s-a.s);
+  const ms=Math.max(...scored.map(x=>x.s))||1;
+  document.getElementById('scoringResults').innerHTML=`<div class="rank-table">
+    <div class="rank-row header"><span></span><span>Uygulama</span><span style="text-align:right">Skor</span><span style="text-align:center">Seviye</span><span></span></div>
+    ${scored.map((x,i)=>`<div class="rank-row">
+      <span class="rn ${i===0?'rgold':i===1?'rsilver':i===2?'rbronze':''}">${i===0?'&#9733;':i+1}</span>
+      <span class="rname">${x.app.primary?'<span style="color:var(--accent)">&#9679;</span> ':''}${x.app.name}</span>
+      <span class="rscore">${x.s.toFixed(1)}</span>
+      <span class="rlevel" style="color:${x.s>=70?'var(--green)':x.s>=50?'var(--yellow)':x.s>=30?'var(--blue)':'var(--red)'}">${x.s>=70?'Lider':x.s>=50?'Güçlü':x.s>=30?'Orta':'Zayıf'}</span>
+      <div class="rbar"><div class="fill" style="width:${(x.s/ms*100).toFixed(0)}%"></div></div>
+    </div>`).join('')}</div>`;
+  setTimeout(()=>{
+    if(window._scoringChart) window._scoringChart.destroy();
+    const el=document.getElementById('scoringChart'); if(!el) return;
+    window._scoringChart=new Chart(el.getContext('2d'),{type:'bar',data:{
+      labels:scored.map(x=>x.app.name),
+      datasets:[
+        {label:'iOS',data:scored.map(x=>x.m.iosS*w.iosRating/100),backgroundColor:'rgba(139,92,246,.35)',borderColor:'#8b5cf6',borderWidth:1,borderRadius:2},
+        {label:'Android',data:scored.map(x=>x.m.andS*w.androidRating/100),backgroundColor:'rgba(34,197,94,.35)',borderColor:'#22c55e',borderWidth:1,borderRadius:2},
+        {label:'Yorum',data:scored.map(x=>x.m.revS*w.reviews/100),backgroundColor:'rgba(245,158,11,.35)',borderColor:'#f59e0b',borderWidth:1,borderRadius:2},
+        {label:'Özellik',data:scored.map(x=>x.m.feaS*w.features/100),backgroundColor:'rgba(59,130,246,.35)',borderColor:'#3b82f6',borderWidth:1,borderRadius:2},
+        {label:'Büyüme',data:scored.map(x=>x.m.grS*w.growth/100),backgroundColor:'rgba(236,72,153,.35)',borderColor:'#ec4899',borderWidth:1,borderRadius:2},
+        {label:'Yükleme',data:scored.map(x=>x.m.inS*w.installs/100),backgroundColor:'rgba(20,184,166,.35)',borderColor:'#14b8a6',borderWidth:1,borderRadius:2}
+      ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:10,font:{size:9},usePointStyle:true}}},scales:{x:{grid:{color:C.grid,drawBorder:false},ticks:{color:C.text,font:{size:9}}},y:{stacked:true,beginAtZero:true,grid:{color:C.grid,drawBorder:false},ticks:{color:C.text,font:{size:9}}}}}});
+  },50);
+}
+
+/* === COMPARE === */
+function initCompareCheckboxes() {
+  const apps=Object.values(DATA.apps).filter(a=>a.stores.ios||a.stores.android);
+  document.getElementById('compareCheckboxes').innerHTML = apps.map(a=>
+    `<div class="comp-cb ${a.primary?'checked':''}" data-app-id="${a.id}" onclick="this.classList.toggle('checked')"><input type="checkbox" ${a.primary?'checked':''}> ${a.name}</div>`
+  ).join('');
+}
+function renderCompare() {
+  const checked=document.querySelectorAll('#compareCheckboxes .comp-cb.checked');
+  const ids=Array.from(checked).map(c=>c.dataset.appId);
+  const apps=ids.map(id=>DATA.apps.find(a=>a.id===id)).filter(Boolean);
+  if(apps.length<1){document.getElementById('compareResults').innerHTML='<div style="padding:20px;text-align:center;color:var(--muted)">En az 1 uygulama seçin.</div>';return;}
+  const labels=['iOS Puan','Android Puan','Yorum (norm)','Özellik','Büyüme','Yükleme (norm)'];
+  const cp=['#8b5cf6','#22c55e','#f59e0b','#3b82f6','#ef4444','#ec4899','#14b8a6','#6366f1'];
+  const ds=apps.map((a,i)=>({
+    label:a.name, borderColor:cp[i%cp.length], backgroundColor:cp[i%cp.length]+'22', borderWidth:2, pointBackgroundColor:cp[i%cp.length], pointRadius:3,
+    data:[((a.stores.ios?.averageUserRating||0)/5)*100,((a.stores.android?.score||0)/5)*100,Math.min(100,((a.stores.ios?.userRatingCount||0)+(a.stores.android?.reviews||0))/500*20),((a.features||[]).length)*10,Math.min(100,(a.market_position?.growth_rate_monthly||0)*10),Math.min(100,(a.stores.android?.realInstalls||0)/100000*20)]
+  }));
+  document.getElementById('compareResults').innerHTML=`<div class="chart-row">
+    <div class="chart-box"><div class="ctitle">Radar Karşılaştırması</div><div style="height:280px"><canvas id="compareRadarChart"></canvas></div></div>
+    <div>${apps.map(a=>{const i=a.stores.ios||{},k=a.stores.android||{},r=a.reviews_analysis||{};return '<div class="card" style="margin-bottom:10px;padding:14px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="width:32px;height:32px;border-radius:8px;background:'+(a.color||'#6366f1')+';display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;color:#fff">'+a.name.charAt(0)+'</div><div><div style="font-weight:600;font-size:.85rem">'+a.name+'</div><div style="font-size:.68rem;color:var(--muted)">'+(a.developer||'')+'</div></div></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px"><div><span style="font-size:.62rem;color:var(--muted)">iOS</span><div style="font-weight:700;font-size:.9rem;color:#8b5cf6">'+(i.averageUserRating||'-')+'</div></div><div><span style="font-size:.62rem;color:var(--muted)">Android</span><div style="font-weight:700;font-size:.9rem;color:#22c55e">'+(k.score||'-')+'</div></div><div><span style="font-size:.62rem;color:var(--muted)">Özellik</span><div style="font-weight:700;font-size:.9rem">'+((a.features||[]).length)+'</div></div><div><span style="font-size:.62rem;color:var(--muted)">Pozitif</span><div style="font-weight:700;font-size:.9rem;color:var(--green)">%'+(r.positive_pct||0)+'</div></div><div><span style="font-size:.62rem;color:var(--muted)">Büyüme</span><div style="font-weight:700;font-size:.9rem;color:var(--blue)">%'+(a.market_position?.growth_rate_monthly||0)+'</div></div><div><span style="font-size:.62rem;color:var(--muted)">Yükleme</span><div style="font-weight:700;font-size:.9rem">'+formatNum(k.realInstalls||0)+'</div></div></div></div>';}).join('')}</div></div>`;
+  setTimeout(()=>{
+    if(window._compareChart) window._compareChart.destroy();
+    const el=document.getElementById('compareRadarChart'); if(!el) return;
+    window._compareChart=new Chart(el.getContext('2d'),{type:'radar',data:{labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:12,font:{size:10},usePointStyle:true}}},scales:{r:{beginAtZero:true,max:100,grid:{color:'rgba(124,58,237,.08)'},angleLines:{color:'rgba(124,58,237,.08)'},pointLabels:{color:C.text,font:{size:9}},ticks:{display:false}}}}});
+  },50);
+}
+
+/* === ANOMALIES === */
+function renderAnomalies() {
+  const apps=Object.values(DATA.apps).filter(a=>a.stores.ios||a.stores.android);
+  const an=[];
+  apps.forEach(a=>{
+    const i=a.stores.ios||{},k=a.stores.android||{},r=a.reviews_analysis||{};
+    if(i.averageUserRating&&i.averageUserRatingForCurrentVersion&&(i.userRatingCountForCurrentVersion||0)>=5){const d=i.averageUserRating-i.averageUserRatingForCurrentVersion;if(d>0.3)an.push({a:a.name,s:'danger',t:'iOS Puan Düşüşü',d:`Son versiyonda puan ${d.toFixed(2)} düştü (${i.averageUserRatingForCurrentVersion} vs genel ${i.averageUserRating}).`});else if(d>0.1)an.push({a:a.name,s:'warn',t:'iOS Puan Gerilemesi',d:`Son versiyonda puan ${d.toFixed(2)} düştü.`});}
+    if(k.histogram){const h=k.histogram,tt=h.reduce((s,v)=>s+v,0);if(tt>50){const os=h[0]/tt*100;if(os>30)an.push({a:a.name,s:'danger',t:'1 Yıldız Oranı Yüksek',d:`Android yorumlarının %${os.toFixed(0)}'ı 1 yıldız.`});else if(os>20)an.push({a:a.name,s:'warn',t:'1 Yıldız Oranı',d:`Android yorumlarının %${os.toFixed(0)}'ı 1 yıldız.`});}}
+    if(i.averageUserRating&&k.score){const g=Math.abs(i.averageUserRating-k.score);if(g>1.5)an.push({a:a.name,s:'warn',t:'Platform Farkı',d:`iOS (${i.averageUserRating}) vs Android (${k.score}) arasında ${g.toFixed(1)} puan fark.`});}
+    if(r.negative_pct>40)an.push({a:a.name,s:'danger',t:'Negatif Yorum Oranı Yüksek',d:`Yorumların %${r.negative_pct}'ı negatif.`});else if(r.negative_pct>25)an.push({a:a.name,s:'warn',t:'Negatif Yorum Oranı',d:`Yorumların %${r.negative_pct}'ı negatif.`});
+    if(i.currentVersionReleaseDate){const dy=Math.floor((Date.now()-new Date(i.currentVersionReleaseDate).getTime())/86400000);if(dy>180)an.push({a:a.name,s:'warn',t:'Güncelleme Yok',d:`iOS son güncelleme ${dy} gün önce.`});else if(dy>90)an.push({a:a.name,s:'info',t:'Güncelleme Aralığı',d:`iOS son güncelleme ${dy} gün önce.`});}
+  });
+  const c={danger:an.filter(x=>x.s==='danger').length,warn:an.filter(x=>x.s==='warn').length,info:an.filter(x=>x.s==='info').length};
+  document.getElementById('anomalyMetrics').innerHTML=`<div class="metric-card"><div class="label" style="color:var(--red)">Kritik</div><div class="value" style="color:var(--red)">${c.danger}</div></div><div class="metric-card"><div class="label" style="color:var(--yellow)">Uyarı</div><div class="value" style="color:var(--yellow)">${c.warn}</div></div><div class="metric-card"><div class="label" style="color:var(--blue)">Bilgi</div><div class="value" style="color:var(--blue)">${c.info}</div></div><div class="metric-card"><div class="label">İncelenen</div><div class="value">${apps.length}</div></div>`;
+  document.getElementById('anomalyList').innerHTML=an.length===0?'<div style="padding:20px;text-align:center;color:var(--green);font-size:.9rem">Anomali tespit edilmedi.</div>':an.map((x,i)=>`<div class="anom-card" style="animation-delay:${i*0.04}s"><div class="anom-icon ${x.s}">${x.s==='danger'?'&#9888;':x.s==='warn'?'&#9888;':'&#9432;'}</div><div class="anom-body"><div class="at">${x.t} <span style="font-size:.68rem;color:var(--muted);font-weight:400">— ${x.a}</span></div><div class="ad">${x.d}</div></div></div>`).join('');
+}
+
+/* === BENCHMARK RADAR (used by Competitors tab) === */
+function renderBenchChart(apps,infoX) {
+  const el=document.getElementById('benchRadarChart'); if(!el) return;
+  if(window._benchChart) window._benchChart.destroy();
+  const labs=['iOS Puan','Android Puan','Özellik','Büyüme'];
+  const ixd=[((infoX.stores.ios?.averageUserRating||0)/5)*100,((infoX.stores.android?.score||0)/5)*100,Math.min(100,((infoX.features||[]).length/12)*100),Math.min(100,(infoX.market_position?.growth_rate_monthly||0)/10*100)];
+  const avd=labs.map((_,j)=>{const v=apps.map(a=>{switch(j){case 0:return a.stores.ios?.averageUserRating||0;case 1:return a.stores.android?.score||0;case 2:return((a.features||[]).length/12)*100;case 3:return Math.min(100,(a.market_position?.growth_rate_monthly||0)/10*100);}}).filter(Boolean);return avg(v);});
+  const bvd=labs.map((_,j)=>{const v=apps.map(a=>{switch(j){case 0:return a.stores.ios?.averageUserRating||0;case 1:return a.stores.android?.score||0;case 2:return((a.features||[]).length/12)*100;case 3:return Math.min(100,(a.market_position?.growth_rate_monthly||0)/10*100);}}).filter(Boolean);return v.length?Math.max(...v):0;});
+  window._benchChart=new Chart(el.getContext('2d'),{type:'radar',data:{labels:labs,datasets:[
+    {label:infoX.name,data:ixd,borderColor:'#8b5cf6',backgroundColor:'rgba(139,92,246,.15)',borderWidth:2,pointBackgroundColor:'#8b5cf6',pointRadius:4},
+    {label:'Sektör Ort.',data:avd,borderColor:'#94a3b8',backgroundColor:'rgba(148,163,184,.08)',borderWidth:2,borderDash:[4,4],pointBackgroundColor:'#94a3b8',pointRadius:3},
+    {label:'En İyi',data:bvd,borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.08)',borderWidth:1.5,pointBackgroundColor:'#22c55e',pointRadius:3}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:10,font:{size:9},usePointStyle:true}}},scales:{r:{beginAtZero:true,grid:{color:'rgba(124,58,237,.06)'},angleLines:{color:'rgba(124,58,237,.06)'},pointLabels:{color:C.text,font:{size:9}},ticks:{display:false,max:100}}}}});
+}
+
+/* === EXPORT CSV === */
+function exportCSV() {
+  const apps=Object.values(DATA.apps).filter(a=>a.stores.ios||a.stores.android);
+  let csv='Uygulama,Kategori,iOS Puan,Android Puan,Toplam Yorum,Özellik,Büyüme %,Yükleme,Negatif %,Geliştirici\n';
+  apps.forEach(a=>{const i=a.stores.ios||{},k=a.stores.android||{},r=a.reviews_analysis||{};csv+=[a.name,a.category||'',i.averageUserRating||'',k.score||'',(i.userRatingCount||0)+(k.reviews||0),(a.features||[]).length,a.market_position?.growth_rate_monthly||'',k.realInstalls||'',r.negative_pct||'',a.developer||''].join(',')+'\n';});
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const lnk=document.createElement('a'); lnk.href=URL.createObjectURL(blob); lnk.download='mobil-app-analiz-'+new Date().toISOString().slice(0,10)+'.csv'; lnk.click();
+  URL.revokeObjectURL(lnk.href);
+}
+
 init();
 window.filterApps = filterApps;
 window.openModal = openModal;
 window.closeModal = closeModal;
 window.renderReviewSection = renderReviewSection;
+window.updateScoreWeight = updateScoreWeight;
+window.renderCompare = renderCompare;
+window.renderTrendChart = renderTrendChart;
 </script>
 </body>
 </html>

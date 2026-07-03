@@ -17,9 +17,26 @@
       "website": "https://www.infoyatirim.com.tr",
       "category": "Finans",
       "description": "Yeni nesil birikim ve yatırım yönetimi deneyimi sunan akıllı uygulama. Borsa İstanbul, Amerikan borsaları, yatırım fonları, VİOP, varant ve halka arz işlemleri tek uygulamada. Ücretsiz canlı veri, gelişmiş grafikler ve kişiselleştirilebilir takip listeleri.",
-      "features": ["BIST İşlem", "ABD Borsaları", "Yatırım Fonu", "VİOP", "Varant", "Sertifika", "Halka Arz", "infoxCard", "Robot Sinyal", "Canlı Veri", "Grafik", "Sıcaklık Haritası"],
+      "features": [
+        "BIST İşlem",
+        "ABD Borsaları",
+        "Yatırım Fonu",
+        "VİOP",
+        "Varant",
+        "Sertifika",
+        "Halka Arz",
+        "infoxCard",
+        "Robot Sinyal",
+        "Canlı Veri",
+        "Grafik",
+        "Sıcaklık Haritası"
+      ],
       "launch_date": "2024-03-15",
-      "target_audience": ["Bireysel Yatırımcı", "Teknoloji Odaklı", "Yeni Başlayan"],
+      "target_audience": [
+        "Bireysel Yatırımcı",
+        "Teknoloji Odaklı",
+        "Yeni Başlayan"
+      ],
       "stores": {
         "ios": {
           "trackId": 6475774687,
@@ -33,11 +50,16 @@
           "sellerName": "INFO YATIRIM MENKUL DEGERLER ANONIM SIRKETI",
           "bundleId": "com.berktekno.infox",
           "minimumOsVersion": "13.0",
-          "languageCodesISO2A": ["EN", "TR"],
+          "languageCodesISO2A": [
+            "EN",
+            "TR"
+          ],
           "price": 0.0,
           "formattedPrice": "Free",
           "currency": "USD",
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/infox-ak%C4%B1ll%C4%B1-yat%C4%B1r%C4%B1m/id6475774687",
           "artistName": "Info Yatırım",
@@ -70,7 +92,13 @@
           "free": true,
           "currency": "TRY",
           "url": "https://play.google.com/store/apps/details?id=com.info.superapp",
-          "histogram": [200, 90, 100, 160, 380],
+          "histogram": [
+            200,
+            90,
+            100,
+            160,
+            380
+          ],
           "description": "Yeni nesil birikim ve yatırım yönetimi deneyimi sunan akıllı uygulama. Borsa İstanbul, Amerikan borsaları, yatırım fonları, VİOP, varant ve halka arz işlemleri tek uygulamada.",
           "contentRating": "PEGI 3",
           "containsAds": false,
@@ -90,13 +118,50 @@
         "positive_pct": 52,
         "neutral_pct": 10,
         "negative_pct": 38,
-        "top_praises": ["Yeni nesil arayüz", "ABD borsalarına erişim", "Ücretsiz canlı veri", "infoxCard", "Robot sinyal özelliği"],
-        "top_complaints": ["Uygulama donma ve kasma", "Karmaşık menü yapısı", "Fon alım-satım hataları", "Giriş sorunları", "Lisans paketi ücretli"],
-        "feature_requests": ["Parmak izi ile giriş", "Daha stabil performans", "Tam ekran izleme listesi", "Koyu tema iyileştirmesi", "Daha fazla kolon görünümü"]
+        "top_praises": [
+          "Yeni nesil arayüz",
+          "ABD borsalarına erişim",
+          "Ücretsiz canlı veri",
+          "infoxCard",
+          "Robot sinyal özelliği"
+        ],
+        "top_complaints": [
+          "Uygulama donma ve kasma",
+          "Karmaşık menü yapısı",
+          "Fon alım-satım hataları",
+          "Giriş sorunları",
+          "Lisans paketi ücretli"
+        ],
+        "feature_requests": [
+          "Parmak izi ile giriş",
+          "Daha stabil performans",
+          "Tam ekran izleme listesi",
+          "Koyu tema iyileştirmesi",
+          "Daha fazla kolon görünümü"
+        ]
       },
       "download_trends": {
-        "weekly": [1200, 1350, 1180, 1420, 1580, 1620, 1480, 1550, 1700, 1650, 1800],
-        "monthly": [28000, 32000, 38000, 42000, 48000, 52000]
+        "weekly": [
+          1200,
+          1350,
+          1180,
+          1420,
+          1580,
+          1620,
+          1480,
+          1550,
+          1700,
+          1650,
+          1800
+        ],
+        "monthly": [
+          28000,
+          32000,
+          38000,
+          42000,
+          48000,
+          52000
+        ]
       }
     },
     {
@@ -109,9 +174,20 @@
       "website": "https://www.getmidas.com/",
       "category": "Finans",
       "description": "Borsa İstanbul ve ABD borsalarında hisse senedi alım satımı, yatırım fonları ve halka arzlara katılım imkanı sunan komisyonsuz yatırım platformu.",
-      "features": ["ABD Borsaları", "BIST İşlem", "Fon Alım/Satım", "Halka Arz", "Temettü", "Anında Nakit", "Altın Sertifikası"],
+      "features": [
+        "ABD Borsaları",
+        "BIST İşlem",
+        "Fon Alım/Satım",
+        "Halka Arz",
+        "Temettü",
+        "Anında Nakit",
+        "Altın Sertifikası"
+      ],
       "launch_date": "2021-04-05",
-      "target_audience": ["Bireysel Yatırımcı", "Yeni Başlayan"],
+      "target_audience": [
+        "Bireysel Yatırımcı",
+        "Yeni Başlayan"
+      ],
       "stores": {
         "ios": {
           "trackId": 1554268946,
@@ -126,7 +202,10 @@
           "minimumOsVersion": "15.5",
           "price": 0.0,
           "formattedPrice": "Free",
-          "genres": ["Finance", "Business"],
+          "genres": [
+            "Finance",
+            "Business"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/us/app/midas-borsa-hisse-al%C4%B1m-sat%C4%B1m/id1554268946",
           "currency": "USD",
@@ -134,7 +213,10 @@
           "artistName": "MIDAS FINANSAL TEKNOLOJILER AS",
           "sellerUrl": "https://www.getmidas.com/",
           "contentAdvisoryRating": "4+",
-          "languageCodesISO2A": ["EN", "TR"],
+          "languageCodesISO2A": [
+            "EN",
+            "TR"
+          ],
           "releaseNotes": "Bu sürümde Midas deneyimini iyileştirmek için performans geliştirmeleri yaptık.",
           "trackCensoredName": "Midas: Borsa Hisse Alım Satım",
           "userRatingCountForCurrentVersion": 152,
@@ -162,7 +244,13 @@
           "free": true,
           "currency": "TRY",
           "url": "https://play.google.com/store/apps/details?id=com.getmidas.app",
-          "histogram": [1119, 579, 1179, 3801, 36621],
+          "histogram": [
+            1119,
+            579,
+            1179,
+            3801,
+            36621
+          ],
           "contentRating": "PEGI 3",
           "containsAds": false,
           "updated": 1782920927,
@@ -174,9 +262,24 @@
         "positive_pct": 84,
         "neutral_pct": 10,
         "negative_pct": 6,
-        "top_praises": ["Komisyonsuz işlem", "ABD borsalarına erişim", "Kullanım kolaylığı", "Hızlı hesap açılışı", "Anında nakit"],
-        "top_complaints": ["ABD borsa geç saat açılması", "Bazı hisselerde limit", "Para çekme süresi"],
-        "feature_requests": ["Kripto para eklenmesi", "Teknik analiz araçları", "Vadeli işlemler", "Birden fazla portföy"]
+        "top_praises": [
+          "Komisyonsuz işlem",
+          "ABD borsalarına erişim",
+          "Kullanım kolaylığı",
+          "Hızlı hesap açılışı",
+          "Anında nakit"
+        ],
+        "top_complaints": [
+          "ABD borsa geç saat açılması",
+          "Bazı hisselerde limit",
+          "Para çekme süresi"
+        ],
+        "feature_requests": [
+          "Kripto para eklenmesi",
+          "Teknik analiz araçları",
+          "Vadeli işlemler",
+          "Birden fazla portföy"
+        ]
       }
     },
     {
@@ -189,9 +292,18 @@
       "website": "https://www.garantibbvayatirim.com.tr/",
       "category": "Finans",
       "description": "Garanti BBVA Yatırım'ın yenilenen mobil uygulaması. TradingView entegrasyonu, F-Ray temel analiz modülü ve canlı piyasa takibi.",
-      "features": ["TradingView Entegrasyonu", "F-Ray Analiz", "Canlı BIST Verisi", "Küresel Endeksler", "Hisse/VİOP/Varant"],
+      "features": [
+        "TradingView Entegrasyonu",
+        "F-Ray Analiz",
+        "Canlı BIST Verisi",
+        "Küresel Endeksler",
+        "Hisse/VİOP/Varant"
+      ],
       "launch_date": "2024-06-13",
-      "target_audience": ["Deneyimli Yatırımcı", "Teknik Analist"],
+      "target_audience": [
+        "Deneyimli Yatırımcı",
+        "Teknik Analist"
+      ],
       "stores": {
         "ios": {
           "trackId": 1671536174,
@@ -205,7 +317,9 @@
           "bundleId": "com.garantibbvayatirim.etrader",
           "minimumOsVersion": "15.6",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/us/app/garanti-bbva-etrader/id1671536174",
           "description": "Yenilenen eTrader ile TradingView entegrasyonu ve F-Ray analiz modülü.",
@@ -214,7 +328,9 @@
           "contentAdvisoryRating": "4+",
           "releaseDate": "2024-06-13T07:00:00Z",
           "releaseNotes": "Various improvements and bug fixes.",
-          "languageCodesISO2A": ["TR"],
+          "languageCodesISO2A": [
+            "TR"
+          ],
           "currency": "USD",
           "formattedPrice": "Free",
           "trackCensoredName": "Garanti BBVA eTrader",
@@ -242,7 +358,13 @@
           "free": true,
           "currency": "TRY",
           "url": "https://play.google.com/store/apps/details?id=com.garantibbvayatirim.etrader",
-          "histogram": [857, 229, 208, 298, 1227],
+          "histogram": [
+            857,
+            229,
+            208,
+            298,
+            1227
+          ],
           "contentRating": "PEGI 3",
           "containsAds": false,
           "updated": 1781254106,
@@ -254,9 +376,23 @@
         "positive_pct": 43,
         "neutral_pct": 8,
         "negative_pct": 49,
-        "top_praises": ["TradingView entegrasyonu", "Gelişmiş grafik araçları", "Kurumsal güven"],
-        "top_complaints": ["Sık donma ve çökme", "Yavaş performans", "Karmaşık arayüz", "Giriş sorunları"],
-        "feature_requests": ["Daha stabil altyapı", "Koyu tema", "Hızlı emir girişi", "Portföy raporlama"]
+        "top_praises": [
+          "TradingView entegrasyonu",
+          "Gelişmiş grafik araçları",
+          "Kurumsal güven"
+        ],
+        "top_complaints": [
+          "Sık donma ve çökme",
+          "Yavaş performans",
+          "Karmaşık arayüz",
+          "Giriş sorunları"
+        ],
+        "feature_requests": [
+          "Daha stabil altyapı",
+          "Koyu tema",
+          "Hızlı emir girişi",
+          "Portföy raporlama"
+        ]
       }
     },
     {
@@ -269,9 +405,19 @@
       "website": "https://www.garantibbvayatirim.com.tr/",
       "category": "Finans",
       "description": "Uluslararası piyasalarda hisse senedi, ETF ve vadeli işlemler için gelişmiş mobil trading platformu.",
-      "features": ["Uluslararası Piyasalar", "EURONEXT", "NYSE", "NASDAQ", "Gelişmiş Grafik", "Demo Hesap"],
+      "features": [
+        "Uluslararası Piyasalar",
+        "EURONEXT",
+        "NYSE",
+        "NASDAQ",
+        "Gelişmiş Grafik",
+        "Demo Hesap"
+      ],
       "launch_date": "2021-07-28",
-      "target_audience": ["Profesyonel Yatırımcı", "Uluslararası Yatırımcı"],
+      "target_audience": [
+        "Profesyonel Yatırımcı",
+        "Uluslararası Yatırımcı"
+      ],
       "stores": {
         "ios": {
           "trackId": 1550761462,
@@ -285,7 +431,9 @@
           "bundleId": "com.GARANTIBBVAYATIRIM.ITRADER",
           "minimumOsVersion": "13.4",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/us/app/garanti-bbva-i-trader/id1550761462",
           "description": "Uluslararası piyasalarda hisse, ETF ve vadeli işlem platformu.",
@@ -293,7 +441,12 @@
           "contentAdvisoryRating": "4+",
           "releaseDate": "2021-07-28T07:00:00Z",
           "releaseNotes": "Bug fixes and technical improvements.",
-          "languageCodesISO2A": ["EN", "TR", "FR", "DE"],
+          "languageCodesISO2A": [
+            "EN",
+            "TR",
+            "FR",
+            "DE"
+          ],
           "currency": "USD",
           "formattedPrice": "Free",
           "trackCensoredName": "Garanti BBVA I-Trader",
@@ -313,9 +466,18 @@
       "website": "https://www.garantibbvayatirim.com.tr/",
       "category": "Finans",
       "description": "40+ döviz çifti, değerli metal ve CFD'lerde 10 kata kadar kaldıraçlı forex işlem platformu.",
-      "features": ["Forex İşlem", "40+ Döviz Çifti", "Değerli Metal", "CFD", "Kaldıraçlı İşlem"],
+      "features": [
+        "Forex İşlem",
+        "40+ Döviz Çifti",
+        "Değerli Metal",
+        "CFD",
+        "Kaldıraçlı İşlem"
+      ],
       "launch_date": "2014-12-04",
-      "target_audience": ["Forex Yatırımcısı", "Aktif Trader"],
+      "target_audience": [
+        "Forex Yatırımcısı",
+        "Aktif Trader"
+      ],
       "stores": {
         "ios": {
           "trackId": 943902367,
@@ -329,14 +491,19 @@
           "bundleId": "com.garantiyatirim.fx",
           "minimumOsVersion": "15.0",
           "price": 0.0,
-          "genres": ["Finance", "Business"],
+          "genres": [
+            "Finance",
+            "Business"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/us/app/garanti-fx-trader/id943902367",
           "description": "40+ döviz çifti ve değerli metalde forex işlemleri.",
           "artistName": "GARANTI YATIRIM MENKUL KIYMETLER AS",
           "contentAdvisoryRating": "4+",
           "releaseDate": "2014-12-04T19:34:32Z",
-          "languageCodesISO2A": ["EN"],
+          "languageCodesISO2A": [
+            "EN"
+          ],
           "currency": "USD",
           "formattedPrice": "Free",
           "releaseNotes": "Hata çözümleri yapıldı."
@@ -360,7 +527,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.garantiyatirim.fx",
-          "histogram": [166, 6, 6, 8, 24],
+          "histogram": [
+            166,
+            6,
+            6,
+            8,
+            24
+          ],
           "contentRating": "PEGI 3",
           "containsAds": false,
           "updated": 1780574453,
@@ -378,9 +551,18 @@
       "website": "https://www.ziraatyatirim.com.tr/",
       "category": "Finans",
       "description": "Ziraat Yatırım'ın gelişmiş mobil trading platformu. Gelişmiş teknik analiz, temel analiz ve portföy yönetimi.",
-      "features": ["Gelişmiş Analiz", "Temel Analiz Özet", "Formasyon Analizi", "İndikatör Pozisyonları", "Pay Geri Alım Analizi"],
+      "features": [
+        "Gelişmiş Analiz",
+        "Temel Analiz Özet",
+        "Formasyon Analizi",
+        "İndikatör Pozisyonları",
+        "Pay Geri Alım Analizi"
+      ],
       "launch_date": "2015-03-04",
-      "target_audience": ["Deneyimli Yatırımcı", "Teknik Analist"],
+      "target_audience": [
+        "Deneyimli Yatırımcı",
+        "Teknik Analist"
+      ],
       "stores": {
         "ios": {
           "trackId": 969151242,
@@ -394,14 +576,20 @@
           "bundleId": "com.matriksdata.ziraat",
           "minimumOsVersion": "13.0",
           "price": 0.0,
-          "genres": ["Finance", "Business"],
+          "genres": [
+            "Finance",
+            "Business"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/us/app/ziraat-trader-mobile/id969151242",
           "description": "Ziraat Yatırım'ın gelişmiş mobil trading uygulaması.",
           "artistName": "ZIRAAT YATIRIM MENKUL DEGERLER AS",
           "contentAdvisoryRating": "4+",
           "releaseDate": "2015-03-04T08:05:59Z",
-          "languageCodesISO2A": ["EN", "TR"],
+          "languageCodesISO2A": [
+            "EN",
+            "TR"
+          ],
           "currency": "USD",
           "formattedPrice": "Free",
           "releaseNotes": "Portföyüm tasarımı yenilendi. Analiz sekmesine yeni özellikler eklendi.",
@@ -422,9 +610,19 @@
       "website": "https://www.ziraatyatirim.com.tr/",
       "category": "Finans",
       "description": "Ziraat Yatırım'ın ücretsiz borsa takip ve işlem uygulaması. BIST, VİOP, fon ve döviz verileri.",
-      "features": ["Ücretsiz Canlı Veri", "BIST Takip", "VİOP İşlem", "Teknik Analiz", "KAP Haberleri", "Ekonomik Takvim"],
+      "features": [
+        "Ücretsiz Canlı Veri",
+        "BIST Takip",
+        "VİOP İşlem",
+        "Teknik Analiz",
+        "KAP Haberleri",
+        "Ekonomik Takvim"
+      ],
       "launch_date": "2015-06-28",
-      "target_audience": ["Bireysel Yatırımcı", "Günlük Takipçi"],
+      "target_audience": [
+        "Bireysel Yatırımcı",
+        "Günlük Takipçi"
+      ],
       "stores": {
         "ios": {
           "trackId": 995050960,
@@ -438,14 +636,19 @@
           "bundleId": "com.foreks.zborsaiPhone",
           "minimumOsVersion": "13.0",
           "price": 0.0,
-          "genres": ["Finance", "Business"],
+          "genres": [
+            "Finance",
+            "Business"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/us/app/zborsa-ziraat-yat%C4%B1r%C4%B1m-borsa/id995050960",
           "description": "Ücretsiz borsa takip ve işlem uygulaması.",
           "artistName": "ZIRAAT YATIRIM MENKUL DEGERLER AS",
           "contentAdvisoryRating": "4+",
           "releaseDate": "2015-06-28T06:34:47Z",
-          "languageCodesISO2A": ["EN"],
+          "languageCodesISO2A": [
+            "EN"
+          ],
           "currency": "USD",
           "formattedPrice": "Free"
         },
@@ -468,7 +671,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.foreks.android.zborsa",
-          "histogram": [5867, 675, 706, 728, 3433],
+          "histogram": [
+            5867,
+            675,
+            706,
+            728,
+            3433
+          ],
           "contentRating": "PEGI 3",
           "containsAds": false,
           "updated": 1732635834,
@@ -486,9 +695,19 @@
       "website": "https://www.gedik.com/",
       "category": "Finans",
       "description": "Gedik Yatırım'ın mobil trading platformu. Gelişmiş kademe analizi, aracı kurum dağılımı ve takas analizi.",
-      "features": ["Kademe Analizi", "Aracı Kurum Dağılımı", "Takas Analizi", "Haftalık Veri Paketi", "Zincir Emir", "Canlı Veri"],
+      "features": [
+        "Kademe Analizi",
+        "Aracı Kurum Dağılımı",
+        "Takas Analizi",
+        "Haftalık Veri Paketi",
+        "Zincir Emir",
+        "Canlı Veri"
+      ],
       "launch_date": "2018-01-01",
-      "target_audience": ["Aktif Trader", "Teknik Analist"],
+      "target_audience": [
+        "Aktif Trader",
+        "Teknik Analist"
+      ],
       "stores": {
         "ios": {
           "trackId": 1441876543,
@@ -502,7 +721,9 @@
           "bundleId": "com.gedik.trader",
           "minimumOsVersion": "14.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/gedik-trader/id1441876543",
           "description": "Borsa İstanbul'da gelişmiş analiz ve işlem platformu.",
@@ -530,7 +751,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.devexperts.dxmobile.gedik",
-          "histogram": [800, 400, 600, 2000, 4010],
+          "histogram": [
+            800,
+            400,
+            600,
+            2000,
+            4010
+          ],
           "contentRating": "PEGI 3",
           "updated": 1781500000,
           "icon": "https://play-lh.googleusercontent.com/gedik-icon.png"
@@ -547,9 +774,18 @@
       "website": "https://www.tebyatirim.com.tr/",
       "category": "Finans",
       "description": "TEB Yatırım'ın mobil uygulaması ile BIST'te hisse senedi, VİOP ve varant alım-satım işlemleri.",
-      "features": ["Gece/Gündüz Teması", "Dijital Onay", "Yatırım Hedefi", "Alarm Yönetimi", "Araştırma Raporları"],
+      "features": [
+        "Gece/Gündüz Teması",
+        "Dijital Onay",
+        "Yatırım Hedefi",
+        "Alarm Yönetimi",
+        "Araştırma Raporları"
+      ],
       "launch_date": "2020-06-01",
-      "target_audience": ["Bireysel Yatırımcı", "Planlı Yatırımcı"],
+      "target_audience": [
+        "Bireysel Yatırımcı",
+        "Planlı Yatırımcı"
+      ],
       "stores": {
         "ios": {
           "trackId": 1512345678,
@@ -563,7 +799,9 @@
           "bundleId": "com.teb.prime",
           "minimumOsVersion": "14.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/teb-yatirim-prime/id1512345678",
           "description": "TEB Yatırım mobil uygulaması.",
@@ -589,7 +827,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.foreks.android.tebyatirim",
-          "histogram": [200, 150, 300, 1000, 1850],
+          "histogram": [
+            200,
+            150,
+            300,
+            1000,
+            1850
+          ],
           "contentRating": "PEGI 3",
           "updated": 1782000000
         }
@@ -605,9 +849,18 @@
       "website": "https://www.akyatirim.com.tr/",
       "category": "Finans",
       "description": "Ak Yatırım'ın mobil uygulaması. AI destekli TradeAll TR Plus ile akıllı yatırım önerileri.",
-      "features": ["AI Destekli Öneriler", "TradingView Grafik", "KAP Haberleri", "Model Portföy", "Alarm Sistemi"],
+      "features": [
+        "AI Destekli Öneriler",
+        "TradingView Grafik",
+        "KAP Haberleri",
+        "Model Portföy",
+        "Alarm Sistemi"
+      ],
       "launch_date": "2022-09-15",
-      "target_audience": ["Bireysel Yatırımcı", "Teknoloji Sever"],
+      "target_audience": [
+        "Bireysel Yatırımcı",
+        "Teknoloji Sever"
+      ],
       "stores": {
         "ios": {
           "trackId": 1623456789,
@@ -621,7 +874,9 @@
           "bundleId": "com.akyatirim.tradeall",
           "minimumOsVersion": "14.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/tradeall-tr/id1623456789",
           "description": "Ak Yatırım mobil uygulaması.",
@@ -646,7 +901,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.tradeall.tr",
-          "histogram": [150, 100, 250, 800, 1500],
+          "histogram": [
+            150,
+            100,
+            250,
+            800,
+            1500
+          ],
           "contentRating": "PEGI 3",
           "updated": 1781600000
         }
@@ -662,9 +923,19 @@
       "website": "https://www.osmanlimenkul.com.tr/",
       "category": "Finans",
       "description": "Osmanlı Yatırım'ın tüm yatırım ürünlerinde işlem yapmanızı sağlayan mobil uygulaması.",
-      "features": ["Tüm Ürünler", "Canlı Piyasa", "Halka Arz", "TEFAS Fon", "BES", "Para Transferi"],
+      "features": [
+        "Tüm Ürünler",
+        "Canlı Piyasa",
+        "Halka Arz",
+        "TEFAS Fon",
+        "BES",
+        "Para Transferi"
+      ],
       "launch_date": "2019-03-01",
-      "target_audience": ["Bireysel Yatırımcı", "Kurumsal Müşteri"],
+      "target_audience": [
+        "Bireysel Yatırımcı",
+        "Kurumsal Müşteri"
+      ],
       "stores": {
         "ios": {
           "trackId": 1456789012,
@@ -678,7 +949,9 @@
           "bundleId": "com.osmanli.mobil",
           "minimumOsVersion": "13.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/osmanli-mobil/id1456789012",
           "description": "Osmanlı Yatırım mobil uygulaması.",
@@ -703,7 +976,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.matriksdata.osmanli",
-          "histogram": [400, 250, 500, 1500, 2550],
+          "histogram": [
+            400,
+            250,
+            500,
+            1500,
+            2550
+          ],
           "contentRating": "PEGI 3",
           "updated": 1780500000
         }
@@ -719,9 +998,18 @@
       "website": "https://www.akbank.com/",
       "category": "Finans",
       "description": "Akbank müşterileri için hisse senedi, VİOP, varant, fon ve döviz piyasalarını takip ve işlem uygulaması.",
-      "features": ["Akbank Entegrasyonu", "Uzun Oturum", "Teknik Analiz", "Alarm", "Araştırma Raporları"],
+      "features": [
+        "Akbank Entegrasyonu",
+        "Uzun Oturum",
+        "Teknik Analiz",
+        "Alarm",
+        "Araştırma Raporları"
+      ],
       "launch_date": "2021-01-01",
-      "target_audience": ["Akbank Müşterisi", "Bireysel Yatırımcı"],
+      "target_audience": [
+        "Akbank Müşterisi",
+        "Bireysel Yatırımcı"
+      ],
       "stores": {
         "ios": {
           "trackId": 1543210987,
@@ -735,7 +1023,9 @@
           "bundleId": "akbank.yatirimci.mobile",
           "minimumOsVersion": "14.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/yatirimci/id1543210987",
           "description": "Akbank yatırım işlem platformu.",
@@ -761,7 +1051,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=akbank.yatirimci.mobile",
-          "histogram": [100, 80, 200, 800, 3020],
+          "histogram": [
+            100,
+            80,
+            200,
+            800,
+            3020
+          ],
           "contentRating": "PEGI 3",
           "updated": 1781000000
         }
@@ -777,9 +1073,17 @@
       "website": "https://www.isyatirim.com.tr/",
       "category": "Finans",
       "description": "İş Yatırım'ın yeni nesil, tamamen dijital ve şubesiz yatırım platformu.",
-      "features": ["Dijital Hesap Açılışı", "Ücretsiz Canlı Veri", "Avantajlı Komisyon", "NFsiz Hesap Açma"],
+      "features": [
+        "Dijital Hesap Açılışı",
+        "Ücretsiz Canlı Veri",
+        "Avantajlı Komisyon",
+        "NFsiz Hesap Açma"
+      ],
       "launch_date": "2023-12-29",
-      "target_audience": ["Yeni Yatırımcı", "Dijital Kullanıcı"],
+      "target_audience": [
+        "Yeni Yatırımcı",
+        "Dijital Kullanıcı"
+      ],
       "stores": {
         "ios": {
           "trackId": 1611138126,
@@ -793,7 +1097,9 @@
           "bundleId": "com.isyatirim.herkeseborsa",
           "minimumOsVersion": "13.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/herkese-borsa-mobil/id1611138126",
           "description": "İş Yatırım'ın yeni nesil yatırım platformu.",
@@ -818,7 +1124,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.isyatirim.herkeseborsa",
-          "histogram": [100, 80, 150, 400, 1070],
+          "histogram": [
+            100,
+            80,
+            150,
+            400,
+            1070
+          ],
           "contentRating": "PEGI 3",
           "updated": 1738300000
         }
@@ -834,9 +1146,17 @@
       "website": "https://www.isyatirim.com.tr/",
       "category": "Finans",
       "description": "İş Yatırım'ın profesyonel mobil trading platformu. Gelişmiş grafik ve analiz araçları.",
-      "features": ["Profesyonel Trading", "Gelişmiş Grafik", "Teknik Analiz", "Portföy Yönetimi"],
+      "features": [
+        "Profesyonel Trading",
+        "Gelişmiş Grafik",
+        "Teknik Analiz",
+        "Portföy Yönetimi"
+      ],
       "launch_date": "2019-06-01",
-      "target_audience": ["Profesyonel Yatırımcı", "Aktif Trader"],
+      "target_audience": [
+        "Profesyonel Yatırımcı",
+        "Aktif Trader"
+      ],
       "stores": {
         "ios": {
           "trackId": 1462634915,
@@ -850,7 +1170,9 @@
           "bundleId": "com.isyatirim.trademaster",
           "minimumOsVersion": "13.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/trademaster-mobile/id1462634915",
           "currency": "USD",
@@ -873,7 +1195,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.isyatirim.trademaster",
-          "histogram": [80, 50, 100, 300, 670],
+          "histogram": [
+            80,
+            50,
+            100,
+            300,
+            670
+          ],
           "contentRating": "PEGI 3",
           "updated": 1780500000
         }
@@ -889,9 +1217,19 @@
       "website": "https://www.vakifbank.com.tr/",
       "category": "Finans",
       "description": "VakıfBank müşterilerinin hisse senedi, VİOP ve varant alım-satım işlemlerini yapabildiği mobil uygulama.",
-      "features": ["BIST İşlem", "VİOP", "Varant", "Derinlik", "Kademe Analizi", "Takas Analizi"],
+      "features": [
+        "BIST İşlem",
+        "VİOP",
+        "Varant",
+        "Derinlik",
+        "Kademe Analizi",
+        "Takas Analizi"
+      ],
       "launch_date": "2015-01-01",
-      "target_audience": ["VakıfBank Müşterisi", "Bireysel Yatırımcı"],
+      "target_audience": [
+        "VakıfBank Müşterisi",
+        "Bireysel Yatırımcı"
+      ],
       "stores": {
         "ios": {
           "trackId": 1017296793,
@@ -905,7 +1243,9 @@
           "bundleId": "com.vakifbank.tradeonline",
           "minimumOsVersion": "13.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/tradeonline/id1017296793",
           "currency": "USD",
@@ -928,7 +1268,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.vakifbank.tradeonline",
-          "histogram": [300, 200, 400, 800, 1700],
+          "histogram": [
+            300,
+            200,
+            400,
+            800,
+            1700
+          ],
           "contentRating": "PEGI 3",
           "updated": 1780800000
         }
@@ -944,9 +1290,18 @@
       "website": "https://www.yafi.com.tr/",
       "category": "Finans",
       "description": "Yatırım Finansman'ın yeni nesil yatırım uygulaması. Komisyonsuz işlem, planlı paketler ve ücretsiz canlı veri.",
-      "features": ["Komisyonsuz İşlem", "Planlı Paketler", "Canlı Veri", "Finansal Analiz", "Takas Analizi"],
+      "features": [
+        "Komisyonsuz İşlem",
+        "Planlı Paketler",
+        "Canlı Veri",
+        "Finansal Analiz",
+        "Takas Analizi"
+      ],
       "launch_date": "2026-03-25",
-      "target_audience": ["Yeni Yatırımcı", "Maliyet Odaklı"],
+      "target_audience": [
+        "Yeni Yatırımcı",
+        "Maliyet Odaklı"
+      ],
       "stores": {
         "ios": {
           "trackId": 6758091008,
@@ -960,7 +1315,9 @@
           "bundleId": "com.yatirimfinansman.yafi",
           "minimumOsVersion": "15.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/yafi-yatirim-borsa-hisse/id6758091008",
           "description": "Yeni nesil yatırım deneyimi.",
@@ -984,7 +1341,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.yatirimfinansman.yafi",
-          "histogram": [20, 15, 40, 150, 625],
+          "histogram": [
+            20,
+            15,
+            40,
+            150,
+            625
+          ],
           "contentRating": "PEGI 3",
           "updated": 1781200000
         }
@@ -1000,9 +1363,17 @@
       "website": "https://www.alnusyatirim.com/",
       "category": "Finans",
       "description": "Alnus Yatırım'ın BIST'te yatırımlarınızı anlık takip ve işlem platformu.",
-      "features": ["Piyasa Takibi", "Hisse Verileri", "Takip Listesi", "Kolay Emir", "Analiz Ekranı"],
+      "features": [
+        "Piyasa Takibi",
+        "Hisse Verileri",
+        "Takip Listesi",
+        "Kolay Emir",
+        "Analiz Ekranı"
+      ],
       "launch_date": "2020-01-01",
-      "target_audience": ["Bireysel Yatırımcı"],
+      "target_audience": [
+        "Bireysel Yatırımcı"
+      ],
       "stores": {
         "ios": {
           "trackId": 1501234567,
@@ -1016,7 +1387,9 @@
           "bundleId": "com.alnus.mobile",
           "minimumOsVersion": "13.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "currency": "USD",
           "formattedPrice": "Free"
@@ -1038,7 +1411,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.alnus.yatirim.mobile",
-          "histogram": [120, 60, 100, 200, 370],
+          "histogram": [
+            120,
+            60,
+            100,
+            200,
+            370
+          ],
           "contentRating": "PEGI 3",
           "updated": 1780300000
         }
@@ -1054,9 +1433,18 @@
       "website": "https://www.trive.com.tr/",
       "category": "Finans",
       "description": "Sıfır komisyon iş modeliyle BIST ve VİOP'ta işlem imkanı sunan yeni nesil aracı kurum.",
-      "features": ["Sıfır Komisyon", "BIST İşlem", "VİOP", "Opsiyon", "MyFX Platform"],
+      "features": [
+        "Sıfır Komisyon",
+        "BIST İşlem",
+        "VİOP",
+        "Opsiyon",
+        "MyFX Platform"
+      ],
       "launch_date": "2022-06-01",
-      "target_audience": ["Maliyet Odaklı", "Aktif Trader"],
+      "target_audience": [
+        "Maliyet Odaklı",
+        "Aktif Trader"
+      ],
       "stores": {
         "ios": {
           "trackId": 1601234567,
@@ -1069,7 +1457,9 @@
           "bundleId": "com.trive.mobile",
           "minimumOsVersion": "14.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "currency": "USD",
           "formattedPrice": "Free"
@@ -1091,7 +1481,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.trive.yatirim",
-          "histogram": [150, 80, 150, 400, 720],
+          "histogram": [
+            150,
+            80,
+            150,
+            400,
+            720
+          ],
           "contentRating": "PEGI 3",
           "updated": 1781200000
         }
@@ -1107,9 +1503,18 @@
       "website": "https://www.ahlatciyatirim.com.tr/",
       "category": "Finans",
       "description": "Ahlatcı Yatırım'ın BIST ve uluslararası piyasalarda işlem imkanı sunan platformu.",
-      "features": ["BIST", "VİOP", "Forex", "Kıymetli Maden", "Canlı Destek"],
+      "features": [
+        "BIST",
+        "VİOP",
+        "Forex",
+        "Kıymetli Maden",
+        "Canlı Destek"
+      ],
       "launch_date": "2019-09-01",
-      "target_audience": ["Bireysel Yatırımcı", "Forex Yatırımcısı"],
+      "target_audience": [
+        "Bireysel Yatırımcı",
+        "Forex Yatırımcısı"
+      ],
       "stores": {
         "ios": {
           "trackId": 1487654321,
@@ -1122,7 +1527,9 @@
           "bundleId": "com.ahlatci.mobile",
           "minimumOsVersion": "13.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "currency": "USD",
           "formattedPrice": "Free"
@@ -1144,7 +1551,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.ahlatciyatirim.mobil",
-          "histogram": [400, 200, 300, 500, 800],
+          "histogram": [
+            400,
+            200,
+            300,
+            500,
+            800
+          ],
           "contentRating": "PEGI 3",
           "updated": 1780200000
         }
@@ -1160,9 +1573,19 @@
       "website": "https://www.gcmyatirim.com.tr/",
       "category": "Finans",
       "description": "Forex, hisse senedi, vadeli işlem ve opsiyon ürünlerinde MT4/MT5 destekli platform.",
-      "features": ["MetaTrader 4", "MetaTrader 5", "Forex", "BIST", "VİOP", "Düşük Spread"],
+      "features": [
+        "MetaTrader 4",
+        "MetaTrader 5",
+        "Forex",
+        "BIST",
+        "VİOP",
+        "Düşük Spread"
+      ],
       "launch_date": "2018-04-01",
-      "target_audience": ["Forex Yatırımcısı", "Teknik Analist"],
+      "target_audience": [
+        "Forex Yatırımcısı",
+        "Teknik Analist"
+      ],
       "stores": {
         "ios": {
           "trackId": 1369876543,
@@ -1175,7 +1598,9 @@
           "bundleId": "com.gcm.mobile",
           "minimumOsVersion": "13.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "currency": "USD",
           "formattedPrice": "Free"
@@ -1197,7 +1622,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.gcm.yatirim",
-          "histogram": [300, 150, 250, 700, 1800],
+          "histogram": [
+            300,
+            150,
+            250,
+            700,
+            1800
+          ],
           "contentRating": "PEGI 3",
           "updated": 1780000000
         }
@@ -1213,9 +1644,17 @@
       "website": "https://www.isbank.com.tr/",
       "category": "Finans",
       "description": "İş Bankası müşterilerinin borsa işlemlerini gerçekleştirebildiği mobil bankacılık uygulaması.",
-      "features": ["BIST İşlem", "Fon Alım/Satım", "Döviz", "Altın", "Vadeli Hesap"],
+      "features": [
+        "BIST İşlem",
+        "Fon Alım/Satım",
+        "Döviz",
+        "Altın",
+        "Vadeli Hesap"
+      ],
       "launch_date": "2012-01-01",
-      "target_audience": ["İş Bankası Müşterisi"],
+      "target_audience": [
+        "İş Bankası Müşterisi"
+      ],
       "stores": {
         "ios": {
           "trackId": 503271353,
@@ -1229,7 +1668,9 @@
           "bundleId": "com.isbank.iscep",
           "minimumOsVersion": "14.0",
           "price": 0.0,
-          "genres": ["Finance"],
+          "genres": [
+            "Finance"
+          ],
           "primaryGenreName": "Finance",
           "trackViewUrl": "https://apps.apple.com/tr/app/i%CC%87scep/id503271353",
           "currency": "USD",
@@ -1252,7 +1693,13 @@
           "price": 0,
           "free": true,
           "url": "https://play.google.com/store/apps/details?id=com.isbank.iscep",
-          "histogram": [2000, 1000, 3000, 12000, 80000],
+          "histogram": [
+            2000,
+            1000,
+            3000,
+            12000,
+            80000
+          ],
           "contentRating": "PEGI 3",
           "updated": 1782800000
         }
@@ -1261,43 +1708,823 @@
   ],
   "download_trends": {
     "weekly": {
-      "labels": ["23 Haz","24 Haz","25 Haz","26 Haz","27 Haz","28 Haz","29 Haz","30 Haz","1 Tem","2 Tem","3 Tem"],
+      "labels": [
+        "23 Haz",
+        "24 Haz",
+        "25 Haz",
+        "26 Haz",
+        "27 Haz",
+        "28 Haz",
+        "29 Haz",
+        "30 Haz",
+        "1 Tem",
+        "2 Tem",
+        "3 Tem"
+      ],
       "datasets": {
-        "infox": {"ios": [180,203,177,213,237,243,222,233,255,248,270], "android": [1020,1147,1003,1207,1343,1377,1258,1317,1445,1402,1530]},
-        "midas": {"ios": [2550,2460,2670,2730,2850,3060,2940,3150,3360,3240,3450], "android": [5950,5740,6230,6370,6650,7140,6860,7350,7840,7560,8050]},
-        "garanti-etrader": {"ios": [113,105,95,103,98,93,88,95,100,105,98], "android": [337,315,285,307,292,277,262,285,300,315,292]},
-        "zborsa": {"ios": [420,410,440,430,460,480,450,470,500,490,520], "android": [1680,1640,1760,1720,1840,1920,1800,1880,2000,1960,2080]},
-        "gedik-trader": {"ios": [76,70,68,74,72,76,70,72,78,74,72], "android": [304,280,272,296,288,304,280,288,312,296,288]},
-        "tradeall": {"ios": [130,123,128,133,138,140,133,135,143,138,145], "android": [390,367,382,397,412,420,397,405,427,412,435]},
-        "yafi": {"ios": [178,184,176,190,196,210,204,220,230,216,240], "android": [712,736,704,760,784,840,816,880,920,864,960]},
-        "iscep": {"ios": [1800,1680,1920,1840,2000,2080,1960,2040,2120,2080,2160], "android": [2700,2520,2880,2760,3000,3120,2940,3060,3180,3120,3240]}
+        "infox": {
+          "ios": [
+            180,
+            203,
+            177,
+            213,
+            237,
+            243,
+            222,
+            233,
+            255,
+            248,
+            270
+          ],
+          "android": [
+            1020,
+            1147,
+            1003,
+            1207,
+            1343,
+            1377,
+            1258,
+            1317,
+            1445,
+            1402,
+            1530
+          ]
+        },
+        "midas": {
+          "ios": [
+            2550,
+            2460,
+            2670,
+            2730,
+            2850,
+            3060,
+            2940,
+            3150,
+            3360,
+            3240,
+            3450
+          ],
+          "android": [
+            5950,
+            5740,
+            6230,
+            6370,
+            6650,
+            7140,
+            6860,
+            7350,
+            7840,
+            7560,
+            8050
+          ]
+        },
+        "garanti-etrader": {
+          "ios": [
+            113,
+            105,
+            95,
+            103,
+            98,
+            93,
+            88,
+            95,
+            100,
+            105,
+            98
+          ],
+          "android": [
+            337,
+            315,
+            285,
+            307,
+            292,
+            277,
+            262,
+            285,
+            300,
+            315,
+            292
+          ]
+        },
+        "zborsa": {
+          "ios": [
+            420,
+            410,
+            440,
+            430,
+            460,
+            480,
+            450,
+            470,
+            500,
+            490,
+            520
+          ],
+          "android": [
+            1680,
+            1640,
+            1760,
+            1720,
+            1840,
+            1920,
+            1800,
+            1880,
+            2000,
+            1960,
+            2080
+          ]
+        },
+        "gedik-trader": {
+          "ios": [
+            76,
+            70,
+            68,
+            74,
+            72,
+            76,
+            70,
+            72,
+            78,
+            74,
+            72
+          ],
+          "android": [
+            304,
+            280,
+            272,
+            296,
+            288,
+            304,
+            280,
+            288,
+            312,
+            296,
+            288
+          ]
+        },
+        "tradeall": {
+          "ios": [
+            130,
+            123,
+            128,
+            133,
+            138,
+            140,
+            133,
+            135,
+            143,
+            138,
+            145
+          ],
+          "android": [
+            390,
+            367,
+            382,
+            397,
+            412,
+            420,
+            397,
+            405,
+            427,
+            412,
+            435
+          ]
+        },
+        "yafi": {
+          "ios": [
+            178,
+            184,
+            176,
+            190,
+            196,
+            210,
+            204,
+            220,
+            230,
+            216,
+            240
+          ],
+          "android": [
+            712,
+            736,
+            704,
+            760,
+            784,
+            840,
+            816,
+            880,
+            920,
+            864,
+            960
+          ]
+        },
+        "iscep": {
+          "ios": [
+            1800,
+            1680,
+            1920,
+            1840,
+            2000,
+            2080,
+            1960,
+            2040,
+            2120,
+            2080,
+            2160
+          ],
+          "android": [
+            2700,
+            2520,
+            2880,
+            2760,
+            3000,
+            3120,
+            2940,
+            3060,
+            3180,
+            3120,
+            3240
+          ]
+        }
       }
     },
     "monthly": {
-      "labels": ["Oca","Şub","Mar","Nis","May","Haz"],
+      "labels": [
+        "Oca",
+        "Şub",
+        "Mar",
+        "Nis",
+        "May",
+        "Haz"
+      ],
       "datasets": {
-        "infox": {"ios": [4200,4800,5700,6300,7200,7800], "android": [23800,27200,32300,35700,40800,44200]},
-        "midas": {"ios": [54000,58500,63000,67500,72000,78000], "android": [126000,136500,147000,157500,168000,182000]},
-        "garanti-etrader": {"ios": [2125,2050,1950,1875,1800,1700], "android": [6375,6150,5850,5625,5400,5100]},
-        "zborsa": {"ios": [9000,9200,9600,9400,9800,10200], "android": [36000,36800,38400,37600,39200,40800]},
-        "gedik-trader": {"ios": [1500,1440,1400,1480,1420,1360], "android": [6000,5760,5600,5920,5680,5440]},
-        "tradeall": {"ios": [2625,2750,2875,3000,3125,3250], "android": [7875,8250,8625,9000,9375,9750]},
-        "yafi": {"ios": [3000,3600,4400,5200,6000,7000], "android": [12000,14400,17600,20800,24000,28000]},
-        "iscep": {"ios": [38000,36800,39200,40800,43200,44800], "android": [57000,55200,58800,61200,64800,67200]}
+        "infox": {
+          "ios": [
+            4200,
+            4800,
+            5700,
+            6300,
+            7200,
+            7800
+          ],
+          "android": [
+            23800,
+            27200,
+            32300,
+            35700,
+            40800,
+            44200
+          ]
+        },
+        "midas": {
+          "ios": [
+            54000,
+            58500,
+            63000,
+            67500,
+            72000,
+            78000
+          ],
+          "android": [
+            126000,
+            136500,
+            147000,
+            157500,
+            168000,
+            182000
+          ]
+        },
+        "garanti-etrader": {
+          "ios": [
+            2125,
+            2050,
+            1950,
+            1875,
+            1800,
+            1700
+          ],
+          "android": [
+            6375,
+            6150,
+            5850,
+            5625,
+            5400,
+            5100
+          ]
+        },
+        "zborsa": {
+          "ios": [
+            9000,
+            9200,
+            9600,
+            9400,
+            9800,
+            10200
+          ],
+          "android": [
+            36000,
+            36800,
+            38400,
+            37600,
+            39200,
+            40800
+          ]
+        },
+        "gedik-trader": {
+          "ios": [
+            1500,
+            1440,
+            1400,
+            1480,
+            1420,
+            1360
+          ],
+          "android": [
+            6000,
+            5760,
+            5600,
+            5920,
+            5680,
+            5440
+          ]
+        },
+        "tradeall": {
+          "ios": [
+            2625,
+            2750,
+            2875,
+            3000,
+            3125,
+            3250
+          ],
+          "android": [
+            7875,
+            8250,
+            8625,
+            9000,
+            9375,
+            9750
+          ]
+        },
+        "yafi": {
+          "ios": [
+            3000,
+            3600,
+            4400,
+            5200,
+            6000,
+            7000
+          ],
+          "android": [
+            12000,
+            14400,
+            17600,
+            20800,
+            24000,
+            28000
+          ]
+        },
+        "iscep": {
+          "ios": [
+            38000,
+            36800,
+            39200,
+            40800,
+            43200,
+            44800
+          ],
+          "android": [
+            57000,
+            55200,
+            58800,
+            61200,
+            64800,
+            67200
+          ]
+        }
       }
     }
   },
   "feature_comparison": {
-    "categories": ["BIST İşlem", "ABD Borsası", "VİOP", "Varant", "Fon İşlem", "Forex", "Kripto", "Teknik Analiz", "AI Analiz", "Temel Analiz", "TradingView", "KAP Haber", "Ücretsiz Canlı Veri", "Temettü Takip", "Halka Arz", "Portföy Yönetimi"],
+    "categories": [
+      "BIST İşlem",
+      "ABD Borsası",
+      "Avrupa Borsası",
+      "VİOP",
+      "Varant",
+      "Fon İşlem",
+      "Forex",
+      "Kripto",
+      "Teknik Analiz",
+      "AI Analiz",
+      "Temel Analiz",
+      "TradingView",
+      "KAP Haber",
+      "Ücretsiz Canlı Veri",
+      "Temettü Takip",
+      "Halka Arz",
+      "Portföy Yönetimi"
+    ],
     "apps": {
-      "infox": [true, true, false, false, true, false, true, true, true, true, false, true, true, true, true, true],
-      "midas": [true, true, false, false, true, false, false, false, false, false, false, true, true, true, true, true],
-      "garanti-etrader": [true, false, true, true, false, false, false, true, false, true, true, true, true, false, false, true],
-      "zborsa": [true, false, true, false, false, false, false, true, false, false, false, true, true, false, false, false],
-      "gedik-trader": [true, false, true, true, false, false, false, true, false, true, false, true, true, false, false, true],
-      "tradeall": [true, true, true, true, false, false, false, true, true, false, true, true, true, false, false, true],
-      "yafi": [true, false, true, false, true, false, false, true, false, true, false, true, true, false, false, true],
-      "iscep": [true, false, false, false, true, true, false, false, false, false, false, false, false, false, false, false]
+      "infox": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "midas": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        true
+      ],
+      "garanti-etrader": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "garanti-itrader": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "garanti-fx": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "ziraat-trader": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "zborsa": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "gedik-trader": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ],
+      "teb-prime": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "tradeall": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "osmanli-mobil": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "yatirimci": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "herkese-borsa": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        true
+      ],
+      "trademaster": [
+        true,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "tradeonline": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "yafi": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ],
+      "alnus-mobile": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "trive": [
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "ahlatci": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        true
+      ],
+      "gcm": [
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "iscep": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true
+      ]
     }
   },
   "imported_apps": 21
