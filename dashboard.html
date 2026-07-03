@@ -477,6 +477,30 @@ input[type=range]::-webkit-slider-thumb:hover { transform:scale(1.15); }
 </style>
 </head>
 <body>
+<div id="loginOverlay" style="position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center">
+  <div style="background:var(--card);padding:40px;border-radius:16px;width:360px;max-width:90%;box-shadow:0 4px 24px rgba(0,0,0,.04);border:1px solid var(--border)">
+    <div style="text-align:center;margin-bottom:28px">
+      <div style="width:48px;height:48px;border-radius:14px;background:var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-weight:800;font-size:1.2rem;color:#fff">iA</div>
+      <div style="font-weight:700;font-size:1.1rem">infoX Analytica</div>
+      <div style="font-size:.8rem;color:var(--muted);margin-top:4px">Mobil Yatırım Uygulaması Analiz Aracı</div>
+    </div>
+    <div id="loginError" style="display:none;background:rgba(239,68,68,.08);color:var(--red);font-size:.78rem;padding:8px 12px;border-radius:8px;margin-bottom:16px;text-align:center"></div>
+    <input id="loginUser" type="text" placeholder="Kullanıcı Adı" style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-size:.85rem;outline:none;background:var(--bg);color:var(--text);margin-bottom:12px;box-sizing:border-box" autocomplete="username">
+    <input id="loginPass" type="password" placeholder="Şifre" style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-size:.85rem;outline:none;background:var(--bg);color:var(--text);margin-bottom:20px;box-sizing:border-box" autocomplete="current-password">
+    <button onclick="login()" style="width:100%;padding:12px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-weight:600;font-size:.9rem;cursor:pointer">Giriş Yap</button>
+  </div>
+</div>
+<script>
+const AUTH_USER = 'admin';
+const AUTH_PASS = 'admin123';
+(function(){if(sessionStorage.getItem('ia_auth')==='1'){document.getElementById('loginOverlay').style.display='none';}})();
+function login(){
+  var u=document.getElementById('loginUser').value, p=document.getElementById('loginPass').value, e=document.getElementById('loginError');
+  if(u===AUTH_USER&&p===AUTH_PASS){sessionStorage.setItem('ia_auth','1');document.getElementById('loginOverlay').style.display='none';return;}
+  e.style.display='block';e.textContent='Hatalı kullanıcı adı veya şifre.';
+}
+document.getElementById('loginPass').addEventListener('keydown',function(e){if(e.key==='Enter')login();});
+</script>
 <nav class="sidebar">
   <div class="sidebar-logo">
     <h1>infoX Analytica</h1>
