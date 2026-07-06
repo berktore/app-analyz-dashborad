@@ -17,7 +17,7 @@ async function migrate() {
   const raw = fs.readFileSync(dataPath, 'utf8');
   const data = JSON.parse(raw);
 
-  const { meta, apps } = data;
+  const { meta, apps, download_trends, feature_comparison } = data;
 
   console.log('Uploading meta...');
   await db.ref('meta').set(meta);
@@ -30,6 +30,18 @@ async function migrate() {
   }
   await db.ref().update(updates);
   console.log(`  \u2713 All ${apps.length} apps uploaded`);
+
+  if (download_trends) {
+    console.log('Uploading download_trends...');
+    await db.ref('download_trends').set(download_trends);
+    console.log('  \u2713 download_trends set');
+  }
+
+  if (feature_comparison) {
+    console.log('Uploading feature_comparison...');
+    await db.ref('feature_comparison').set(feature_comparison);
+    console.log('  \u2713 feature_comparison set');
+  }
 
   console.log('\nDone! RTDB is ready.');
   process.exit(0);

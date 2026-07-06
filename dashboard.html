@@ -886,7 +886,11 @@ async function init() {
     var metaData = snap.val();
     var appsSnap = await rtdb.ref('apps').once('value');
     var appsData = appsSnap.val();
-    DATA = { meta: metaData, apps: [] };
+    var dtSnap = await rtdb.ref('download_trends').once('value');
+    var dtData = dtSnap.val();
+    var fcSnap = await rtdb.ref('feature_comparison').once('value');
+    var fcData = fcSnap.val();
+    DATA = { meta: metaData, apps: [], download_trends: dtData, feature_comparison: fcData };
     for (var k in appsData) DATA.apps.push(appsData[k]);
   } catch(e) {
     document.body.innerHTML = '<div style="padding:40px;text-align:center;color:var(--red)">Veri yüklenemedi: ' + e.message + '</div>';
