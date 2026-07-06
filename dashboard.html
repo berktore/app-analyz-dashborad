@@ -1366,14 +1366,24 @@ function renderTrends() {
     document.querySelector('#tab-trends .chart-box').before(ctrl);
   }
   document.getElementById('trendControls').innerHTML = trendIds.map(function(k) {
-    return '<span class="trend-cb checked" data-tk="' + k + '" onclick="this.classList.toggle(\'checked\');renderTrendChart()">' +
-      '<input type="checkbox" checked> <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + (tc[k]||'#888') + '"></span> ' + (nl[k]||k) + '</span>';
+    return '<span class="trend-cb checked" data-tk="' + k + '">' +
+      '<input type="checkbox" checked style="cursor:pointer" onchange="this.parentElement.classList.toggle(\'checked\');renderTrendChart()"> ' +
+      '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + (tc[k]||'#888') + '"></span> ' +
+      '<span class="trend-label" data-tk="' + k + '" onclick="soloTrend(this)">' + (nl[k]||k) + '</span></span>';
   }).join('');
   window._trendSel = {}; trendIds.forEach(function(k) { window._trendSel[k] = true; });
   window._trendW = trendW; window._trendM = trendM;
   window._trendWl = d.weekly.labels;
   window._trendMl = d.monthly.labels;
   window._trendNames = trendIds; window._trendNl = nl; window._trendColors = tc;
+  renderTrendChart();
+}
+
+function soloTrend(el) {
+  var all = document.querySelectorAll('#trendControls .trend-cb');
+  all.forEach(function(c) { c.classList.remove('checked'); c.querySelector('input').checked = false; });
+  var parent = el.closest('.trend-cb');
+  if (parent) { parent.classList.add('checked'); parent.querySelector('input').checked = true; }
   renderTrendChart();
 }
 
