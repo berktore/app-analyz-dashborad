@@ -42,6 +42,36 @@
   --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
+[data-theme="dark"] {
+  --bg: #0a0e14;
+  --bg2: #111820;
+  --sidebar-bg: #0c1118;
+  --card: #121a24;
+  --card2: #1a2433;
+  --card-hover: #1e2a3a;
+  --border: #1e2d3d;
+  --border-hover: #2a3d52;
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --muted: #64748b;
+  --accent: #34d399;
+  --accent2: #6ee7b7;
+  --accent-light: rgba(52,211,153,0.06);
+  --accent-border: rgba(52,211,153,0.12);
+  --green: #34d399;
+  --green-bg: rgba(52,211,153,0.08);
+  --red: #f87171;
+  --red-bg: rgba(248,113,113,0.07);
+  --yellow: #fbbf24;
+  --yellow-bg: rgba(251,191,36,0.08);
+  --blue: #60a5fa;
+  --blue-bg: rgba(96,165,250,0.07);
+  --shadow: 0 1px 2px rgba(0,0,0,.2), 0 1px 4px rgba(0,0,0,.15);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.2);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.35), 0 4px 12px rgba(0,0,0,.25);
+  --shadow-glow: 0 0 18px rgba(52,211,153,0.08);
+}
+
 * { margin:0; padding:0; box-sizing:border-box; }
 html { font-size:14px; scroll-behavior: smooth; }
 
@@ -67,12 +97,30 @@ body::before {
   pointer-events: none;
   z-index: 0;
 }
+[data-theme="dark"] body::before {
+  background-image:
+    radial-gradient(circle at 25% 15%, rgba(52,211,153,0.04) 0%, transparent 40%),
+    radial-gradient(circle at 75% 85%, rgba(96,165,250,0.03) 0%, transparent 40%),
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255,255,255,0.015) 1px, rgba(255,255,255,0.015) 1px),
+    repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(255,255,255,0.015) 1px, rgba(255,255,255,0.015) 1px);
+}
 
 ::selection { background: rgba(5,150,105,0.15); color: var(--accent); }
+[data-theme="dark"] ::selection { background: rgba(52,211,153,0.2); color: var(--accent); }
 ::-webkit-scrollbar { width:5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius:10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+[data-theme="dark"] .spotlight-main {
+  background: linear-gradient(135deg, rgba(52,211,153,0.06) 0%, rgba(96,165,250,0.03) 100%);
+  backdrop-filter: blur(2px);
+}
+[data-theme="dark"] .modal-overlay { background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
+[data-theme="dark"] .bench-card,
+[data-theme="dark"] .anom-card,
+[data-theme="dark"] .roadmap-item { background: var(--card2); }
+[data-theme="dark"] .app-card.primary { background: linear-gradient(135deg, rgba(52,211,153,0.04), transparent); }
 
 @keyframes fadeInUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -291,7 +339,7 @@ body::before {
 .spotlight-main .metrics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
 .spotlight-main .metrics-grid .m {
   text-align:center;
-  background: rgba(255,255,255,.6);
+  background: var(--card2);
   border-radius:10px; padding:12px 8px;
   border: 1px solid var(--border);
 }
@@ -562,6 +610,29 @@ function login(){
   e.style.display='block';e.textContent='Hatalı kullanıcı adı veya şifre.';
 }
 document.getElementById('loginPass').addEventListener('keydown',function(e){if(e.key==='Enter')login();});
+
+(function(){
+  var th = localStorage.getItem('ia_theme');
+  if(th === 'dark' || (!th && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.setAttribute('data-theme','dark');
+    document.getElementById('themeToggle').textContent = '☀️';
+  }
+})();
+function toggleTheme(){
+  var h = document.documentElement;
+  if(h.getAttribute('data-theme') === 'dark') {
+    h.removeAttribute('data-theme');
+    localStorage.setItem('ia_theme','light');
+    document.getElementById('themeToggle').textContent = '🌙';
+  } else {
+    h.setAttribute('data-theme','dark');
+    localStorage.setItem('ia_theme','dark');
+    document.getElementById('themeToggle').textContent = '☀️';
+  }
+  C = themeColors();
+  var active = document.querySelector('.sidebar-nav a.active');
+  if(active) { active.click(); }
+}
 </script>
 <nav class="sidebar">
   <div class="sidebar-logo">
@@ -581,7 +652,12 @@ document.getElementById('loginPass').addEventListener('keydown',function(e){if(e
     <a data-tab="anomalies"><span class="icon">⚠</span> Anomaliler</a>
     <a data-tab="updates"><span class="icon">⟳</span> Güncellemeler</a>
   </div>
-  <div class="sidebar-bottom">v2.0 &middot; Veri: App Store + Play Store</div>
+  <div class="sidebar-bottom">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%">
+      <span>v2.0 &middot; Veri: App Store + Play Store</span>
+      <button id="themeToggle" onclick="toggleTheme()" style="background:var(--card2);border:1px solid var(--border);border-radius:8px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);font-size:1.05rem;transition:all var(--transition);padding:0;line-height:1" title="Tema Değiştir" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">🌙</button>
+    </div>
+  </div>
 </nav>
 
 <div class="main">
@@ -715,19 +791,25 @@ document.getElementById('loginPass').addEventListener('keydown',function(e){if(e
 <script>
 let DATA = null;
 let reviewChart = null;
-const C = {
-  ios: '#059669', iosBg: 'rgba(5,150,105,0.12)', iosGrd: {id:'iosGrd'},
-  and: '#2563eb', andBg: 'rgba(37,99,235,0.12)', andGrd: {id:'andGrd'},
-  grid: 'rgba(0,0,0,0.04)', text: '#868b9e'
-};
+function themeColors() {
+  const d = isDark();
+  return {
+    ios: d ? '#34d399' : '#059669', iosBg: d ? 'rgba(52,211,153,0.15)' : 'rgba(5,150,105,0.12)',
+    and: d ? '#60a5fa' : '#2563eb', andBg: d ? 'rgba(96,165,250,0.15)' : 'rgba(37,99,235,0.12)',
+    grid: d ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)', text: d ? '#64748b' : '#868b9e'
+  };
+}
+let C = themeColors();
 
 function grd(ctx, area, c1, c2) {
   if (!area || !area.top || !area.bottom) return c1;
   try { const g = ctx.createLinearGradient(0,area.top,0,area.bottom); g.addColorStop(0,c1); g.addColorStop(1,c2||c1); return g; } catch(e) { return c1; }
 }
 
+function isDark() { return document.documentElement.getAttribute('data-theme') === 'dark'; }
 function niceChart(ctxId, config) {
   const el = document.getElementById(ctxId); if(!el) return null;
+  const dark = isDark();
   const base = {
     responsive: true, maintainAspectRatio: false,
     animation: { duration: 500, easing: 'easeOutQuart' },
@@ -735,8 +817,8 @@ function niceChart(ctxId, config) {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: '#ffffff', titleColor: '#16181e', bodyColor: '#16181e',
-        borderColor: '#dcdfe6', borderWidth: 1, padding: 12, cornerRadius: 10,
+        backgroundColor: dark ? '#1a2433' : '#ffffff', titleColor: dark ? '#e2e8f0' : '#16181e', bodyColor: dark ? '#94a3b8' : '#16181e',
+        borderColor: dark ? '#2a3d52' : '#dcdfe6', borderWidth: 1, padding: 12, cornerRadius: 10,
         titleFont: { size: 11, family: 'Outfit' }, bodyFont: { size: 12, family: 'Outfit' }
       }
     },
@@ -813,7 +895,7 @@ function renderOverview() {
           {v:and.score||'-',l:'Android Puan',c:'var(--blue)'},
           {v:formatNum((ios.userRatingCount||0)+(and.reviews||0)),l:'Toplam Yorum',c:'var(--text)'},
           {v:and.installs||'-',l:'Yükleme',c:'var(--yellow)'}
-        ].map(x=>`<div class="m" style="text-align:center;background:rgba(255,255,255,.6);border-radius:10px;padding:10px"><div class="v" style="font-size:1.35rem;font-weight:700;color:${x.c}">${x.v}</div><div class="l" style="font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.4px">${x.l}</div></div>`).join('')}
+                ].map(x=>`<div class="m" style="text-align:center;background:var(--card2);border-radius:10px;padding:10px"><div class="v" style="font-size:1.35rem;font-weight:700;color:${x.c}">${x.v}</div><div class="l" style="font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.4px">${x.l}</div></div>`).join('')}
       </div>
     </div>
     <div class="spotlight-side">
