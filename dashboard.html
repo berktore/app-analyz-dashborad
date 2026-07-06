@@ -1364,6 +1364,10 @@ function renderTrends() {
   if (!document.getElementById('trendControls')) {
     var ctrl = document.createElement('div'); ctrl.id = 'trendControls'; ctrl.className = 'trend-cbs';
     document.querySelector('#tab-trends .chart-box').before(ctrl);
+    var addBtn = document.createElement('span'); addBtn.id = 'trendAddBtn'; addBtn.className = 'badge badge-accent'; addBtn.style.cssText = 'cursor:pointer;float:right;margin-top:8px';
+    addBtn.textContent = '+ Uygulama Ekle';
+    addBtn.onclick = showAddTrendModal;
+    document.querySelector('#tab-trends .chart-box').before(addBtn);
   }
   document.getElementById('trendControls').innerHTML = trendIds.map(function(k) {
     return '<span class="trend-cb checked" data-tk="' + k + '">' +
@@ -1434,6 +1438,55 @@ function renderTrendChart() {
       labels:ml,datasets:ac.map((k,i)=>({ label:nl[k]||k, data:mt[k], borderColor:colors[i], backgroundColor:colors[i]+'15', borderWidth:2, fill:true, tension:.35, pointRadius:2, pointBackgroundColor:colors[i] }))
     },plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:10,font:{size:9,family:'Outfit'},usePointStyle:true}}}});
   },50);
+}
+
+function showAddTrendModal() {
+  var wl = DATA.download_trends.weekly.labels;
+  var ml = DATA.download_trends.monthly.labels;
+  var existing = Object.keys(DATA.download_trends.weekly.datasets);
+  var opts = DATA.apps.filter(function(a){return existing.indexOf(a.id)<0;}).map(function(a){return '<option value="'+a.id+'">'+a.name+' ('+a.id+')</option>';}).join('');
+  document.getElementById('modalContent').innerHTML =
+    '<span style="font-size:1.1rem;font-weight:700;display:block;margin-bottom:12px">Trend Verisi Ekle</span>' +
+    '<div style="display:flex;flex-direction:column;gap:10px">' +
+    (opts ? '<label>Mevcut Uygulamalardan Seç<select id="addTrendSelect" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text)"><option value="">-- Seçin --</option>'+opts+'</select></label>' : '') +
+    '<label>Uygulama ID <input id="addTrendId" placeholder="orn: midas" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text)"></label>' +
+    '<label>Uygulama Adı <input id="addTrendName" placeholder="Midas" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text)"></label>' +
+    '<div style="font-size:.8rem;color:var(--muted)">Haftalık etiketler ('+wl.length+' adet):<br><code style="font-size:.7rem">'+wl.join(', ')+'</code></div>' +
+    '<label>iOS Haftalık (virgülle, '+wl.length+' sayı) <input id="addTrendWiOS" placeholder="100, 200, 150, ..." style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text);font-family:monospace"></label>' +
+    '<label>Android Haftalık (virgülle, '+wl.length+' sayı) <input id="addTrendWAnd" placeholder="50, 80, 60, ..." style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text);font-family:monospace"></label>' +
+    '<div style="font-size:.8rem;color:var(--muted)">Aylık etiketler ('+ml.length+' adet):<br><code style="font-size:.7rem">'+ml.join(', ')+'</code></div>' +
+    '<label>iOS Aylık (virgülle, '+ml.length+' sayı) <input id="addTrendMiOS" placeholder="500, 600, ..." style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text);font-family:monospace"></label>' +
+    '<label>Android Aylık (virgülle, '+ml.length+' sayı) <input id="addTrendMAnd" placeholder="300, 400, ..." style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text);font-family:monospace"></label>' +
+    '<button onclick="addTrendSubmit()" style="padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer">Ekle</button>' +
+    '</div>';
+  document.getElementById('addTrendSelect')?.addEventListener('change', function() {
+    var id = this.value;
+    if (!id) return;
+    document.getElementById('addTrendId').value = id;
+    var app = DATA.apps.find(function(a){return a.id===id;});
+    if (app) document.getElementById('addTrendName').value = app.name;
+  });
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function addTrendSubmit() {
+  var id = document.getElementById('addTrendId').value.trim();
+  var name = document.getElementById('addTrendName').value.trim();
+  if (!id || !name) { alert('ID ve isim gerekli'); return; }
+  var wl = DATA.download_trends.weekly.labels;
+  var ml = DATA.download_trends.monthly.labels;
+  function parseNums(str, len) {
+    var arr = str.split(',').map(function(s){return parseFloat(s.trim());}).filter(function(n){return !isNaN(n);});
+    if (arr.length !== len) { alert('Beklenen: '+len+' sayı, girilen: '+arr.length); return null; }
+    return arr;
+  }
+  var wi = parseNums(document.getElementById('addTrendWiOS').value, wl.length); if (!wi) return;
+  var wa = parseNums(document.getElementById('addTrendWAnd').value, wl.length); if (!wa) return;
+  var mi = parseNums(document.getElementById('addTrendMiOS').value, ml.length); if (!mi) return;
+  var ma = parseNums(document.getElementById('addTrendMAnd').value, ml.length); if (!ma) return;
+  DATA.download_trends.weekly.datasets[id] = { ios: wi, android: wa };
+  DATA.download_trends.monthly.datasets[id] = { ios: mi, android: ma };
+  closeModal();
+  renderTrends();
 }
 
 function renderRoadmap() {
