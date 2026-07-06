@@ -1343,47 +1343,34 @@ window.toggleFeatCol = function(i) {
   renderFeatureMatrix();
 };
 
+function aggData(ds) {
+  var r = {};
+  for (var k in ds) { var d = ds[k]; if (d && Array.isArray(d.ios) && Array.isArray(d.android)) r[k] = d.ios.map(function(v, i) { return v + (d.android[i]||0); }); else if (Array.isArray(d)) r[k] = d; }
+  return r;
+}
 function renderTrends() {
-  const d = DATA.download_trends;
-  const weeklyArr = Array.isArray(d?.weekly) ? d.weekly : (d?.weekly?.datasets?.infox || null);
-  const monthlyArr = Array.isArray(d?.monthly) ? d.monthly : (d?.monthly?.datasets?.infox || null);
-  if(!weeklyArr || !monthlyArr) {
-    document.querySelector('#tab-trends').innerHTML = '<p style="color:var(--muted)">Trend verisi bulunamadı.</p>';
-    return;
-  }
-  const allIds = DATA.apps.map(a => a.id);
-  const nl = {}; (DATA.apps||[]).forEach(a=>{ nl[a.id]=a.name; });
-  const tc = {};
+  var d = DATA.download_trends;
+  if (!d?.weekly?.labels || !d?.monthly?.labels) { document.querySelector('#tab-trends').innerHTML = '<p style="color:var(--muted)">Trend verisi bulunamadı.</p>'; return; }
+  var nl = {}; DATA.apps.forEach(function(a) { nl[a.id] = a.name; });
+  var tc = {};
+  var trendColors = ['#c2410c','#2563eb','#d97706','#7c3aed','#dc2626','#ec4899','#0891b2','#6366f1'];
+  var trendW = aggData(d.weekly.datasets);
+  var trendM = aggData(d.monthly.datasets);
+  var trendIds = Object.keys(trendW).filter(function(k) { return trendW[k] && trendM[k]; });
+  trendIds.forEach(function(k, i) { tc[k] = trendColors[i % trendColors.length]; });
 
   if (!document.getElementById('trendControls')) {
-    const ctrl = document.createElement('div'); ctrl.id = 'trendControls'; ctrl.className = 'trend-cbs';
+    var ctrl = document.createElement('div'); ctrl.id = 'trendControls'; ctrl.className = 'trend-cbs';
     document.querySelector('#tab-trends .chart-box').before(ctrl);
   }
-  const trendColors = ['#c2410c','#2563eb','#d97706','#7c3aed','#dc2626','#ec4899','#0891b2','#6366f1'];
-  const showPrimary = DATA.apps.filter(a => a.primary || a.download_trends?.weekly || Array.isArray(a.download_trends?.weekly));
-  showPrimary.forEach((a,i) => { tc[a.id] = trendColors[i % trendColors.length]; });
-
-  const trendIds = showPrimary.map(a => a.id);
-  document.getElementById('trendControls').innerHTML = trendIds.map(k => `
-    <span class="trend-cb checked" data-tk="${k}" onclick="this.classList.toggle('checked');renderTrendChart()">
-      <input type="checkbox" checked> <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${tc[k]||'#888'}"></span> ${nl[k]||k}
-    </span>
-  `).join('');
-  window._trendSel = {}; trendIds.forEach(k => window._trendSel[k] = true);
-
-  function extractTrends(arr) {
-    const r = {};
-    showPrimary.forEach((a,i) => {
-      const dt = a.download_trends;
-      const t = Array.isArray(dt?.weekly) ? dt.weekly : (dt?.weekly?.datasets?.infox || arr);
-      r[a.id] = t;
-    });
-    return r;
-  }
-  window._trendW = extractTrends(weeklyArr);
-  window._trendM = (() => { const r={}; showPrimary.forEach(a => { const dt=a.download_trends; r[a.id] = Array.isArray(dt?.monthly) ? dt.monthly : (dt?.monthly?.datasets?.infox || monthlyArr); }); return r; })();
-  window._trendWl = d.weekly.labels || Array.from({length:weeklyArr.length},(_,i)=>'H'+(i+1));
-  window._trendMl = d.monthly.labels || Array.from({length:monthlyArr.length},(_,i)=>'Ay '+(i+1));
+  document.getElementById('trendControls').innerHTML = trendIds.map(function(k) {
+    return '<span class="trend-cb checked" data-tk="' + k + '" onclick="this.classList.toggle(\'checked\');renderTrendChart()">' +
+      '<input type="checkbox" checked> <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + (tc[k]||'#888') + '"></span> ' + (nl[k]||k) + '</span>';
+  }).join('');
+  window._trendSel = {}; trendIds.forEach(function(k) { window._trendSel[k] = true; });
+  window._trendW = trendW; window._trendM = trendM;
+  window._trendWl = d.weekly.labels;
+  window._trendMl = d.monthly.labels;
   window._trendNames = trendIds; window._trendNl = nl; window._trendColors = tc;
   renderTrendChart();
 }
