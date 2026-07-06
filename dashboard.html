@@ -579,6 +579,7 @@ document.getElementById('loginPass').addEventListener('keydown',function(e){if(e
     <a data-tab="scoring"><span class="icon">♢</span> Skorlama</a>
     <a data-tab="compare"><span class="icon">⇄</span> Karşılaştırma</a>
     <a data-tab="anomalies"><span class="icon">⚠</span> Anomaliler</a>
+    <a data-tab="updates"><span class="icon">⟳</span> Güncellemeler</a>
   </div>
   <div class="sidebar-bottom">v2.0 &middot; Veri: App Store + Play Store</div>
 </nav>
@@ -602,6 +603,7 @@ document.getElementById('loginPass').addEventListener('keydown',function(e){if(e
     </div>
     <div class="review-grid" id="ovPraisesComplaints"></div>
     <div class="card" style="margin-bottom:16px"><div class="card-title">Kullanıcı Talep Ettiği Özellikler</div><div class="tag-list" id="ovFeatureRequests"></div></div>
+    <div class="metrics" id="downloadBreakdown" style="grid-template-columns:repeat(3,1fr);margin-bottom:16px"></div>
     <div class="chart-row">
       <div class="chart-box"><div class="ctitle">Haftalık Yükleme Trendi</div><canvas id="ovWeeklyTrend" height="90"></canvas></div>
       <div class="chart-box"><div class="ctitle">Aylık Yükleme Trendi</div><canvas id="ovMonthlyTrend" height="90"></canvas></div>
@@ -690,6 +692,19 @@ document.getElementById('loginPass').addEventListener('keydown',function(e){if(e
       <div id="anomalyList"></div>
     </div>
   </div>
+
+  <!-- === TAB: UPDATES === -->
+  <div class="tab-content" id="tab-updates">
+    <div class="metrics" id="updateMetrics" style="grid-template-columns:repeat(4,1fr)"></div>
+    <div class="card">
+      <div class="card-title">Sürüm Geçmişi ve Güncellemeler</div>
+      <div id="updateTableWrap" class="table-wrap"></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="card-title">Büyük Sürüm Değişiklikleri (Major/Minor)</div>
+      <div id="majorUpdateWrap" class="table-wrap"></div>
+    </div>
+  </div>
 </div>
 
 <!-- MODAL -->
@@ -758,7 +773,8 @@ const tabRender = {
   roadmap: renderRoadmap,
   scoring: renderScoring,
   compare: initCompareCheckboxes,
-  anomalies: renderAnomalies
+  anomalies: renderAnomalies,
+  updates: renderUpdates
 };
 function setupNav() {
   R.overview = true;
@@ -780,7 +796,9 @@ function renderOverview() {
   const infoX = apps.find(a=>a.primary); if(!infoX) return;
   const ios = infoX.stores.ios||{}; const and = infoX.stores.android||{}; const r = infoX.reviews_analysis||{};
   const dt = DATA.download_trends;
-  const w = dt?.weekly?.datasets?.infox; const m = dt?.monthly?.datasets?.infox;
+  const wFlat = Array.isArray(dt?.weekly) ? dt.weekly : (dt?.weekly?.datasets?.infox || null);
+  const mFlat = Array.isArray(dt?.monthly) ? dt.monthly : (dt?.monthly?.datasets?.infox || null);
+  const w = wFlat, m = mFlat;
 
   document.getElementById('infoXSpotlight').innerHTML = `
     <div class="spotlight-main">
@@ -816,6 +834,14 @@ function renderOverview() {
     {v:formatNum(r.total_reviews_analyzed||0),l:'İncelenen Yorum',c:'var(--text)'}
   ].map(x=>`<div class="metric-card"><div class="label">${x.l}</div><div class="value" style="color:${x.c}">${x.v}</div></div>`).join('');
 
+  const iosDl = ios.userRatingCount || 0;
+  const andDl = and.realInstalls || 0;
+  document.getElementById('downloadBreakdown').innerHTML = [
+    {v:formatNum(iosDl),l:'iOS Değerlendirme',c:'var(--accent)'},
+    {v:and.installs||formatNum(andDl),l:'Android Yükleme',c:'var(--blue)'},
+    {v:formatNum(iosDl + andDl),l:'Toplam (Yorum+Yükleme)',c:'var(--text)'}
+  ].map(x=>`<div class="metric-card"><div class="label">${x.l}</div><div class="value" style="color:${x.c}">${x.v}</div></div>`).join('');
+
   setTimeout(()=>{
     niceChart('ovReviewSentiment',{type:'doughnut',data:{
       labels:['Pozitif','Nötr','Negatif'],
@@ -838,18 +864,17 @@ function renderOverview() {
   document.getElementById('ovFeatureRequests').innerHTML = (r.feature_requests||[]).map(t=>'<span class="tag req">'+t+'</span>').join('');
 
   if(w && m) {
-    const wl = dt.weekly.labels; const ml = dt.monthly.labels;
+    const wl = dt.weekly.labels || Array.from({length:w.length},(_,i)=>'H'+(i+1));
+    const ml = dt.monthly.labels || Array.from({length:m.length},(_,i)=>'Ay '+(i+1));
     setTimeout(()=>{
       niceChart('ovWeeklyTrend',{type:'line',data:{
         labels:wl,datasets:[
-          {label:'iOS',data:w.ios,borderColor:C.ios,backgroundColor:ctx=>grd(ctx.chart.ctx,ctx.chart.chartArea,C.iosBg,'transparent'),borderWidth:2,fill:true,tension:.35,pointRadius:3,pointBackgroundColor:C.ios},
-          {label:'Android',data:w.android,borderColor:C.and,backgroundColor:ctx=>grd(ctx.chart.ctx,ctx.chart.chartArea,C.andBg,'transparent'),borderWidth:2,fill:true,tension:.35,pointRadius:3,pointBackgroundColor:C.and}
+          {label:'Toplam',data:w,borderColor:C.ios,backgroundColor:ctx=>grd(ctx.chart.ctx,ctx.chart.chartArea,C.iosBg,'transparent'),borderWidth:2,fill:true,tension:.35,pointRadius:3,pointBackgroundColor:C.ios}
         ]
       },plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:12,font:{size:10,family:'Outfit'},usePointStyle:true}}}});
       niceChart('ovMonthlyTrend',{type:'line',data:{
         labels:ml,datasets:[
-          {label:'iOS',data:m.ios,borderColor:C.ios,backgroundColor:ctx=>grd(ctx.chart.ctx,ctx.chart.chartArea,C.iosBg,'transparent'),borderWidth:2,fill:true,tension:.35,pointRadius:3,pointBackgroundColor:C.ios},
-          {label:'Android',data:m.android,borderColor:C.and,backgroundColor:ctx=>grd(ctx.chart.ctx,ctx.chart.chartArea,C.andBg,'transparent'),borderWidth:2,fill:true,tension:.35,pointRadius:3,pointBackgroundColor:C.and}
+          {label:'Toplam',data:m,borderColor:C.and,backgroundColor:ctx=>grd(ctx.chart.ctx,ctx.chart.chartArea,C.andBg,'transparent'),borderWidth:2,fill:true,tension:.35,pointRadius:3,pointBackgroundColor:C.and}
         ]
       },plugins:{legend:{position:'top',labels:{color:C.text,boxWidth:12,font:{size:10,family:'Outfit'},usePointStyle:true}}}});
     },100);
@@ -1158,29 +1183,46 @@ window.toggleFeatCol = function(i) {
 
 function renderTrends() {
   const d = DATA.download_trends;
-  if(!d || !d.weekly || !d.monthly) {
+  const weeklyArr = Array.isArray(d?.weekly) ? d.weekly : (d?.weekly?.datasets?.infox || null);
+  const monthlyArr = Array.isArray(d?.monthly) ? d.monthly : (d?.monthly?.datasets?.infox || null);
+  if(!weeklyArr || !monthlyArr) {
     document.querySelector('#tab-trends').innerHTML = '<p style="color:var(--muted)">Trend verisi bulunamadı.</p>';
     return;
   }
-  const allNames = Object.keys(d.weekly.datasets);
+  const allIds = DATA.apps.map(a => a.id);
   const nl = {}; (DATA.apps||[]).forEach(a=>{ nl[a.id]=a.name; });
+  const tc = {};
 
   if (!document.getElementById('trendControls')) {
     const ctrl = document.createElement('div'); ctrl.id = 'trendControls'; ctrl.className = 'trend-cbs';
     document.querySelector('#tab-trends .chart-box').before(ctrl);
   }
-  const trendColors = { infox:'#059669', midas:'#2563eb', 'garanti-etrader':'#22d3a0', 'zborsa':'#d97706', 'gedik-trader':'#dc2626', 'tradeall':'#ec4899', 'yafi':'#14b8a6', 'iscep':'#6366f1' };
-  document.getElementById('trendControls').innerHTML = allNames.map(k => `
-    <span class="trend-cb checked" data-tk="${k}" onclick="this.classList.toggle('checked');renderTrendChart()" style="${window._trendSel && !window._trendSel[k]?'':''}">
-      <input type="checkbox" checked> <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${trendColors[k]||'#888'}"></span> ${nl[k]||k}
+  const trendColors = ['#059669','#2563eb','#22d3a0','#d97706','#dc2626','#ec4899','#14b8a6','#6366f1'];
+  const showPrimary = DATA.apps.filter(a => a.primary || a.download_trends?.weekly || Array.isArray(a.download_trends?.weekly));
+  showPrimary.forEach((a,i) => { tc[a.id] = trendColors[i % trendColors.length]; });
+
+  const trendIds = showPrimary.map(a => a.id);
+  document.getElementById('trendControls').innerHTML = trendIds.map(k => `
+    <span class="trend-cb checked" data-tk="${k}" onclick="this.classList.toggle('checked');renderTrendChart()">
+      <input type="checkbox" checked> <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${tc[k]||'#888'}"></span> ${nl[k]||k}
     </span>
   `).join('');
-  window._trendSel = {}; allNames.forEach(k => window._trendSel[k] = true);
+  window._trendSel = {}; trendIds.forEach(k => window._trendSel[k] = true);
 
-  function sp(obj) { const r={}; Object.keys(obj).forEach(k=>{ const it=obj[k]; r[k]=it.ios.map((v,i)=>v+it.android[i]); }); return r; }
-  window._trendW = sp(d.weekly.datasets); window._trendM = sp(d.monthly.datasets);
-  window._trendWl = d.weekly.labels; window._trendMl = d.monthly.labels;
-  window._trendNames = allNames; window._trendNl = nl; window._trendColors = trendColors;
+  function extractTrends(arr) {
+    const r = {};
+    showPrimary.forEach((a,i) => {
+      const dt = a.download_trends;
+      const t = Array.isArray(dt?.weekly) ? dt.weekly : (dt?.weekly?.datasets?.infox || arr);
+      r[a.id] = t;
+    });
+    return r;
+  }
+  window._trendW = extractTrends(weeklyArr);
+  window._trendM = (() => { const r={}; showPrimary.forEach(a => { const dt=a.download_trends; r[a.id] = Array.isArray(dt?.monthly) ? dt.monthly : (dt?.monthly?.datasets?.infox || monthlyArr); }); return r; })();
+  window._trendWl = d.weekly.labels || Array.from({length:weeklyArr.length},(_,i)=>'H'+(i+1));
+  window._trendMl = d.monthly.labels || Array.from({length:monthlyArr.length},(_,i)=>'Ay '+(i+1));
+  window._trendNames = trendIds; window._trendNl = nl; window._trendColors = tc;
   renderTrendChart();
 }
 
@@ -1462,6 +1504,121 @@ window.renderReviewSection = renderReviewSection;
 window.updateScoreWeight = updateScoreWeight;
 window.renderCompare = renderCompare;
 window.renderTrendChart = renderTrendChart;
+
+function renderUpdates() {
+  const apps = DATA.apps || [];
+  const now = new Date();
+  const threeMonthsAgo = new Date(now); threeMonthsAgo.setMonth(now.getMonth()-3);
+
+  function parseDate(str) {
+    if (!str) return null;
+    const d = new Date(str);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  function daysAgo(d) {
+    if (!d) return null;
+    return Math.floor((now - d) / (1000*60*60*24));
+  }
+
+  function fmtDate(d) {
+    if (!d) return '-';
+    return d.toLocaleDateString('tr-TR', {day:'numeric', month:'short', year:'numeric'});
+  }
+
+  function getMajorVersion(v) {
+    if (!v) return null;
+    const m = v.match(/^(\d+)\.(\d+)/);
+    return m ? m[1]+'.'+m[2] : v;
+  }
+
+  const rows = apps.map(a => {
+    const ios = a.stores?.ios || {};
+    const and = a.stores?.android || {};
+    const iosVer = ios.version || '-';
+    const andVer = and.version || '-';
+    const iosDate = parseDate(ios.currentVersionReleaseDate);
+    const andDate = parseDate(and.lastUpdatedOn);
+    const iosRelease = parseDate(ios.releaseDate);
+    const andRelease = parseDate(and.released);
+    const iosDays = daysAgo(iosDate);
+    const andDays = daysAgo(andDate);
+    const recent = (iosDays !== null && iosDays <= 90) || (andDays !== null && andDays <= 90);
+    return { app: a, iosVer, andVer, iosDate, andDate, iosDays, andDays, recent, iosRelease, andRelease };
+  });
+
+  const recentUpdates = rows.filter(r => r.recent).sort((a,b) => Math.min(a.iosDays??999, a.andDays??999) - Math.min(b.iosDays??999, b.andDays??999));
+  const allUpdates = rows.sort((a,b) => Math.min(a.iosDays??999, a.andDays??999) - Math.min(b.iosDays??999, b.andDays??999));
+
+  document.getElementById('updateMetrics').innerHTML = [
+    {v:recentUpdates.length,l:'Son 90 Gün Güncelleme',c:'var(--accent)'},
+    {v:apps.length,l:'Toplam Uygulama',c:'var(--text)'},
+    {v:rows.filter(r => r.iosDays !== null && r.iosDays <= 30).length,l:'Son 30 Gün iOS',c:'var(--blue)'},
+    {v:rows.filter(r => r.andDays !== null && r.andDays <= 30).length,l:'Son 30 Gün Android',c:'var(--yellow)'}
+  ].map(x=>`<div class="metric-card"><div class="label">${x.l}</div><div class="value" style="color:${x.c}">${x.v}</div></div>`).join('');
+
+  document.getElementById('updateTableWrap').innerHTML = `
+    <table>
+      <tr>
+        <th>Uygulama</th>
+        <th style="text-align:center">iOS Sürüm</th>
+        <th style="text-align:center">iOS Güncelleme</th>
+        <th style="text-align:center">Android Sürüm</th>
+        <th style="text-align:center">Android Güncelleme</th>
+        <th style="text-align:center">Durum</th>
+      </tr>
+      ${allUpdates.map(r => {
+        const color = r.app.primary ? 'style="border-left:3px solid var(--accent);background:var(--accent-light)"' : '';
+        const icon = r.recent ? '<span style="color:var(--accent);font-size:1rem">●</span>' : '<span style="color:var(--muted);font-size:1rem">○</span>';
+        return `<tr ${color}>
+          <td style="font-weight:600"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${r.app.color||'#888'};margin-right:6px"></span>${r.app.name}</td>
+          <td style="text-align:center;font-family:'JetBrains Mono',monospace">${r.iosVer}</td>
+          <td style="text-align:center;font-size:.78rem;color:var(--muted)">${r.iosDate ? fmtDate(r.iosDate)+(r.iosDays!==null?' ('+r.iosDays+' gün)':'') : '-'}</td>
+          <td style="text-align:center;font-family:'JetBrains Mono',monospace">${r.andVer}</td>
+          <td style="text-align:center;font-size:.78rem;color:var(--muted)">${r.andDate ? fmtDate(r.andDate)+(r.andDays!==null?' ('+r.andDays+' gün)':'') : '-'}</td>
+          <td style="text-align:center">${icon} ${r.recent ? '<span style="color:var(--accent);font-size:.72rem">Güncel</span>' : '<span style="color:var(--muted);font-size:.72rem">Eski</span>'}</td>
+        </tr>`;
+      }).join('')}
+    </table>`;
+
+  const majorRows = rows
+    .map(r => {
+      const iosReleaseDate = r.iosRelease;
+      const andReleaseDate = r.andRelease;
+      const iosMajor = r.iosVer !== '-' ? getMajorVersion(r.iosVer) : null;
+      const andMajor = r.andVer !== '-' ? getMajorVersion(r.andVer) : null;
+      return { ...r, iosMajor, andMajor, iosReleaseDate, andReleaseDate };
+    })
+    .filter(r => r.iosReleaseDate || r.andReleaseDate)
+    .sort((a,b) => {
+      const da = a.iosReleaseDate || a.andReleaseDate;
+      const db = b.iosReleaseDate || b.andReleaseDate;
+      return db - da;
+    })
+    .slice(0, 20);
+
+  const majorHTML = majorRows.length ? `
+    <table>
+      <tr>
+        <th>Uygulama</th>
+        <th style="text-align:center">iOS İlk Yayın</th>
+        <th style="text-align:center">iOS Sürüm</th>
+        <th style="text-align:center">Android İlk Yayın</th>
+        <th style="text-align:center">Android Sürüm</th>
+      </tr>
+      ${majorRows.map(r => `
+        <tr ${r.app.primary ? 'style="background:var(--accent-light)"' : ''}>
+          <td style="font-weight:600"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${r.app.color||'#888'};margin-right:6px"></span>${r.app.name}</td>
+          <td style="text-align:center;font-size:.78rem;color:var(--muted)">${r.iosReleaseDate ? fmtDate(r.iosReleaseDate) : '-'}</td>
+          <td style="text-align:center;font-family:'JetBrains Mono',monospace">${r.iosMajor || '-'}</td>
+          <td style="text-align:center;font-size:.78rem;color:var(--muted)">${r.andReleaseDate ? fmtDate(r.andReleaseDate) : '-'}</td>
+          <td style="text-align:center;font-family:'JetBrains Mono',monospace">${r.andMajor || '-'}</td>
+        </tr>
+      `).join('')}
+    </table>
+  ` : '<p style="color:var(--muted);text-align:center;padding:20px">Sürüm bilgisi bulunamadı.</p>';
+  document.getElementById('majorUpdateWrap').innerHTML = majorHTML;
+}
 </script>
 </body>
 </html>
