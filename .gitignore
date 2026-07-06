@@ -7,3 +7,5 @@ venv/
 thumbs.db
 
 .vercel
+node_modules/
+service-account.json

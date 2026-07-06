@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-database-compat.js"></script>
 <style>
 :root {
   --bg: #f7f5f2;
@@ -865,10 +867,27 @@ function niceChart(ctxId, config) {
   return new Chart(el.getContext('2d'), merge(opts, config));
 }
 
+var firebaseConfig = {
+  apiKey: "AIzaSyB_umMWHQN3agQ-oTy0u1e5oI0HHqZNO30",
+  authDomain: "info-superapp.firebaseapp.com",
+  databaseURL: "https://info-superapp-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "info-superapp",
+  storageBucket: "info-superapp.appspot.com",
+  messagingSenderId: "409741038325",
+  appId: "1:409741038325:web:3d073695c4aebd55b72bbc",
+  measurementId: "G-912KV0531Q"
+};
+firebase.initializeApp(firebaseConfig);
+var rtdb = firebase.database();
+
 async function init() {
   try {
-    const r = await fetch('data.json');
-    DATA = await r.json();
+    var snap = await rtdb.ref('meta').once('value');
+    var metaData = snap.val();
+    var appsSnap = await rtdb.ref('apps').once('value');
+    var appsData = appsSnap.val();
+    DATA = { meta: metaData, apps: [] };
+    for (var k in appsData) DATA.apps.push(appsData[k]);
   } catch(e) {
     document.body.innerHTML = '<div style="padding:40px;text-align:center;color:var(--red)">Veri yüklenemedi: ' + e.message + '</div>';
     return;
