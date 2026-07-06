@@ -1087,10 +1087,12 @@ function renderAppGrid(list) {
 }
 
 function filterApps(cat) {
-  const q = (document.getElementById('globalSearch').value||'').toLowerCase();
-  let list = Object.values(DATA.apps);
-  if(cat && cat !== 'all') list = list.filter(a=>(a.category||'')===cat);
-  if(q) list = list.filter(a=>a.name.toLowerCase().includes(q)||a.fullName.toLowerCase().includes(q)||(a.developer||'').toLowerCase().includes(q));
+  var q = (document.getElementById('globalSearch').value||'').toLowerCase();
+  var list = DATA.apps.slice();
+  if(cat && cat !== 'all') list = list.filter(function(a){return (a.category||'')===cat;});
+  if(q) list = list.filter(function(a){return a.name.toLowerCase().includes(q)||a.fullName.toLowerCase().includes(q)||(a.developer||'').toLowerCase().includes(q);});
+  var link = document.querySelector('.sidebar-nav a[data-tab="apps"]');
+  if (link) link.click();
   renderAppGrid(list);
 }
 
