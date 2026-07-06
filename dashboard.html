@@ -693,6 +693,10 @@ function toggleTheme(){
     <div class="topbar-right">
       <button class="menu-toggle" onclick="toggleSidebar()" title="Menü">☰</button>
       <input class="search-input" id="globalSearch" placeholder="Uygulama ara..." oninput="filterApps()">
+      <div style="position:relative;display:inline-flex">
+        <button class="export-btn" onclick="showNotifications()" title="Bildirimler" style="background:var(--card);color:var(--text);box-shadow:var(--shadow);position:relative;border:1px solid var(--border)">🔔</button>
+        <span id="notifBadge" style="position:absolute;top:-5px;right:-5px;background:var(--red);color:#fff;font-size:.6rem;font-weight:700;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;border:2px solid var(--bg);line-height:1"></span>
+      </div>
       <button class="export-btn" onclick="exportCSV()">↓ CSV</button>
     </div>
   </div>
@@ -871,6 +875,7 @@ async function init() {
   }
   renderOverview();
   setupNav();
+  updateNotifBadge();
 }
 
 const R = {};
@@ -901,6 +906,7 @@ function hardRefresh() {
   var tabRenderers = tabRender;
   Object.keys(R).forEach(function(k) { R[k] = false; });
   if (active) active.click();
+  updateNotifBadge();
 }
 var lastUpdatedEl = document.getElementById('lastUpdatedLabel');
 if (lastUpdatedEl) {
@@ -1491,6 +1497,61 @@ function openModal(id) {
   document.getElementById('modalOverlay').classList.add('open');
 }
 function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+function generateNotifications() {
+  const apps = Object.values(DATA.apps);
+  const now = new Date();
+  const pD = s => { const d=new Date(s); return isNaN(d.getTime())?'-':d.toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'}); };
+  const dA = s => { const d=new Date(s); return isNaN(d.getTime())?null:Math.floor((now-d)/86400000); };
+  const notifs = [];
+  apps.forEach(a => {
+    const ios = a.stores.ios||{}, and = a.stores.android||{};
+    const iosDays = dA(ios.currentVersionReleaseDate);
+    const andDays = dA(and.lastUpdatedOn);
+    if (iosDays !== null && iosDays >= 90) notifs.push({type:'warn',icon:'⚠️',title:'iOS Güncelleme Yok',desc:`${a.name}: iOS son güncelleme ${iosDays} gün önce (${ios.version||'?'})`,appId:a.id});
+    if (andDays !== null && andDays >= 90) notifs.push({type:'warn',icon:'⚠️',title:'Android Güncelleme Yok',desc:`${a.name}: Android son güncelleme ${andDays} gün önce (${and.version||'?'})`,appId:a.id});
+    if (iosDays !== null && iosDays <= 14) notifs.push({type:'info',icon:'🆕',title:'iOS Güncellendi',desc:`${a.name}: iOS ${ios.version||'?'} yayında (${iosDays===0?'bugün':iosDays+' gün önce'})`,appId:a.id});
+    if (andDays !== null && andDays <= 14) notifs.push({type:'info',icon:'🆕',title:'Android Güncellendi',desc:`${a.name}: Android ${and.version||'?'} yayında (${andDays===0?'bugün':andDays+' gün önce'})`,appId:a.id});
+    const iosV = ios.version, andV = and.version;
+    if (iosV && andV && iosV !== '-' && andV !== '-') {
+      const iM = iosV.split('.').slice(0,2).join('.'), aM = andV.split('.').slice(0,2).join('.');
+      if (iM !== aM) notifs.push({type:'diff',icon:'🔀',title:'Platform Sürüm Farkı',desc:`${a.name}: iOS ${iosV} / Android ${andV}`,appId:a.id});
+    }
+    if (a.launch_date) { const ld = dA(a.launch_date); if (ld !== null && ld <= 90) notifs.push({type:'new',icon:'🌟',title:'Yeni Uygulama',desc:`${a.name}: ${pD(a.launch_date)} tarihinde yayınlandı`,appId:a.id}); }
+  });
+  return notifs.sort((a,b) => {
+    const o = {warn:0,info:1,diff:2,new:3};
+    return (o[a.type]||9) - (o[b.type]||9);
+  });
+}
+function showNotifications() {
+  const notifs = generateNotifications();
+  const badge = document.getElementById('notifBadge');
+  if (badge) { badge.style.display = notifs.length ? 'flex' : 'none'; }
+  document.getElementById('modalContent').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3>🔔 Bildirimler</h3>
+    <div class="sub" style="margin-bottom:18px">${notifs.length} adet bildirim bulunuyor</div>
+    ${notifs.length ? notifs.map(n => `
+      <div onclick="closeModal();openUpdateModal('${n.appId}')" style="display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:var(--card2);border-radius:10px;margin-bottom:8px;cursor:pointer;transition:all var(--transition);border:1px solid transparent" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='transparent'">
+        <div style="font-size:1.2rem;flex-shrink:0;margin-top:1px">${n.icon}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:600;font-size:.85rem;color:var(--text);margin-bottom:2px">${n.title}</div>
+          <div style="font-size:.78rem;color:var(--muted);line-height:1.5">${n.desc}</div>
+        </div>
+      </div>
+    `).join('') : '<p style="text-align:center;color:var(--muted);padding:30px;font-size:.9rem">Bildirim bulunmuyor. Her şey yolunda! ✅</p>'}
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function updateNotifBadge() {
+  if (!DATA) return;
+  const notifs = generateNotifications();
+  const badge = document.getElementById('notifBadge');
+  if (badge) {
+    badge.textContent = notifs.length > 99 ? '99+' : notifs.length;
+    badge.style.display = notifs.length ? 'flex' : 'none';
+  }
+}
 function openUpdateModal(id) {
   const a = DATA.apps.find(x=>x.id===id);
   if(!a) return;
