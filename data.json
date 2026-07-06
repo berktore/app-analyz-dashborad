@@ -54,7 +54,7 @@
             "EN",
             "TR"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -200,7 +200,7 @@
           "sellerName": "MIDAS FINANSAL TEKNOLOJILER AS",
           "bundleId": "com.midas.prod",
           "minimumOsVersion": "15.5",
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "genres": [
             "Finance",
@@ -308,7 +308,7 @@
         "ios": {
           "trackId": 1671536174,
           "trackName": "Garanti BBVA eTrader",
-          "averageUserRating": 5.0,
+          "averageUserRating": 5,
           "userRatingCount": 3,
           "version": "2.5.2",
           "currentVersionReleaseDate": "2026-06-15T20:21:11Z",
@@ -316,7 +316,7 @@
           "sellerName": "GARANTI YATIRIM MENKUL KIYMETLER A S",
           "bundleId": "com.garantibbvayatirim.etrader",
           "minimumOsVersion": "15.6",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -335,7 +335,7 @@
           "formattedPrice": "Free",
           "trackCensoredName": "Garanti BBVA eTrader",
           "userRatingCountForCurrentVersion": 3,
-          "averageUserRatingForCurrentVersion": 5.0
+          "averageUserRatingForCurrentVersion": 5
         },
         "android": {
           "title": "Garanti BBVA eTrader",
@@ -430,7 +430,7 @@
           "sellerName": "GARANTI YATIRIM MENKUL KIYMETLER A S",
           "bundleId": "com.GARANTIBBVAYATIRIM.ITRADER",
           "minimumOsVersion": "13.4",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -482,7 +482,7 @@
         "ios": {
           "trackId": 943902367,
           "trackName": "Garanti FX Trader",
-          "averageUserRating": 5.0,
+          "averageUserRating": 5,
           "userRatingCount": 1,
           "version": "1.2.3",
           "currentVersionReleaseDate": "2026-06-05T20:06:00Z",
@@ -490,7 +490,7 @@
           "sellerName": "GARANTI YATIRIM MENKUL KIYMETLER A S",
           "bundleId": "com.garantiyatirim.fx",
           "minimumOsVersion": "15.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance",
             "Business"
@@ -575,7 +575,7 @@
           "sellerName": "ZIRAAT YATIRIM MENKUL DEGERLER ANONIM SIRKETI",
           "bundleId": "com.matriksdata.ziraat",
           "minimumOsVersion": "13.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance",
             "Business"
@@ -627,7 +627,7 @@
         "ios": {
           "trackId": 995050960,
           "trackName": "ZBorsa (Ziraat Yatırım Borsa)",
-          "averageUserRating": 3.0,
+          "averageUserRating": 3,
           "userRatingCount": 10,
           "version": "2.0.4",
           "currentVersionReleaseDate": "2024-08-19T15:09:30Z",
@@ -635,7 +635,7 @@
           "sellerName": "ZIRAAT YATIRIM MENKUL DEGERLER ANONIM SIRKETI",
           "bundleId": "com.foreks.zborsaiPhone",
           "minimumOsVersion": "13.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance",
             "Business"
@@ -720,7 +720,7 @@
           "sellerName": "GEDIK YATIRIM MENKUL DEGERLER AS",
           "bundleId": "com.gedik.trader",
           "minimumOsVersion": "14.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -798,7 +798,7 @@
           "sellerName": "TEB YATIRIM MENKUL DEGERLER AS",
           "bundleId": "com.teb.prime",
           "minimumOsVersion": "14.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -873,7 +873,7 @@
           "sellerName": "AK YATIRIM MENKUL DEGERLER AS",
           "bundleId": "com.akyatirim.tradeall",
           "minimumOsVersion": "14.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -948,7 +948,7 @@
           "sellerName": "OSMANLI YATIRIM MENKUL DEGERLER AS",
           "bundleId": "com.osmanli.mobil",
           "minimumOsVersion": "13.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -961,7 +961,7 @@
         "android": {
           "title": "Osmanlı Mobil",
           "appId": "com.matriksdata.osmanli",
-          "score": 4.0,
+          "score": 4,
           "ratings": 5200,
           "reviews": 2500,
           "installs": "500.000+",
@@ -1022,7 +1022,7 @@
           "sellerName": "AKBANK TURK ANONIM SIRKETI",
           "bundleId": "akbank.yatirimci.mobile",
           "minimumOsVersion": "14.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -1088,7 +1088,7 @@
         "ios": {
           "trackId": 1611138126,
           "trackName": "Herkese Borsa Mobil",
-          "averageUserRating": 4.0,
+          "averageUserRating": 4,
           "userRatingCount": 120,
           "version": "1.156.6",
           "currentVersionReleaseDate": "2025-01-31T10:00:00Z",
@@ -1096,7 +1096,7 @@
           "sellerName": "IS YATIRIM MENKUL DEGERLER AS",
           "bundleId": "com.isyatirim.herkeseborsa",
           "minimumOsVersion": "13.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -1169,7 +1169,7 @@
           "sellerName": "IS YATIRIM MENKUL DEGERLER AS",
           "bundleId": "com.isyatirim.trademaster",
           "minimumOsVersion": "13.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -1234,7 +1234,7 @@
         "ios": {
           "trackId": 1017296793,
           "trackName": "TradeOnline",
-          "averageUserRating": 4.0,
+          "averageUserRating": 4,
           "userRatingCount": 45,
           "version": "3.0.5",
           "currentVersionReleaseDate": "2026-05-10T10:00:00Z",
@@ -1242,7 +1242,7 @@
           "sellerName": "TURKIYE VAKIFLAR BANKASI T.A.O.",
           "bundleId": "com.vakifbank.tradeonline",
           "minimumOsVersion": "13.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -1314,7 +1314,7 @@
           "sellerName": "YATIRIM FINANSMAN MENKUL DEGERLER AS",
           "bundleId": "com.yatirimfinansman.yafi",
           "minimumOsVersion": "15.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -1386,7 +1386,7 @@
           "sellerName": "ALNUS YATIRIM MENKUL DEGERLER AS",
           "bundleId": "com.alnus.mobile",
           "minimumOsVersion": "13.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -1456,7 +1456,7 @@
           "fileSizeBytes": "88000000",
           "bundleId": "com.trive.mobile",
           "minimumOsVersion": "14.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -1467,7 +1467,7 @@
         "android": {
           "title": "Trive Yatırım",
           "appId": "com.trive.yatirim",
-          "score": 4.0,
+          "score": 4,
           "ratings": 1500,
           "reviews": 700,
           "installs": "100.000+",
@@ -1526,7 +1526,7 @@
           "fileSizeBytes": "95000000",
           "bundleId": "com.ahlatci.mobile",
           "minimumOsVersion": "13.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -1590,14 +1590,14 @@
         "ios": {
           "trackId": 1369876543,
           "trackName": "GCM Yatırım",
-          "averageUserRating": 4.0,
+          "averageUserRating": 4,
           "userRatingCount": 280,
           "version": "2.5.0",
           "currentVersionReleaseDate": "2026-03-15T10:00:00Z",
           "fileSizeBytes": "78000000",
           "bundleId": "com.gcm.mobile",
           "minimumOsVersion": "13.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -1667,7 +1667,7 @@
           "sellerName": "TURKIYE IS BANKASI AS",
           "bundleId": "com.isbank.iscep",
           "minimumOsVersion": "14.0",
-          "price": 0.0,
+          "price": 0,
           "genres": [
             "Finance"
           ],
@@ -1761,7 +1761,7 @@
             "TR",
             "VI"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -1870,7 +1870,7 @@
             "TR",
             "VI"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -1958,7 +1958,7 @@
           "languageCodesISO2A": [
             "EN"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -2049,7 +2049,7 @@
             "ES",
             "ZH"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -2135,7 +2135,7 @@
             "EN",
             "TR"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -2222,7 +2222,7 @@
             "EN",
             "TR"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -2307,7 +2307,7 @@
           "languageCodesISO2A": [
             "TR"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -2326,7 +2326,7 @@
         },
         "android": {
           "appId": "com.foreks.android.tacirler",
-          "score": 4.0,
+          "score": 4,
           "ratings": 2000,
           "reviews": 2000,
           "installs": "100.0B+",
@@ -2392,7 +2392,7 @@
             "EN",
             "TR"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -2477,7 +2477,7 @@
           "languageCodesISO2A": [
             "EN"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -2549,7 +2549,7 @@
         "ios": null,
         "android": {
           "appId": "tr.com.a1capital.android",
-          "score": 4.0,
+          "score": 4,
           "ratings": 1500,
           "reviews": 1500,
           "installs": "100.0B+",
@@ -2614,7 +2614,7 @@
           "languageCodesISO2A": [
             "EN"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -2699,7 +2699,7 @@
             "EN",
             "TR"
           ],
-          "price": 0.0,
+          "price": 0,
           "formattedPrice": "Free",
           "currency": "USD",
           "genres": [
@@ -2988,318 +2988,6 @@
             3120,
             3240
           ]
-        },
-        "tradingview": {
-          "ios": [
-            60299549600,
-            61505540592,
-            62711531584,
-            63917522576,
-            65123513568,
-            66329504560,
-            67535495552,
-            68741486544,
-            69947477536,
-            71153468528
-          ],
-          "android": [
-            5000,
-            5100,
-            5200,
-            5300,
-            5400,
-            5500,
-            5600,
-            5700,
-            5800,
-            5900
-          ]
-        },
-        "investing": {
-          "ios": [
-            90999812200,
-            91909810322,
-            92819808444,
-            93729806566,
-            94639804688,
-            95549802810,
-            96459800932,
-            97369799054,
-            98279797176,
-            99189795298
-          ],
-          "android": [
-            10000,
-            10100,
-            10200,
-            10300,
-            10400,
-            10500,
-            10600,
-            10700,
-            10800,
-            10900
-          ]
-        },
-        "fintables": {
-          "ios": [
-            1632913774,
-            1796205151,
-            3429118925,
-            5062032699,
-            6694946473,
-            8327860247,
-            9960774021,
-            11593687795,
-            13226601569,
-            14859515343
-          ],
-          "android": [
-            100,
-            110,
-            210,
-            310,
-            410,
-            510,
-            610,
-            710,
-            810,
-            910
-          ]
-        },
-        "yahoo-finance": {
-          "ios": [
-            3284127010,
-            3612539711,
-            3940952412,
-            4269365113,
-            4597777814,
-            4926190515,
-            5254603216,
-            5583015917,
-            5911428618,
-            6239841319
-          ],
-          "android": [
-            1000,
-            1100,
-            1200,
-            1300,
-            1400,
-            1500,
-            1600,
-            1700,
-            1800,
-            1900
-          ]
-        },
-        "deniz-trader": {
-          "ios": [
-            1618468218,
-            1780315039,
-            3398783257,
-            5017251475,
-            6635719693,
-            8254187911,
-            9872656129,
-            11491124347,
-            13109592565,
-            14728060783
-          ],
-          "android": [
-            100,
-            110,
-            210,
-            310,
-            410,
-            510,
-            610,
-            710,
-            810,
-            910
-          ]
-        },
-        "matriks-iq": {
-          "ios": [
-            1446245060,
-            2169367590,
-            3615612650,
-            5061857710,
-            6508102770,
-            7954347830,
-            9400592890,
-            10846837950,
-            12293083010,
-            13739328070
-          ],
-          "android": [
-            100,
-            150,
-            250,
-            350,
-            450,
-            550,
-            650,
-            750,
-            850,
-            950
-          ]
-        },
-        "tacirler": {
-          "ios": [
-            1611550436,
-            1772705479,
-            3384255915,
-            4995806351,
-            6607356787,
-            8218907223,
-            9830457659,
-            11442008095,
-            13053558531,
-            14665108967
-          ],
-          "android": [
-            100,
-            110,
-            210,
-            310,
-            410,
-            510,
-            610,
-            710,
-            810,
-            910
-          ]
-        },
-        "paribu": {
-          "ios": [
-            7241001760,
-            8689202112,
-            10137402464,
-            11585602816,
-            13033803168,
-            14482003520,
-            15930203872,
-            17378404224,
-            18826604576,
-            20274804928
-          ],
-          "android": [
-            500,
-            600,
-            700,
-            800,
-            900,
-            1000,
-            1100,
-            1200,
-            1300,
-            1400
-          ]
-        },
-        "bloomberg": {
-          "ios": [
-            2819410970,
-            3101352067,
-            3383293164,
-            3665234261,
-            3947175358,
-            4229116455,
-            4511057552,
-            4792998649,
-            5074939746,
-            5356880843
-          ],
-          "android": [
-            1000,
-            1100,
-            1200,
-            1300,
-            1400,
-            1500,
-            1600,
-            1700,
-            1800,
-            1900
-          ]
-        },
-        "a1-capital": {
-          "ios": [
-            1241915554,
-            1366107109,
-            2608022663,
-            3849938217,
-            5091853771,
-            6333769325,
-            7575684879,
-            8817600433,
-            10059515987,
-            11301431541
-          ],
-          "android": [
-            100,
-            110,
-            210,
-            310,
-            410,
-            510,
-            610,
-            710,
-            810,
-            910
-          ]
-        },
-        "piapiri": {
-          "ios": [
-            1605946348,
-            1686243665,
-            3292190013,
-            4898136361,
-            6504082709,
-            8110029057,
-            9715975405,
-            11321921753,
-            12927868101,
-            14533814449
-          ],
-          "android": [
-            100,
-            105,
-            205,
-            305,
-            405,
-            505,
-            605,
-            705,
-            805,
-            905
-          ]
-        },
-        "odeabank": {
-          "ios": [
-            634414038,
-            1268828076,
-            1903242114,
-            2537656152,
-            3172070190,
-            3806484228,
-            4440898266,
-            5075312304,
-            5709726342,
-            6344140380
-          ],
-          "android": [
-            100,
-            200,
-            300,
-            400,
-            500,
-            600,
-            700,
-            800,
-            900,
-            1000
-          ]
         }
       }
     },
@@ -3455,222 +3143,6 @@
             61200,
             64800,
             67200
-          ]
-        },
-        "tradingview": {
-          "ios": [
-            3000,
-            3150,
-            3300,
-            3450,
-            3600,
-            3750
-          ],
-          "android": [
-            10000,
-            10500,
-            11000,
-            11500,
-            12000,
-            12500
-          ]
-        },
-        "investing": {
-          "ios": [
-            6000,
-            6150,
-            6300,
-            6450,
-            6600,
-            6750
-          ],
-          "android": [
-            20000,
-            20500,
-            21000,
-            21500,
-            22000,
-            22500
-          ]
-        },
-        "fintables": {
-          "ios": [
-            150,
-            156,
-            306,
-            456,
-            606,
-            756
-          ],
-          "android": [
-            500,
-            520,
-            1020,
-            1520,
-            2020,
-            2520
-          ]
-        },
-        "yahoo-finance": {
-          "ios": [
-            600,
-            750,
-            900,
-            1050,
-            1200,
-            1350
-          ],
-          "android": [
-            2000,
-            2500,
-            3000,
-            3500,
-            4000,
-            4500
-          ]
-        },
-        "deniz-trader": {
-          "ios": [
-            150,
-            156,
-            306,
-            456,
-            606,
-            756
-          ],
-          "android": [
-            500,
-            520,
-            1020,
-            1520,
-            2020,
-            2520
-          ]
-        },
-        "matriks-iq": {
-          "ios": [
-            150,
-            180,
-            330,
-            480,
-            630,
-            780
-          ],
-          "android": [
-            500,
-            600,
-            1100,
-            1600,
-            2100,
-            2600
-          ]
-        },
-        "tacirler": {
-          "ios": [
-            150,
-            156,
-            306,
-            456,
-            606,
-            756
-          ],
-          "android": [
-            500,
-            520,
-            1020,
-            1520,
-            2020,
-            2520
-          ]
-        },
-        "paribu": {
-          "ios": [
-            300,
-            450,
-            600,
-            750,
-            900,
-            1050
-          ],
-          "android": [
-            1000,
-            1500,
-            2000,
-            2500,
-            3000,
-            3500
-          ]
-        },
-        "bloomberg": {
-          "ios": [
-            600,
-            750,
-            900,
-            1050,
-            1200,
-            1350
-          ],
-          "android": [
-            2000,
-            2500,
-            3000,
-            3500,
-            4000,
-            4500
-          ]
-        },
-        "a1-capital": {
-          "ios": [
-            150,
-            156,
-            306,
-            456,
-            606,
-            756
-          ],
-          "android": [
-            500,
-            520,
-            1020,
-            1520,
-            2020,
-            2520
-          ]
-        },
-        "piapiri": {
-          "ios": [
-            150,
-            153,
-            303,
-            453,
-            603,
-            753
-          ],
-          "android": [
-            500,
-            510,
-            1010,
-            1510,
-            2010,
-            2510
-          ]
-        },
-        "odeabank": {
-          "ios": [
-            150,
-            210,
-            360,
-            510,
-            660,
-            810
-          ],
-          "android": [
-            500,
-            700,
-            1200,
-            1700,
-            2200,
-            2700
           ]
         }
       }
