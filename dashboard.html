@@ -1497,6 +1497,14 @@ function openModal(id) {
   document.getElementById('modalOverlay').classList.add('open');
 }
 function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+var readNotifs = new Set();
+(function() {
+  try {
+    var saved = JSON.parse(localStorage.getItem('ia_read_notifs') || '[]');
+    if (Array.isArray(saved)) saved.forEach(function(k) { readNotifs.add(k); });
+  } catch(e) {}
+})();
+function notifKey(n) { return n.appId+'-'+n.type+'-'+n.title; }
 function generateNotifications() {
   const apps = Object.values(DATA.apps);
   const now = new Date();
@@ -1523,33 +1531,57 @@ function generateNotifications() {
     return (o[a.type]||9) - (o[b.type]||9);
   });
 }
+function markNotifRead(key) {
+  readNotifs.add(key);
+  try { localStorage.setItem('ia_read_notifs', JSON.stringify(Array.from(readNotifs))); } catch(e) {}
+  updateNotifBadge();
+}
+function markAllRead() {
+  generateNotifications().forEach(function(n) { readNotifs.add(notifKey(n)); });
+  try { localStorage.setItem('ia_read_notifs', JSON.stringify(Array.from(readNotifs))); } catch(e) {}
+  closeModal();
+  updateNotifBadge();
+}
 function showNotifications() {
-  const notifs = generateNotifications();
+  const allNotifs = generateNotifications();
+  const unreadNotifs = allNotifs.filter(function(n) { return !readNotifs.has(notifKey(n)); });
   const badge = document.getElementById('notifBadge');
-  if (badge) { badge.style.display = notifs.length ? 'flex' : 'none'; }
-  document.getElementById('modalContent').innerHTML = `
-    <button class="modal-close" onclick="closeModal()">&times;</button>
-    <h3>🔔 Bildirimler</h3>
-    <div class="sub" style="margin-bottom:18px">${notifs.length} adet bildirim bulunuyor</div>
-    ${notifs.length ? notifs.map(n => `
-      <div onclick="closeModal();openUpdateModal('${n.appId}')" style="display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:var(--card2);border-radius:10px;margin-bottom:8px;cursor:pointer;transition:all var(--transition);border:1px solid transparent" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='transparent'">
-        <div style="font-size:1.2rem;flex-shrink:0;margin-top:1px">${n.icon}</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-weight:600;font-size:.85rem;color:var(--text);margin-bottom:2px">${n.title}</div>
-          <div style="font-size:.78rem;color:var(--muted);line-height:1.5">${n.desc}</div>
-        </div>
-      </div>
-    `).join('') : '<p style="text-align:center;color:var(--muted);padding:30px;font-size:.9rem">Bildirim bulunmuyor. Her şey yolunda! ✅</p>'}
-  `;
+  var html = '<button class="modal-close" onclick="closeModal()">&times;</button>';
+  html += '<h3>🔔 Bildirimler</h3>';
+  html += '<div class="sub" style="margin-bottom:12px">';
+  if (allNotifs.length) {
+    html += unreadNotifs.length + ' okunmamış / ' + allNotifs.length + ' toplam';
+    html += ' &middot; <a href="#" onclick="event.preventDefault();markAllRead()" style="color:var(--accent);font-weight:600;text-decoration:none;cursor:pointer">Tümünü Okundu İşaretle</a>';
+  } else {
+    html += 'Bildirim bulunmuyor';
+  }
+  html += '</div>';
+  if (allNotifs.length) {
+    allNotifs.forEach(function(n) {
+      var key = notifKey(n);
+      var safeKey = key.replace(/'/g,"\\'");
+      var read = readNotifs.has(key);
+      html += '<div onclick="closeModal();markNotifRead(\''+safeKey+'\');openUpdateModal(\''+n.appId+'\')" style="display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:'+(read?'var(--card)':'var(--card2)')+';border-radius:10px;margin-bottom:6px;cursor:pointer;transition:all var(--transition);border:1px solid '+(read?'var(--border)':'transparent')+';opacity:'+(read?'.6':'1')+'" onmouseover="this.style.borderColor=\'var(--accent-border)\'" onmouseout="this.style.borderColor=\''+(read?'var(--border)':'transparent')+'\'">';
+      html += '<div style="font-size:1.2rem;flex-shrink:0;margin-top:1px">'+n.icon+'</div>';
+      html += '<div style="flex:1;min-width:0"><div style="font-weight:600;font-size:.85rem;color:var(--text);margin-bottom:2px">'+n.title+'</div>';
+      html += '<div style="font-size:.78rem;color:var(--muted);line-height:1.5">'+n.desc+'</div></div>';
+      html += read ? '<div style="font-size:.6rem;color:var(--muted);flex-shrink:0">✓</div>' : '';
+      html += '</div>';
+    });
+  } else {
+    html += '<p style="text-align:center;color:var(--muted);padding:30px;font-size:.9rem">Bildirim bulunmuyor. Her şey yolunda! ✅</p>';
+  }
+  document.getElementById('modalContent').innerHTML = html;
   document.getElementById('modalOverlay').classList.add('open');
 }
 function updateNotifBadge() {
   if (!DATA) return;
-  const notifs = generateNotifications();
+  const allNotifs = generateNotifications();
+  const unreadCount = allNotifs.filter(function(n) { return !readNotifs.has(notifKey(n)); }).length;
   const badge = document.getElementById('notifBadge');
   if (badge) {
-    badge.textContent = notifs.length > 99 ? '99+' : notifs.length;
-    badge.style.display = notifs.length ? 'flex' : 'none';
+    badge.textContent = unreadCount > 99 ? '99+' : unreadCount;
+    badge.style.display = unreadCount ? 'flex' : 'none';
   }
 }
 function openUpdateModal(id) {
