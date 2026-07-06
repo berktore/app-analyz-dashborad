@@ -1704,6 +1704,1049 @@
           "updated": 1782800000
         }
       }
+    },
+    {
+      "id": "tradingview",
+      "name": "TradingView",
+      "fullName": "TradingView: Track All Markets",
+      "color": "#2196F3",
+      "primary": false,
+      "icon": null,
+      "developer": "TradingView, Inc.",
+      "website": "",
+      "category": "Finans",
+      "description": "Dünyanın en popüler grafik ve sosyal ağ platformu. Hisse, kripto, forex ve daha fazlası için gelişmiş grafikler, teknik göstergeler ve topluluk fikirleri.",
+      "features": [
+        "Gelişmiş Grafikler",
+        "Teknik Göstergeler",
+        "Sosyal Ağ",
+        "Sanal Portföy",
+        "Pine Script",
+        "Alarm",
+        "Çoklu Borsa",
+        "Tarayıcı"
+      ],
+      "launch_date": "2017-04-24",
+      "stores": {
+        "ios": {
+          "trackId": 1205990992,
+          "trackName": "TradingView: Track All Markets",
+          "averageUserRating": 4.84319,
+          "userRatingCount": 393012,
+          "version": "2.134.0",
+          "currentVersionReleaseDate": "2026-06-23T00:31:18Z",
+          "releaseDate": "2017-04-24T11:29:54Z",
+          "fileSizeBytes": "211038208",
+          "sellerName": "TradingView, Inc.",
+          "bundleId": "com.tradingview.tradingviewapp",
+          "minimumOsVersion": "17.0",
+          "languageCodesISO2A": [
+            "AR",
+            "EN",
+            "FR",
+            "DE",
+            "HE",
+            "ID",
+            "IT",
+            "JA",
+            "KO",
+            "MS",
+            "PL",
+            "PT",
+            "RU",
+            "ZH",
+            "ES",
+            "TH",
+            "ZH",
+            "TR",
+            "VI"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "Finance",
+            "News"
+          ],
+          "primaryGenreName": "Finance",
+          "trackViewUrl": "https://apps.apple.com/us/app/tradingview-track-all-markets/id1205990992?uo=4",
+          "artistName": "TradingView",
+          "sellerUrl": "https://www.tradingview.com/about/",
+          "trackCensoredName": "TradingView: Track All Markets",
+          "contentAdvisoryRating": "17+",
+          "releaseNotes": "In this update, we've implemented some performance improvements and fixes to optimize your experience.",
+          "description": "In a nutshell, we’re where the world charts, chats and trades markets. Over 100 million people use our social network and supercharged supercharts to make better, brighter decisions when they trade. Download our app to access free charts, alerts, advanced watchlists, plus discuss latest trends with other traders and much, much more. Here’s a fuller feature set: \n\nWorld-leading charts\nA trader’s rite of passage, charts power insight. Millions use ours – for free – to make better decisions in the markets. Our charts work on any device and outperform many desktop trading platforms. You’ll be able to search for stocks, currencies, cryptos, futures, CFDs and more. A wide range of drawing tools (like Gann Fans and Elliott Waves) and technical indicators will also help you analyze price action.\n\nSimple Pine Script for complex tools\nFrom coding to chart analysis, faster than ever before — we crafted our programming language to give you the power to create custom tools. Pine Script is elegantly minimalist, pre-integrated with data, and breaking your analysis limits.\n\nBar Replay to hit rewind on past insights \nWatch how pricing data unfolded historically. Rewind markets and review at speed and resolution you desire.\n\nUnmissable alerts \nTrading alerts were never this powerful, flexible, and easy to use. Cloud-based, they are available on any device – get notified by email, app, desktop, or webhook when your alerts trigger.\n\nMade to trade \nTrade directly on our charts – trade through top brokers integrated to our platform, or use Paper Trading to practice buying and selling securities without any of the risk.\n\nOne app to track them all\nGet a comprehensive view of the financial markets with our app: live quotes, news, trends, financial statements, and fundamentals, all in one place at your fingertips – the fastest way to find all the data you need.\n\nTotal economics and corporate reports\nAccess the latest and upcoming economic events, world companies' earnings, and dividends, in one Calendar.\n\nWatchlist what matters\nKeep track of all your beloved stocks and currency pairs with our highly-customizable watchlists. Use them to see real-time price updates and be the first to know what’s moving in the markets – wherever you happen to be. \n\nData. Data. Data.\nGain access to real-time market data from exchanges in the US, Europe and Asia. Hundreds of thousands of financial symbols from 100+ exchanges are at your fingertips. Unless you have incredibly niche interests, you’ll find what you’re looking for.\n\nNever trade alone again\nUnleash your creativity onto the world markets by being part of the largest social network for traders and investors. With thousands of ideas and minds published daily and ability to customize and share your analysis, start building your following today.\n\nAlways at your fingertips\nOur secure and reliable cloud-based infrastructure means you’ll always have access to the world of finance, 24/7. No unexpected downtime at a critical trading moment ever again.  \n\nTerms of use: https://www.tradingview.com/policies/\nPrivacy policy: https://www.tradingview.com/privacy-policy/",
+          "userRatingCountForCurrentVersion": 393012,
+          "averageUserRatingForCurrentVersion": 4.84319
+        },
+        "android": {
+          "appId": "com.tradingview.tradingviewapp",
+          "score": 4.5,
+          "ratings": 922000,
+          "reviews": 922000,
+          "installs": "50000.0B+",
+          "realInstalls": 50000000,
+          "version": "1.0",
+          "developer": "TradingView, Inc.",
+          "summary": "TradingView: Track All Markets",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.tradingview.tradingviewapp",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Finans"
+      }
+    },
+    {
+      "id": "investing",
+      "name": "Investing.com",
+      "fullName": "Investing.com: Stock Market",
+      "color": "#1565C0",
+      "primary": false,
+      "icon": null,
+      "developer": "Fusion Media Limited",
+      "website": "",
+      "category": "Finans",
+      "description": "50 milyondan fazla yatırımcı tarafından kullanılan gerçek zamanlı finansal veri uygulaması. Hisse, endeks, emtia, forex ve kripto para takibi.",
+      "features": [
+        "Canlı Veri",
+        "Portföy Takibi",
+        "Ekonomik Takvim",
+        "Finans Haberleri",
+        "Teknik Analiz",
+        "Fiyat Alarmı",
+        "Hisse Tarayıcı",
+        "Karşılaştırma"
+      ],
+      "launch_date": "2014-09-02",
+      "stores": {
+        "ios": {
+          "trackId": 909998122,
+          "trackName": "Investing.com: Stock Market",
+          "averageUserRating": 4.7413,
+          "userRatingCount": 36931,
+          "version": "6.76.0",
+          "currentVersionReleaseDate": "2026-07-05T03:34:52Z",
+          "releaseDate": "2014-09-02T07:00:00Z",
+          "fileSizeBytes": "339179520",
+          "sellerName": "Fusion Media Limited",
+          "bundleId": "com.investing.app",
+          "minimumOsVersion": "18.0",
+          "languageCodesISO2A": [
+            "AR",
+            "NL",
+            "EN",
+            "FR",
+            "DE",
+            "HE",
+            "HI",
+            "ID",
+            "IT",
+            "JA",
+            "KO",
+            "MS",
+            "PL",
+            "PT",
+            "RU",
+            "ZH",
+            "ES",
+            "SV",
+            "TH",
+            "ZH",
+            "TR",
+            "VI"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "Finance",
+            "Business"
+          ],
+          "primaryGenreName": "Finance",
+          "trackViewUrl": "https://apps.apple.com/us/app/investing-com-stock-market/id909998122?uo=4",
+          "artistName": "Fusion Media Limited",
+          "sellerUrl": "https://www.investing.com/mobile",
+          "trackCensoredName": "Investing.com: Stock Market",
+          "contentAdvisoryRating": "4+",
+          "releaseNotes": "General upgrades, updates and bug fixes to keep your Investing.com experience running smoother than ever. Got a question? Feedback? Love letters? Send us your comments in the More menu → Send Feedback. We’re listening!",
+          "description": "Investing.com is a real-time financial data app used by over 50 million investors and traders worldwide to track stock markets, monitor portfolios, research financial markets, and stay ahead of economic events. \nWhether you are a beginner building your first portfolio or an active trader watching real-time charts, Investing.com gives you the data, tools, and news to make informed financial decisions.\n\nWHO INVESTING.COM IS FOR\n• Investors building and monitoring portfolios\n• Traders following real-time stock market movements\n• Market researchers tracking stocks, ETFs, crypto & forex\n• Users following financial news and events \nREAL-TIME MARKET DATA\nTrack live stock market data, prices, charts, and movements for 300,000+ instruments — stocks, ETFs, indices, commodities, currencies, bonds, crypto, and futures. Get real-time quotes and historical data for US markets including the Dow Jones, NASDAQ, and S&P 500; European indices including the FTSE 100, DAX, and CAC 40; and markets across Asia, Latin America, and the Middle East.\n \nPORTFOLIO TRACKER\nBuild and monitor a personalised portfolio to see all your holdings in one place. Add stocks, ETFs, crypto, and other assets, then track performance, view profit and loss, and receive price alerts when your targets are hit.\n \nECONOMIC CALENDAR\nPrepare for market-moving events with the Investing.com Economic Calendar. Track central bank decisions (Fed, ECB, Bank of England), GDP releases, inflation reports, jobs data, and earnings announcements — filtered by country, impact level, and date.\n \nFINANCIAL NEWS & ANALYSIS\nStay informed with breaking financial news, expert market analysis, and earnings reports covering stocks, forex, commodities, and crypto. Set personalized news alerts so you never miss a story that matters to your portfolio.\n \nADVANCED CHARTS & TECHNICAL ANALYSIS\nAnalyse price movements with interactive charts, 100+ technical indicators, and drawing tools. Use candlestick, bar, and line charts across multiple timeframes to identify trends and support your trading decisions.\n \nCUSTOM PRICE ALERTS\nSet price alerts for any instrument and receive push notifications the moment your target is reached. Customise alerts for percentage moves, news triggers, or key economic events so you can act quickly when markets move.\n \nINVESTING.COM PRO\nUpgrade to Investing.com Pro for an ad-free experience, exclusive financial data, advanced stock screeners, extended historical data, deeper market analysis tools, and priority access to new features. A free version of the app is available with full access to core features.\n \nWHAT YOU CAN TRACK\n• Stocks, penny stocks & small-caps\n• ETFs & mutual funds\n• Crypto, including Bitcoin, Ethereum & altcoins\n• Forex (170+ currency pairs)\n• Commodities like gold, silver, oil & natural gas\n• Bonds & government yields\n• Global indices & futures\n\nFREQUENTLY ASKED QUESTIONS\nIs Investing.com free? \nYes. The app is free to download and use. Investing.com Pro is an optional paid subscription with additional features and an ad-free experience.\n \nCan I track crypto with Investing.com? \nYes. The app covers thousands of cryptocurrencies including Bitcoin, Ethereum, and altcoins, with real-time prices, charts, and news.\n \nDoes Investing.com have a stock screener? \nYes. The app includes stock screening tools to filter equities by sector, market cap, technical signals, and fundamental metrics.\n \nIs Investing.com a trading platform? \nNo. Investing.com is a financial data and analysis app. Users cannot buy or sell financial instruments directly through the app.\n \nInvesting.com is a financial data and research platform used by investors and traders in over 200 countries. The app is available in 30+ languages.\n \nInvesting.com is not a trading platform. Users cannot trade financial instruments directly through the app. All investments carry risk, including loss of the full amount invested. This app is for informational purposes only and does not constitute financial advice.",
+          "userRatingCountForCurrentVersion": 36931,
+          "averageUserRatingForCurrentVersion": 4.7413
+        },
+        "android": {
+          "appId": "com.fusionmedia.investing",
+          "score": 4.6,
+          "ratings": 1500000,
+          "reviews": 1500000,
+          "installs": "100000.0B+",
+          "realInstalls": 100000000,
+          "version": "1.0",
+          "developer": "Fusion Media Limited",
+          "summary": "Investing.com: Stock Market",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.fusionmedia.investing",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Finans"
+      }
+    },
+    {
+      "id": "fintables",
+      "name": "Fintables",
+      "fullName": "Fintables: Borsa, Hisse ve Fon",
+      "color": "#E53935",
+      "primary": false,
+      "icon": null,
+      "developer": "Fintables",
+      "website": "",
+      "category": "Finans",
+      "description": "Borsa, hisse ve yatırım fonu takibinde ihtiyacınız olan tüm araçlar. Canlı borsa verileri, detaylı hisse analizleri, fon karşılaştırmaları.",
+      "features": [
+        "Canlı Borsa",
+        "Hisse Analizi",
+        "Fon Analizi",
+        "Bilanço",
+        "Temettü",
+        "Sanal Portföy",
+        "KAP Haber",
+        "Ekonomik Ajanda"
+      ],
+      "launch_date": "2022-10-26",
+      "stores": {
+        "ios": {
+          "trackId": 1632913774,
+          "trackName": "Fintables: Borsa, Hisse ve Fon",
+          "averageUserRating": 4.95238,
+          "userRatingCount": 21,
+          "version": "2.22.9",
+          "currentVersionReleaseDate": "2026-06-26T18:32:19Z",
+          "releaseDate": "2022-10-26T07:00:00Z",
+          "fileSizeBytes": "56065024",
+          "sellerName": "FINTABLES BILISIM TEKNOLOJILERI ANONIM SIRKETI",
+          "bundleId": "com.fintables.fintables",
+          "minimumOsVersion": "15.1",
+          "languageCodesISO2A": [
+            "EN"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "Finance"
+          ],
+          "primaryGenreName": "Finance",
+          "trackViewUrl": "https://apps.apple.com/us/app/fintables-borsa-hisse-ve-fon/id1632913774?uo=4",
+          "artistName": "Fintables",
+          "sellerUrl": "https://fintables.com",
+          "trackCensoredName": "Fintables: Borsa, Hisse ve Fon",
+          "contentAdvisoryRating": "4+",
+          "releaseNotes": "- Fintables'ın yeni yapay zeka asistanı Evo artık mobilde!",
+          "description": "** Fintables – Yatırım Gücünüzü Cebinize Taşıyın\n\nBorsa, hisse ve yatırım fonu takibinde ihtiyacınız olan tüm araçlar Fintables uygulamasında.\n\nCanlı borsa verileri, detaylı hisse analizleri, kapsamlı fon karşılaştırmaları, bilançolar, temettü bilgileri, sanal portföy yönetimi ve ekonomik ajanda ile yatırım kararlarınızı veriyle şekillendirin.\nFintables ile analiz edin, karşılaştırın, işlem yaparak yatırımlarınıza yön verin.\n\n\n**Canlı Borsa Verileri, Detaylı Hisse ve Fon Analizleri\n\nBorsa İstanbul’da işlem gören hisseleri anlık olarak takip edin.\nGerçek zamanlı hisse fiyatları, gün içi fiyat değişimleri, endeks verileri ve borsa analizlerini izleyin.\n\n\n**Hisse Analizi ve Bilançolar\n\nŞirketlerin finansal tablolarını temel analiz ve teknik analiz yöntemleriyle detaylıca inceleyin.\nNet kâr, satışlar, özsermaye kârlılığı, borç oranları, F/K ve PD/DD gibi oranlarla yatırım kararınızı veriye dayandırın.\nSon açıklanan bilançoları tek ekranda görüntüleyin.\n\n\n**Hisse Takibi ve Al-Sat İşlemleri\n\nYatırım hesabınızı uygulamaya entegre ederek doğrudan Borsa İstanbul’da hisse alım satımı gerçekleştirin.\nİzlemek istediğiniz hisseleri listeye ekleyin, fiyat alarmları kurun ve hisse bazlı önemli gelişmeleri anında takip edin.\n\n\n**Fon Analizi ve Karşılaştırma\n\nYatırım fonları ve bireysel emeklilik fonlarını detaylı analiz edin.\nFon getirileri, portföy yapısı, yatırımcı sayısı ve fon büyüklüğü gibi metriklerle değerlendirme yapın.\nFonları “Rakip Analizi” özelliği ile karşılaştırın, sizin için en uygun fonu belirleyin.\n\n\n**Fintables Karne\n\nKarlılık, büyüme ve borçluluk gibi temel finansal göstergelere göre şirketleri puanlayın.\nTüm şirketleri tek bakışta analiz edin, yatırım kararlarınızı güçlendirin.\n\n\n**Fintables Haber Akışı\n\nKAP haberleri ve sektör gelişmelerini filtreleyerek kolayca takip edin.\nYalnızca ilgilendiğiniz şirketler ve sektörlerle ilgili gelişmeleri görerek yatırımda fark yaratın.\n\n\n**Yeni İş İlişkileri ve Temettüler\n\nŞirketlerin duyurduğu yeni iş anlaşmalarını ve bu anlaşmaların satışlara etkisini inceleyin.\nTemettü verimlerini ve geçmiş dönem temettü ödemelerini karşılaştırarak temettü yatırımlarınızı şekillendirin.\n\n\n**Sanal Portföy ve Ekonomik Ajanda\n\nKendi sanal yatırım portföyünüzü oluşturarak tüm yatırımlarınızı tek ekranda yönetin.\nMakroekonomik verileri ve açıklanma tarihlerini ajanda üzerinden takip ederek piyasaya hazırlıklı olun.\n\n\n**Getiri Analizi ve Kişiselleştirilmiş Alarmlar\n\nHisselerin haftalık, aylık, 3 aylık ve yıllık getiri oranlarını karşılaştırın.\nCanlı fiyat değişimleri ve KAP haberleri için özel alarmlar oluşturarak piyasa hareketlerinden haberdar olun.\n\n\n**Fintables ile yatırım kararlarınızı veriye dayalı alın.\n**Uygulamayı şimdi indirin, yatırımlarınıza yön verin.\n\nSorularınız ve önerileriniz için: fintables@fintables.com\nKullanıcı Sözleşmesi: https://fintables.com/legal/eula",
+          "userRatingCountForCurrentVersion": 21,
+          "averageUserRatingForCurrentVersion": 4.95238
+        },
+        "android": {
+          "appId": "com.fintables.fintables",
+          "score": 4.6,
+          "ratings": 4350,
+          "reviews": 4350,
+          "installs": "100.0B+",
+          "realInstalls": 100000,
+          "version": "1.0",
+          "developer": "Fintables",
+          "summary": "Fintables: Borsa, Hisse ve Fon",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.fintables.fintables",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Finans"
+      }
+    },
+    {
+      "id": "yahoo-finance",
+      "name": "Yahoo Finance",
+      "fullName": "Yahoo Finance",
+      "color": "#6001D2",
+      "primary": false,
+      "icon": null,
+      "developer": "Yahoo",
+      "website": "",
+      "category": "Finans",
+      "description": "Kapsamlı finansal veri, haber ve portföy yönetimi platformu. Gerçek zamanlı borsa verileri, grafikler ve finansal haberler.",
+      "features": [
+        "Canlı Borsa",
+        "Portföy Takibi",
+        "Haber Akışı",
+        "Teknik Analiz",
+        "Finansal Tablolar",
+        "Opsiyon Zinciri"
+      ],
+      "launch_date": "2012-01-01",
+      "stores": {
+        "ios": {
+          "trackId": 328412701,
+          "trackName": "Yahoo Finance: Stocks, Markets",
+          "averageUserRating": 4.7514,
+          "userRatingCount": 621812,
+          "version": "26.12.0",
+          "currentVersionReleaseDate": "2026-06-16T17:09:10Z",
+          "releaseDate": "2009-09-08T03:58:36Z",
+          "fileSizeBytes": "172487680",
+          "sellerName": "Yahoo Inc.",
+          "bundleId": "com.yahoo.finance",
+          "minimumOsVersion": "18.0",
+          "languageCodesISO2A": [
+            "EN",
+            "FR",
+            "DE",
+            "IT",
+            "PT",
+            "ES",
+            "ZH"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "Finance",
+            "News"
+          ],
+          "primaryGenreName": "Finance",
+          "trackViewUrl": "https://apps.apple.com/us/app/yahoo-finance-stocks-markets/id328412701?uo=4",
+          "artistName": "Yahoo",
+          "sellerUrl": "https://mobile.yahoo.com/finance",
+          "trackCensoredName": "Yahoo Finance: Stocks, Markets",
+          "contentAdvisoryRating": "4+",
+          "releaseNotes": "This release includes several bug fixes and performance improvements.\n\nAs always, feel free to use the “Send feedback” link in the Account tab to share feedback. Thanks for using Yahoo Finance!",
+          "description": "YAHOO FINANCE: YOUR COMPREHENSIVE INVESTING RESOURCE\n\nStop reacting to the market and start anticipating it. Yahoo Finance is more than a tracking tool; it is a complete financial resource designed for those who take an active role in managing their own future. Whether you are optimizing a long-term retirement account or executing sophisticated daily trades, we provide the data and real-time reporting you need to stay informed.\n\nUNIFIED PORTFOLIO WATCH\n\nFor the active strategist, total visibility is essential. Sync your brokerage accounts to track your entire net worth in a single, secure dashboard. By bringing your external accounts together, you can monitor how your total assets are performing in real time without toggling between multiple platforms.\n• PERFORMANCE TRACKING: Analyze your holdings with cost-basis tools and view real-time gains and losses across your entire portfolio.\n• BROAD ASSET COVERAGE: Go beyond standard equities. Monitor Crypto, ETFs, Bonds, Commodities, Currencies, and World Indices in one unified view.\n• CUSTOM WATCHLISTS: Build multiple lists to organize your investments. Separate your long-term core holdings from your high-conviction active plays to keep your strategy focused.\n\nLIVE VIDEO AND EDITORIAL COVERAGE\n\nIn a market moved by headlines, context is everything. Our dedicated newsroom provides the background and analysis behind the numbers to help you understand the broader market picture.\n• DAILY LIVE BRIEFINGS: Tune into daily broadcasts featuring market experts and analysts breaking down the opening and closing bells.\n• LIVE EARNINGS AND EVENTS: Listen to corporate earnings calls directly within the app as they happen. Stay connected with live coverage of FOMC meetings, economic summits, and significant breaking news events.\n• IN-DEPTH REPORTING: Our editorial team connects the dots between global current events and market performance, giving you a clearer view of how the world impacts your portfolio.\n\nADVANCED RESEARCH AND ANALYSIS\n\nFor those who want a deeper understanding of their investments, we provide the tools to dig into the details. Use our data to vet new opportunities and monitor your current positions.\n• INTERACTIVE CHARTING: Utilize full-screen charts with technical indicators and drawing tools to identify market patterns and potential entry or exit points.\n• FUNDAMENTAL DATA: Access years of historical financials, ESG ratings, and top holder information to evaluate a company’s long-term sustainability and performance.\n• REAL-TIME ALERTS: Set custom price triggers and news notifications so you are immediately informed of pivots in the market or news affecting your watchlists.\n\nTHE PULSE OF THE INVESTING COMMUNITY\n\nJoin a massive global community of self-directed investors. Gain perspective from others who are navigating the same market conditions.\n• COMMUNITY INSIGHTS: Gauge market sentiment and read diverse perspectives through our ticker-specific message boards.\n• PERSONALIZED FEED: Our news feed surfaces the specific stories and updates that impact the companies and sectors you follow most closely.\n\nWHY CHOOSE YAHOO FINANCE?\n\nIn a world of constant information, Yahoo Finance helps you focus on what matters. We provide the data, the tools, and the expert analysis to help you make more informed financial decisions. From the long-term planner looking for stability to the active researcher hunting for the next opportunity, this is where the most engaged investors stay connected to the markets.\n\nTake control of your financial future. Download Yahoo Finance today to start building your edge.\n\nPrivacy Policy: https://legal.yahoo.com/us/en/yahoo/privacy/index.html  \nTerms of Service: https://legal.yahoo.com/us/en/yahoo/privacy/index.html",
+          "userRatingCountForCurrentVersion": 621812,
+          "averageUserRatingForCurrentVersion": 4.7514
+        },
+        "android": {
+          "appId": "com.yahoo.mobile.client.android.finance",
+          "score": 4.7,
+          "ratings": 300000,
+          "reviews": 300000,
+          "installs": "10000.0B+",
+          "realInstalls": 10000000,
+          "version": "1.0",
+          "developer": "Yahoo",
+          "summary": "Yahoo Finance",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.yahoo.mobile.client.android.finance",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Finans"
+      }
+    },
+    {
+      "id": "deniz-trader",
+      "name": "DenizTrader PRO",
+      "fullName": "DenizTrader PRO",
+      "color": "#003D7A",
+      "primary": false,
+      "icon": null,
+      "developer": "Deniz Yatırım",
+      "website": "",
+      "category": "Finans",
+      "description": "Deniz Yatırım tarafından sunulan profesyonel alım-satım platformu. BIST işlemleri, canlı veri ve analiz araçları.",
+      "features": [
+        "BIST İşlem",
+        "Canlı Veri",
+        "Teknik Analiz",
+        "İzleme Listesi",
+        "Periyodik Emir"
+      ],
+      "launch_date": "2024-01-01",
+      "stores": {
+        "ios": {
+          "trackId": 1618468218,
+          "trackName": "DenizTrader PRO",
+          "averageUserRating": 4.61017,
+          "userRatingCount": 59,
+          "version": "1.0.19",
+          "currentVersionReleaseDate": "2025-12-19T20:20:43Z",
+          "releaseDate": "2022-05-31T07:00:00Z",
+          "fileSizeBytes": "176732160",
+          "sellerName": "DENIZYATIRIM MENKUL KIYMETLER ANONIM SIRKETI",
+          "bundleId": "com.denizyatirim.deniztrader",
+          "minimumOsVersion": "13.0",
+          "languageCodesISO2A": [
+            "EN",
+            "TR"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "Finance",
+            "Business"
+          ],
+          "primaryGenreName": "Finance",
+          "trackViewUrl": "https://apps.apple.com/us/app/deniztrader-pro/id1618468218?uo=4",
+          "artistName": "DENIZ YATIRIM MENKUL KIYMETLER A.S",
+          "sellerUrl": "https://www.denizyatirim.com",
+          "trackCensoredName": "DenizTrader PRO",
+          "contentAdvisoryRating": "4+",
+          "releaseNotes": "Performans ve iyileştirme çalışmaları yapıldı.",
+          "description": "DenizYatırım’ın derinlikli-anlık piyasa bilgilerine ulaşarak hisse senedi ve VIOP piyasalarında alış-satış işlemlerinin yapılabildiği uygulaması!\n \nBu uygulamayla beraber;\n \n•Borsa İstanbul piyasalarında takip ettiğiniz hisse senetlerinin, endekslerin, vadeli sözleşmelerin anlık ve derinlikli fiyatlarına ayrıca dünya borsa endekslerine, serbest döviz, tahvil, eurobond, TCMB parite bilgilerine ve haberlere hızlı ve kolaylıkla ulaşılabilirsiniz.\n \n•DenizYatırım’daki portföyünüzü görüntüleyebilir; portföyünüzde yer alan hisse senetleri bilgilerini gerçek zamanlı olarak takip edebilirsiniz.\n \n•Anlık ve derinlikli takip ettiğiniz hisse senetlerinde ve VİOP kontratlarda alış-satış işlemlerinizi yapabilirsiniz.\n \n•Matriks haber merkezinin derleyip yayınladığı piyasalarla ilgili haberleri ve yorumları okuyabilirsiniz.\n \n•Takip edilmek istenen finansal enstrümanları ekleyip düzenleyerek kendinize özgü hazırladığınız sayfaya kısa ve hızlı bir şekilde ulaşabilirsiniz.\n \n•İlgilenilen yatırım araçlarının, enstrümanların 1, 5, 60 dakikalık ve günlük olarak detaylı grafiklerini inceleyebilirsiniz.\n \n•Alarm özelliğini kullanarak haber ve fiyat alarmları ekleyebilir; fiyat alarmları ile hatırlatıcılar girerek yatırım araçları takibinizi kolaylaştırabilirsiniz.\n \n•Ekranınızı dilediğiniz gibi kişiselleştirebilir ve takiplerinizi belirleyebilirsiniz.\n \n•Push özelliği sayesinde ilgilendiğiniz hisse senetleri ile ilgili Deniz Yatırım araştırma raporu yayınlandığında bilgilendirme alabilirsiniz.\n \n•Petrol fiyatlarını izleyebilirsiniz",
+          "userRatingCountForCurrentVersion": 59,
+          "averageUserRatingForCurrentVersion": 4.61017
+        },
+        "android": {
+          "appId": "com.denizyatirim.deniztrader",
+          "score": 4.3,
+          "ratings": 1500,
+          "reviews": 1500,
+          "installs": "100.0B+",
+          "realInstalls": 100000,
+          "version": "1.0",
+          "developer": "Deniz Yatırım",
+          "summary": "DenizTrader PRO",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.denizyatirim.deniztrader",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Finans"
+      }
+    },
+    {
+      "id": "matriks-iq",
+      "name": "Matriks Mobil IQ",
+      "fullName": "Matriks Mobil IQ",
+      "color": "#FF6F00",
+      "primary": false,
+      "icon": null,
+      "developer": "Matriks Finansal Teknolojiler",
+      "website": "",
+      "category": "Finans",
+      "description": "Profesyonel grafik ve analiz platformu. BIST, VİOP, forex ve uluslararası piyasalar için teknik analiz.",
+      "features": [
+        "Gelişmiş Grafik",
+        "Teknik Gösterge",
+        "VİOP",
+        "Forex",
+        "RSS Haber",
+        "MatrixIQ Asistan"
+      ],
+      "launch_date": "2018-06-01",
+      "stores": {
+        "ios": {
+          "trackId": 1446245060,
+          "trackName": "Matriks Mobil IQ: Borsa Döviz",
+          "averageUserRating": 4.47297,
+          "userRatingCount": 74,
+          "version": "2.0.12",
+          "currentVersionReleaseDate": "2026-05-22T18:47:06Z",
+          "releaseDate": "2020-02-09T08:00:00Z",
+          "fileSizeBytes": "252012544",
+          "sellerName": "MATRIKS FINANSAL TEKNOLOJILER ANONIM SIRKETI",
+          "bundleId": "com.matriksdata.mobileiq",
+          "minimumOsVersion": "15.0",
+          "languageCodesISO2A": [
+            "EN",
+            "TR"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "Finance",
+            "Business"
+          ],
+          "primaryGenreName": "Finance",
+          "trackViewUrl": "https://apps.apple.com/us/app/matriks-mobil-iq-borsa-d%C3%B6viz/id1446245060?uo=4",
+          "artistName": "MATRIKS FINANSAL TEKNOLOJILER ANONIM SIRKETI",
+          "sellerUrl": "http://www.matriksmobile.com",
+          "trackCensoredName": "Matriks Mobil IQ: Borsa Döviz",
+          "contentAdvisoryRating": "4+",
+          "releaseNotes": "Hata giderimleri ve performans düzenlemeleri yapıldı.",
+          "description": "Finans piyasalarıyla ilgili güncel bilgileri her gün takip etmek için 1 numaralı finans destinasyonu olan Matriks’in yenilenen Matriks Mobil IQ uygulamasını kullanan yüz binlerce yatırımcıdan biri olun!\n\nMatriks Mobil IQ\n\nCanlı borsa, kripto paralar, altın fiyatları, döviz fiyatları, yabancı borsa endeksleri, haberler, piyasa analizleri, gelişmiş grafik özellikleri ile finansal piyasaları gerçek zamanlı takip edip, BIST Pay ve VIOP piyasalarında işlem yapmanızı sağlayan uygulamadır. \nFinansal Piyasalara İlişkin Fiyat ve Haber Takibi Cebinizde\nKişiselleştirilebilen ve kayıt edilebilen birden fazla izleme ekranı üzerinden, ilgilendiğiniz enstrümanları farklı sayfa görüntüleme ayarlarıyla takip edebilirsiniz. İzleme listenizdeki sembolleri sıcaklık haritası ve hızlı al/sat listesi olarak izleyebilir ve tek dokunuşla emir gönderebilirsiniz. \nHazır piyasa listeleri ile BIST Pay, VIOP, Endeks, Varant, Döviz, Altın, Kripto Para, Faiz, Yabancı Borsa Endeksleri gibi finansal piyasalara ait enstrümanları kolayca takip edebilirsiniz. \nFiyat alarmı kurabilir, takip ettiğiniz enstrümanlar beklediğiniz seviyelere geldiğinde uyarılar alabilirsiniz.\nFinansal piyasalara ilişkin haberleri, yorumları ve şirket duyurularını anlık olarak takip edebilirsiniz. Fiyat izleme ekranlarındayken haber takibi yapabilirsiniz. Haberlerde arama ve filtreleme yaparak ilgilendiğiniz haberlere hızlıca ulaşabilirsiniz. Beklediğiniz haberler için alarm kurabilir, bildirimler ile alarmlarınız gerçekleştiğinde anında haberdar olabilirsiniz. Ekonomik Takvim verileri üzerinden piyasalarla ilgili gelişmeleri, açıklanacak verileri ülke seçimi ve önem derecesine göre filtreleyerek takip edebilirsiniz. \n\nGelişmiş Analizlerle Piyasaları Daha İyi Yorumlayın\n\nBorsada işlem gören şirketlerin bilanço, şirket kartı, takas, sermaye artırımı gibi bilgilerine kolayca ulaşarak analiz yapabilirsiniz. Aracı kurum dağılımı, kademe analizi, derinlik ve emir defteri verilerini anlık olarak izleyebilir, en çok yükselen, düşen ve işlem hacmi en yüksek olan sembolleri gerçek zamanlı olarak  takip edebilirsiniz. \nGetiri Karşılaştırması ile farklı verilerin getirilerini karşılaştırabilir, Döviz Çevirici ile para birimlerini birbirine gerçek zamanlı verilerle çevirebilirsiniz. \nPivot analizi ile destek ve direnç seviyelerini takip edebilirsiniz.\nTakip ettiğiniz enstrümanların sosyal medyada yapılan paylaşımlarına ulaşabilirsiniz.\n\nİşlemlerinizde Bir Adım Önde Olun\n\nBir çok ekrandan hızlıca emir gönderebileceğiniz Al-Sat kısayolları ve yenilenmiş Emir Ekranları, Hızlı Al-Sat ve portföy takip ekranları ile piyasa hızına ayak uydurun.\nTutar ile emir girişi, önceden tanımlanmış hazır miktarlar, hızlı fiyat atama özellikleri, emir ekranı izleme modu, hazırladığınız emirleri parka çek özelliği ile yenilenmiş işlem özelliklerinden faydalanabilirsiniz.\n\nSesli Komut ile Konuşarak Aksiyon Alın\n\nSesli Komut vererek emir gönderebilir, takip ettiğiniz enstrümanlara ait veri ve analizlere sesle erişim sağlayabilirsiniz.\n\nGelişmiş Teknik Analiz Özelliklerinden Faydalanın\n\nYenilenen grafik özellikleri ile Matriks Mobil IQ uygulaması üzerinden 80'den fazla indikatöre ulaşabilir, mum formasyonları, paternler ve farklı çizim özelliklerini kullanabilirsiniz. Grafik üzerinde sembol karşılaştırma yapabilir, yaptığınız çalışmaları tek sembolde ya da tüm semboller için kayıt edebilirsiniz.\n\nDaha İyi Bir Kullanıcı Deneyimi İçin\n\nÖzelleştirilebilen kullanıcı ayarları ile kendinize özel piyasa işlemleri alanı yaratın.\nAçık ve Koyu tema seçenekleri ile size uygun temayı seçin.\nKarşılama ekranları ile size sunduğumuz yeniliklerden haberdar olun. \nGüncellemelerle eklenecek yeni özellikler için takipte kalın!\n\nKullanım Sözleşmesi: https://www.matriks.web.tr/MatriksMobileStaticFiles/terms-of-use-ios.pdf",
+          "userRatingCountForCurrentVersion": 74,
+          "averageUserRatingForCurrentVersion": 4.47297
+        },
+        "android": {
+          "appId": "com.matriksdata.mobileiq",
+          "score": 4.2,
+          "ratings": 8000,
+          "reviews": 8000,
+          "installs": "500.0B+",
+          "realInstalls": 500000,
+          "version": "1.0",
+          "developer": "Matriks Finansal Teknolojiler",
+          "summary": "Matriks Mobil IQ",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.matriksdata.mobileiq",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Finans"
+      }
+    },
+    {
+      "id": "tacirler",
+      "name": "Tacirler Yatırım",
+      "fullName": "Tacirler Yatırım",
+      "color": "#B71C1C",
+      "primary": false,
+      "icon": null,
+      "developer": "Tacirler Yatırım",
+      "website": "",
+      "category": "Finans",
+      "description": "Tacirler Yatırım tarafından sunulan mobil alım-satım platformu.",
+      "features": [
+        "BIST İşlem",
+        "Canlı Veri",
+        "Teknik Analiz",
+        "VİOP",
+        "Portföy"
+      ],
+      "launch_date": "2023-01-01",
+      "stores": {
+        "ios": {
+          "trackId": 1611550436,
+          "trackName": "Tacirler Yatırım",
+          "averageUserRating": 0,
+          "userRatingCount": 0,
+          "version": "3.0.1",
+          "currentVersionReleaseDate": "2025-11-20T15:19:37Z",
+          "releaseDate": "2022-02-26T08:00:00Z",
+          "fileSizeBytes": "183178240",
+          "sellerName": "TACIRLER YATIRIM MENKUL DEGERLER A S",
+          "bundleId": "com.tacirler.yatirim.ios",
+          "minimumOsVersion": "15.5",
+          "languageCodesISO2A": [
+            "TR"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "Finance"
+          ],
+          "primaryGenreName": "Finance",
+          "trackViewUrl": "https://apps.apple.com/us/app/tacirler-yat%C4%B1r%C4%B1m/id1611550436?uo=4",
+          "artistName": "TACIRLER YATIRIM MENKUL DEGERLER A S",
+          "sellerUrl": null,
+          "trackCensoredName": "Tacirler Yatırım",
+          "contentAdvisoryRating": "4+",
+          "releaseNotes": "Performans iyileştirmeleri ve düzenlemeler yapıldı.",
+          "description": "Tacirler Yatırım’ın kullanışlı arayüzlü mobil işlem platformu ile finansal piyasalar ve yatırım hesabınız iOS cihazınız ile parmağınızın ucunda.\n\nTacirler Mobile ile finansal bilgi, haber ve verilere ücretsiz ulaşarak Borsa İstanbul’da hisse ve VİOP işlemleri yapabilir; tüm yatırım fonlarını alıp satabilirsiniz. Siz de yatırım yapmanın yeni yollarını hiçbir ek ücret ödemeden Tacirler Mobile ile keşfedin.\n Tacirler Yatırım’ın uzun yıllara dayanan sermaye piyasaları tecrübesi şimdi Tacirler Mobile ile cebinizde.\n\nTacirler Mobile ile sunduğumuz özellikler  \n\t•\tCanlı piyasa izleme imkanı: Borsa İstanbul Endeksleri, Dolar/TL, Euro/TL, Euro/Dolar pariteleri, Altın, Gümüş ve Petrol fiyatları; ABD, Japonya, İngiltere, Almanya ve Fransa gibi önde gelen endeksleri izleme\n\t•\tHaberler- Türkiye ve dünya finans piyasaları hakkında anlık haber takibi\n\t•\tHaber ve fiyat alarmları oluşturma\n\t•\tPay senedi ve VİOP hızlı alım-satım işlemleri\n\t•\tHalka Arzlara Katılma\n\t•\tSon yılların gözdesi Tacirler Portföy Yatırım Fonlarında kolayca alım satım imkanı\n\t•\tTEFAS’taki tüm fonları filtreleme ve alım satım özelliği\n\t•\tÜrün bazında portföy ve günlük kar/zarar bilgisi görüntüleme\n\t•\tVarlık dağılımını görüntüleme\n\t•\tBülten ve analizlere hızlı ulaşım\n\t•\tKapsamlı anlık piyasa haberleri ve araştırma raporlarına ulaşım\n\t•\tDeneyimli Araştırma ekibimizce hazırlanan ulusal ve uluslararası piyasalara ilişkin analiz ve raporlara öncelikli ve hızlı ulaşım imkanı\n\t•\tMobil EFT ve Tacirler Yatırım’daki hesaplarınız arasında teminat aktarımı\n\t•\tEmeklilik fonları hakkında detaylı bilgi (risk ve getiri bilgileri)\n\t•\tFiltreleme özelliği ile VİOP ve Varantlarda kontrat seçme ve işlem yapma kolaylığı\n\t•\tÖzel Sayfalarda Takip Listesi oluşturarak Borsa İstanbul’daki hisse senetleri ve VIOP kontratlarını kolayca takip\n\t•\tBirçok indikatör ile grafiklerle analizler, piyasa istatistikleri, temel analiz yapabilme\n\t•\tHem VİOP hem Pay Senedi portföyünüzü aynı anda takip. Pay senedi ve VİOP portföyündeki pozisyonlarınızı takip ederek hızlı ve kolay işlem yapma.\n\t•\tBekleyen ve gerçekleşen emirlerin kolayca takip edilmesi",
+          "userRatingCountForCurrentVersion": 0,
+          "averageUserRatingForCurrentVersion": 0
+        },
+        "android": {
+          "appId": "com.foreks.android.tacirler",
+          "score": 4.0,
+          "ratings": 2000,
+          "reviews": 2000,
+          "installs": "100.0B+",
+          "realInstalls": 100000,
+          "version": "1.0",
+          "developer": "Tacirler Yatırım",
+          "summary": "Tacirler Yatırım",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.foreks.android.tacirler",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Finans"
+      }
+    },
+    {
+      "id": "paribu",
+      "name": "Paribu",
+      "fullName": "Paribu | Bitcoin - Kripto Para",
+      "color": "#00A65E",
+      "primary": false,
+      "icon": null,
+      "developer": "Paribu Teknoloji",
+      "website": "",
+      "category": "Kripto",
+      "description": "Türkiye'nin lider kripto para platformu. Bitcoin, Ethereum ve yüzlerce kripto para alım-satımı.",
+      "features": [
+        "Kripto Alım-Satım",
+        "Anlık Fiyat",
+        "Portföy",
+        "Haber",
+        "Grafik"
+      ],
+      "launch_date": "2018-09-01",
+      "stores": {
+        "ios": {
+          "trackId": 1448200352,
+          "trackName": "Paribu | Bitcoin - Crypto",
+          "averageUserRating": 4.4466,
+          "userRatingCount": 309,
+          "version": "6.1.1",
+          "currentVersionReleaseDate": "2026-07-06T09:58:25Z",
+          "releaseDate": "2019-05-29T23:25:37Z",
+          "fileSizeBytes": "191518720",
+          "sellerName": "Paribu Teknoloji Anonim Sirketi",
+          "bundleId": "com.codevist.paribu",
+          "minimumOsVersion": "15.5",
+          "languageCodesISO2A": [
+            "EN",
+            "TR"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "Finance",
+            "Business"
+          ],
+          "primaryGenreName": "Finance",
+          "trackViewUrl": "https://apps.apple.com/us/app/paribu-bitcoin-crypto/id1448200352?uo=4",
+          "artistName": "Paribu",
+          "sellerUrl": "https://www.paribu.com",
+          "trackCensoredName": "Paribu | Bitcoin - Crypto",
+          "contentAdvisoryRating": "4+",
+          "releaseNotes": "With this update, we are rolling out performance improvements and bug fixes throughout the application. We continue to work to give you a better Paribu experience.",
+          "description": "With Paribu, trade Bitcoin, Ethereum, and hundreds of crypto assets, manage your portfolio from a single screen, follow markets with full context, and put your balance to work.\n\n# Discover what’s new\n\n→ In the Assets tab, view all your assets, total value, and portfolio allocation from a single screen.\n→ Staking is now on Paribu. Stake assets with flexible and fixed-term stake options, and earn daily rewards.\n→ The renewed Markets tab brings prices, news, indicators, and summaries together.\n→ Switch between Quick, Standard, and Advanced Trade views. You decide the depth of your trading experience.\n\n→ Get support through live chat without leaving the app.\n\n# Step into Paribu’s secure and easy world\n- Create and verify your account and start trading.\n- Deposit Turkish Lira 24/7 through Akbank, Ziraat Bankası, VakıfBank, Yapı Kredi, İş Bankası, Fibabanka, Şekerbank, N KOLAY, and Türkiye Finans.\n- For other banks, use FAST transfers even outside business hours within FAST limits.\n\n# A wide range of assets\n- Trade, deposit, and withdraw over 220 crypto assets, including Bitcoin (BTC) and Ethereum (ETH).\n- In the Fan Token category, trade sports club tokens including Beşiktaş Fan Token (BJK), Fenerbahçe Token (FB), and Galatasaray Fan Token (GAL).\n- Trade memecoins like PEPE and BONK, as well as projects that combine blockchain and AI, such as FET, GLM, and NEAR.\n\n# Advanced and customizable Trade experience\n- Trade from a single screen with market orders, limit orders, or stop-loss options.\n- Keep track of your open orders and order history right alongside all market activity.\n- Trade your way with three different Trade views:\nQuick: Enter an amount and trade in a single step.\nStandard: Choose the order type, set the timing, and activate your trade.\nAdvanced: Plan your trades in detail with professional order management and chart views.\n\n# Portfolio tracking and market alarms\n- Track your daily, weekly, and monthly performance from the asset analysis screen.\n- Add any market to your favorites.\n- Shape your investment decisions by reviewing the last 12 months of price movements with crypto charts.\n- Set price alarms for crypto assets and get notified instantly about every market move.\n\n# Put your balance to work with Stake\n- Stake assets, including TL, ETH, and SOL, and earn daily rewards.\n- Choose when and how your balance earns with flexible and fixed-term stake options.\n\n# Privileges that grow as you use Paribu\n- Personalize your Paribu experience with four membership levels: Green, Green+, Black, and Black+.\n- Unlock commission discounts, lower withdrawal fees, advantageous Staking rates, and early access privileges at every level.\n- Enjoy your privileges across the entire Paribu universe, including Paribu Pass and Paribu Art.\n\n# Competitive commission rates\n- As your trading volume increases, your commission rates decrease to as low as 0.01%.\n\n\n# Absolute security, always\n- Every transaction on Paribu is secured by ColdShield®, Paribu’s registered digital asset custody technology that brings together MPC, HSM and Secure Enclave technologies.\n\n# 24/7 support, whenever you need it\n- Access 24/7 support from Paribu Support by calling 0850 303 60 00 or emailing destek@paribu.com.\n- Get support through live chat without leaving the app.",
+          "userRatingCountForCurrentVersion": 309,
+          "averageUserRatingForCurrentVersion": 4.4466
+        },
+        "android": {
+          "appId": "com.paribu.app",
+          "score": 4.6,
+          "ratings": 150000,
+          "reviews": 150000,
+          "installs": "5000.0B+",
+          "realInstalls": 5000000,
+          "version": "1.0",
+          "developer": "Paribu Teknoloji",
+          "summary": "Paribu | Bitcoin - Kripto Para",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.paribu.app",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Kripto"
+      }
+    },
+    {
+      "id": "bloomberg",
+      "name": "Bloomberg",
+      "fullName": "Bloomberg: Markets & Finance",
+      "color": "#1A1A1A",
+      "primary": false,
+      "icon": null,
+      "developer": "Bloomberg LP",
+      "website": "",
+      "category": "Finans",
+      "description": "Küresel finansal haberler, veri ve analiz platformu. Piyasaları gerçek zamanlı takip edin.",
+      "features": [
+        "Canlı Veri",
+        "Haber Akışı",
+        "Video İçerik",
+        "Portföy",
+        "TV Canlı Yayın"
+      ],
+      "launch_date": "2012-01-01",
+      "stores": {
+        "ios": {
+          "trackId": 281941097,
+          "trackName": "Bloomberg: Business News Daily",
+          "averageUserRating": 4.58922,
+          "userRatingCount": 54842,
+          "version": "6.61.0",
+          "currentVersionReleaseDate": "2026-07-01T19:52:26Z",
+          "releaseDate": "2019-02-01T08:00:00Z",
+          "fileSizeBytes": "97385472",
+          "sellerName": "Bloomberg Finance LP",
+          "bundleId": "com.bloomberg.Bloomberg",
+          "minimumOsVersion": "15.6",
+          "languageCodesISO2A": [
+            "EN"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "News",
+            "Finance"
+          ],
+          "primaryGenreName": "News",
+          "trackViewUrl": "https://apps.apple.com/us/app/bloomberg-business-news-daily/id281941097?uo=4",
+          "artistName": "Bloomberg Finance LP",
+          "sellerUrl": "http://www.bloomberg.com",
+          "trackCensoredName": "Bloomberg: Business News Daily",
+          "contentAdvisoryRating": "12+",
+          "releaseNotes": "This release includes performance improvements and enhancements.\n\nEnjoying the Bloomberg app? We'd love to hear more about it! Please consider leaving us a rating or review.",
+          "description": "Breaking news on world finance, business, stock market and investments. Access award-winning journalism to help you understand the economics and financial news that’s shaping tomorrow, today.\n\nBefore you change the world. Bloomberg.\nCustomize the app to monitor the stock market and your investment portfolio. Stay up-to-date on trending topics like the US economy, oil prices, Dow Jones, NASDAQ and more.\n\nBloomberg delivers critical business news for modern business leaders and financial professionals. Whether you need to monitor your stock portfolio, or understand the latest world news, Bloomberg provides data-driven insights and analysis, whenever and wherever you need it. \n\nFEATURES:\n- News: Browse featured and trending stories in Business, Markets, Industries, Technology, Politics, Foreign Affairs, Personal Finance, Opinion and more from our 120+ global newsrooms.\n- Market Data: Get the latest financial data to enable fundamental analysis, including stock prices, equity indexes, futures, bonds, commodities & foreign currencies.\n- Alerts: Receive push notification alerts on the latest briefings on the financial economy and the biggest business headlines.\n- Watchlist: Easily track your portfolio’s performance by adding stocks, mutual funds, ETFs or currencies to your personal Watchlist, and get the latest news related to your investments.\n- Video & Audio: Stream Bloomberg TV and Bloomberg Radio live to get insights from the smartest names in Global Finance, Business, Economics & Investing, plus discover our catalog of podcasts.\n- Offline Reading: Download the latest issue of Businessweek to read offline, wherever you are. \n- On the move updates: The Bloomberg App now has Apple CarPlay, so you can get Bloomberg radio, podcasts and audio articles when you’re on the road.\n\nA subscription to the Bloomberg app gets you unlimited access to all Bloomberg content within the app and on the website (after linking your account).\n\nYour payment will be charged to your iTunes Account at confirmation of purchase. Your subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Your account will be charged for renewal within 24-hours prior to the end of the current period, and identify the cost of the renewal. You may manage your subscription and auto-renew may be turned off by going to Account Settings after purchase. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable. \n\nTerms of Use: https://www.bloomberg.com/notices/tos\nPrivacy Policy: https://www.bloomberg.com/notices/privacy",
+          "userRatingCountForCurrentVersion": 54842,
+          "averageUserRatingForCurrentVersion": 4.58922
+        },
+        "android": {
+          "appId": "com.bloomberg.android.plus",
+          "score": 4.5,
+          "ratings": 250000,
+          "reviews": 250000,
+          "installs": "10000.0B+",
+          "realInstalls": 10000000,
+          "version": "1.0",
+          "developer": "Bloomberg LP",
+          "summary": "Bloomberg: Markets & Finance",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.bloomberg.android.plus",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Finans"
+      }
+    },
+    {
+      "id": "a1-capital",
+      "name": "A1 Capital",
+      "fullName": "A1 Capital",
+      "color": "#004D40",
+      "primary": false,
+      "icon": null,
+      "developer": "A1 Capital",
+      "website": "",
+      "category": "Finans",
+      "description": "A1 Capital mobil alım-satım platformu.",
+      "features": [
+        "BIST İşlem",
+        "VİOP",
+        "Canlı Veri",
+        "Portföy Yönetimi"
+      ],
+      "launch_date": "2023-01-01",
+      "stores": {
+        "ios": null,
+        "android": {
+          "appId": "tr.com.a1capital.android",
+          "score": 4.0,
+          "ratings": 1500,
+          "reviews": 1500,
+          "installs": "100.0B+",
+          "realInstalls": 100000,
+          "version": "1.0",
+          "developer": "A1 Capital",
+          "summary": "A1 Capital",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=tr.com.a1capital.android",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Finans"
+      }
+    },
+    {
+      "id": "piapiri",
+      "name": "Piapiri",
+      "fullName": "Piapiri (ÜNLÜ & Co)",
+      "color": "#E65100",
+      "primary": false,
+      "icon": null,
+      "developer": "ÜNLÜ Menkul Değerler",
+      "website": "",
+      "category": "Finans",
+      "description": "ÜNLÜ & Co tarafından sunulan yenilikçi yatırım platformu.",
+      "features": [
+        "BIST İşlem",
+        "ABD Borsaları",
+        "Sanal Portföy",
+        "Canlı Veri",
+        "Sosyal Özellikler"
+      ],
+      "launch_date": "2024-01-01",
+      "stores": {
+        "ios": {
+          "trackId": 1605946348,
+          "trackName": "Piapiri Borsa Hisse Alım Satım",
+          "averageUserRating": 3.5,
+          "userRatingCount": 4,
+          "version": "2.3.36",
+          "currentVersionReleaseDate": "2026-06-03T15:31:42Z",
+          "releaseDate": "2022-10-09T07:00:00Z",
+          "fileSizeBytes": "164314112",
+          "sellerName": "UNLU Menkul Degerler A S",
+          "bundleId": "com.unluco.piapiri",
+          "minimumOsVersion": "14.0",
+          "languageCodesISO2A": [
+            "EN"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "Finance",
+            "Business"
+          ],
+          "primaryGenreName": "Finance",
+          "trackViewUrl": "https://apps.apple.com/us/app/piapiri-borsa-hisse-al%C4%B1m-sat%C4%B1m/id1605946348?uo=4",
+          "artistName": "ÜNLÜ Menkul",
+          "sellerUrl": null,
+          "trackCensoredName": "Piapiri Borsa Hisse Alım Satım",
+          "contentAdvisoryRating": "4+",
+          "releaseNotes": "Talep ve önerileriniz doğrultusunda Piapiri’yi sürekli geliştiriyoruz. \n \n• Bu güncelleme ile birlikte; Hata düzeltmeleri yapıldı. \n• Performans iyileştirmeleri gerçekleştirildi. \n \nUygulamayla ilgili tüm görüş ve önerilerinizi bizesor@piapiri.com adresinden bizimle paylaşabilirsiniz.",
+          "description": "Yeni nesil yatırım uygulaması Piapiri ile borsada yatırım yapmak çok kolay.\n\n\nBorsa İstanbul’da yer alan tüm hisse senetleri, ABD borsaları, halka arzlar, yatırım fonları, varant, VİOP, Eurobond gibi farklı finansal araçlara tek bir mobil uygulamadan eriş, anlık borsa verileri ve analizlerle getirini arttır.\n\n\n3 Dakikadan Kısa Sürede Hesabını Aç\n\n\nYatırım yapmaya hemen başla! BIST ve Amerikan borsalarında hisse senedi alım-satım, tüm halka arzlara erişim için 3 dakikadan kısa bir sürede Piapiri yatırım hesabını açabilirsin. Üstelik hesap açılışı ve bakımı için herhangi bir ücret ödemezsin.\n\n\nHisse Senetlerine Yatırım Yap\n\n\nBorsa İstanbul’da sunulan tüm hisse senetlerine Piapiri aracılığıyla erişebilirsin. Parça hisse özelliği sayesinde bütçeni aşmadan hisse alımı yapabilir; piyasa emri, şartlı emir, zincir emir, kâr al, zararı durdur gibi farklı emir tiplerini kullanarak portföyünü dilediğin gibi yönetebilirsin. Ayrıca portföyünü çeşitlendirmek ve farklı sektörlerdeki fırsatlardan yararlanmak isteyenler için Piapiri’de Teknoloji, Temettü, Hazır Portföy gibi tematik sepetler de var.\n\n\nABD Borsaları Piapiri’de\n\n\nPiapiri ile sadece Borsa İstanbul değil, ABD borsaları da artık cebinde! Yatırım hesabını açarak Amazon, Microsoft, Meta, Netflix gibi dev şirketlere kolayca yatırım yapabilir, portföyünü Nasdaq ve NYSE gibi Amerikan borsalarında işlem gören hisselerle genişletebilirsin.\n\n\nYatırım Fonlarına Katıl\n\n\nPiapiri ile tüm TEFAS yatırım fonlarına erişebilir, kolayca yatırımını gerçekleştirebilirsin. Ayrıca farklı risk profillerine göre hazırlanmış yatırım sepetleri ile portföyünü çeşitlendirmen ve hisse fon segmentasyonları ile benzer özelliklere sahip hisselere ulaşman da mümkün.\n\n\nBorsa İstanbul Hisse Alım Satım Önerileriyle Yüksek Getiri\n\n\nEn iyi fiyattan hisse alış ve satışı için ÜNLÜ & Co araştırma ekibinin önerileri, anlık bildirimlerle cebinde! 2024 yılında kümül %124 getiri sağlayan al-sat önerilerinden yararlanarak hisse seçimi için ayırdığın zamanı azaltabilirsin. Ayrıca hisse senetlerinin gün içerisindeki teknik durumlarına göre algoritmanın sunduğu robo sinyaller ile al-sat fırsatlarını da değerlendirebilirsin.\n\n\nTüm Halka Arzlar Piapiri’de!\n\n\n2025’te de tüm halka arzlar Piapiri’de! \n\n\nBorsadan satış ve talep toplamalı tüm halka arzlar Piapiri’de. İlk kez borsaya açılan şirketlerin hisselerine erkenden sahip olmak istiyorsan, arz tarihlerinde Piapiri üzerinden talep iletebilirsin.\n\n\nSPK Lisanslı Güvenilir Bir Yatırım İçin Piapiri\n\n\nSPK lisanslı geniş yetkili aracı kurum olan ÜNLÜ Menkul Değerler A.Ş. tarafından geliştirilen Piapiri’de yapacağın tüm işlemler, tıpkı bankalar gibi finansal kurumlarda olduğu şekilde SPK denetiminde ve yasal düzenlemelere uygun olarak yürütülür. Yatırımlarını güvenle yönetebilirsin.\n\n\nÜcretsiz Canlı Borsa Verilerini Takip Et\n\n\nFinansal piyasalarda bilinçli ve hızlı karar alabilmen için canlı borsa takibi yapabilirsin. Yatırım hesabını oluşturup herhangi bir ek ücret ödemeden anlık piyasa verilerine erişebilirsin.\nPiapiri ile Piyasanın Piri Sen Ol!\n\n\nBIST hisse senedi, ABD borsaları, halka arz, yatırım fonları gibi ürünlerin yanı sıra Piapiri’de yatırım yapabileceğin pek çok enstrüman var:\n\n\nDarphane tarafından sunulan Altın.S1 Sertifikası ile fiziksel altına gerek kalmadan altın yatırımı yapabilir, dilediğin zaman nakde veya fiziki altına dönüştürebilirsin.\n\n\nDöviz al-sat işlemleri ile farklı para birimlerinde işlem yapabilir, portföyünü kur dalgalanmalarına karşı koruyabilirsin.\n\n\nVarantlar aracılığıyla belirli bir dayanak varlığın gelecekteki fiyat hareketlerinden kazançlar sağlayabilirsin.\n\n\nVİOP (Vadeli İşlemler ve Opsiyon Piyasası) aracılığıyla daha küçük sermaye kullanarak kaldıraçlı işlemler yapabilir, fiyat hareketlerinden getiri elde edebilirsin.\n\n\nYıllık %5'in üzerinde getiri fırsatı ve 1000 USD’den başlayan fiyatlarla Eurobond yatırımları da yapabilirsin.",
+          "userRatingCountForCurrentVersion": 4,
+          "averageUserRatingForCurrentVersion": 3.5
+        },
+        "android": {
+          "appId": "com.unluco.piapiri",
+          "score": 4.4,
+          "ratings": 800,
+          "reviews": 800,
+          "installs": "50.0B+",
+          "realInstalls": 50000,
+          "version": "1.0",
+          "developer": "ÜNLÜ Menkul Değerler",
+          "summary": "Piapiri (ÜNLÜ & Co)",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.unluco.piapiri",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Finans"
+      }
+    },
+    {
+      "id": "odeabank",
+      "name": "Odea Mobil",
+      "fullName": "Odea Mobil",
+      "color": "#1976D2",
+      "primary": false,
+      "icon": null,
+      "developer": "Odeabank",
+      "website": "",
+      "category": "Bankacılık",
+      "description": "Odeabank mobil bankacılık uygulaması.",
+      "features": [
+        "Mobil Bankacılık",
+        "Para Transferi",
+        "Ödeme",
+        "Yatırım"
+      ],
+      "launch_date": "2016-01-01",
+      "stores": {
+        "ios": {
+          "trackId": 634414038,
+          "trackName": "Odea Mobile Banking",
+          "averageUserRating": 4.31579,
+          "userRatingCount": 19,
+          "version": "4.139.3",
+          "currentVersionReleaseDate": "2026-07-02T15:50:33Z",
+          "releaseDate": "2013-04-18T03:19:48Z",
+          "fileSizeBytes": "360839168",
+          "sellerName": "ODEA BANK A S",
+          "bundleId": "com.odeabank.siramatik",
+          "minimumOsVersion": "15.1",
+          "languageCodesISO2A": [
+            "EN",
+            "TR"
+          ],
+          "price": 0.0,
+          "formattedPrice": "Free",
+          "currency": "USD",
+          "genres": [
+            "Finance"
+          ],
+          "primaryGenreName": "Finance",
+          "trackViewUrl": "https://apps.apple.com/us/app/odea-mobile-banking/id634414038?uo=4",
+          "artistName": "Odeabank A.Ş.",
+          "sellerUrl": "https://www.odeabank.com.tr/en/",
+          "trackCensoredName": "Odea Mobile Banking",
+          "contentAdvisoryRating": "4+",
+          "releaseNotes": "This release includes the following updates:\n- You can now manage your Open Banking processes more easily.\n- Instantly access the transactions and products you're looking for with the Voice Assistant menu.\n- Better track your asset distribution in the Total Assets section.",
+          "description": "Odea is an investment banking app that supports you in reaching your dreams by making your financial management easier. With its user-friendly interface, wide range of investment options, and distinctive features, it opens the doors to a world full of privileges for you.\n\nHere are some of the things you can do in the Odea app:\n• Perform your banking transactions swiftly and securely.\n• Manage your portfolio effectively with various investment options.\n• Support your investment decisions with instant market data and advanced analysis tools.\n• Use retail or commercial banking services.\n• Meet your financial needs with suitable loan options and advantageous interest rates.\n• Get a debit and credit card with easy application processes.\n• Optimize your investments with smart investment management and expert advice.\n• Open your account smoothly with the remote account opening feature.\n• Stay updated about the world of investment with recent financial news and podcasts.\n\nFast and Secure Banking\nPerform your daily banking transactions such as money transfers, payments, cards, and cash advances quickly and securely with Odea.\n\nInvest in Various Options\nOdea offers you the opportunity to diversify your portfolio with stocks, term deposits, investment funds, and foreign exchange investments. Access real-time market data to support you in making the most accurate investment decisions.\n\nTrack Gold and Foreign Exchange Markets\nFollow the real-time gold and foreign exchange markets to perform foreign exchange and gold transactions with the latest prices and charts.\n\nRetail and Commercial Banking Services\nOdea offers tailored solutions for your personal or commercial banking needs with services such as loans, deposits, cash management, project financing, and other financial services to support you and your company.\n\nLoan Options That Fit Your Plans\nReview the most suitable loan options (vehicle, housing, personal) for your home, car, or other financial needs and calculate your loan payments. Get financial solutions that fit your plans with fast application processes.\n\nInterest Rates That Will Make You Smile\nOpen a Turkish lira deposit account at Odea and benefit from interest rates that will make you smile.\n\nEasy Card Applications with Odea Mobile\nApply for bank and credit cards effortlessly without visiting a branch with mobile banking. Shape your financial freedom with simple steps.\n\nManage Your Investments Smartly\nEffectively manage your portfolio with features like Rob’O Smart Advisor and investment experts. Support your investment decisions with powerful analysis tools and consulting.\n\nExplore the Investment World\nStay informed about the latest developments in the investment and finance world by accessing industry news, articles, bulletins, and podcast series.\n\nOpen Account Remotely via Video Call\nComplete your account opening remotely by connecting with our experts through video call for a secure onboarding process.\n\nDiscover Odea Privileges\nBecome an Odea user now for a brand new investment-focused banking experience and start exploring this world full of privileges!\n\nSeamless Video Call for Secure Onboarding\nOur app offers a remote video call feature that allows new users to securely complete their onboarding process. This feature ensures smooth identity verification through real-time video and audio communication.\n\nTo provide an uninterrupted experience, the app requires a foreground service during video calls. This ensures continuous processing and prevents disruptions caused by system restrictions. The service runs only during active calls and stops immediately after the call ends.\n\nFor more information: https://www.odeabank.com.tr/",
+          "userRatingCountForCurrentVersion": 19,
+          "averageUserRatingForCurrentVersion": 4.31579
+        },
+        "android": {
+          "appId": "com.magiclick.odeabank",
+          "score": 4.2,
+          "ratings": 30000,
+          "reviews": 30000,
+          "installs": "1000.0B+",
+          "realInstalls": 1000000,
+          "version": "1.0",
+          "developer": "Odeabank",
+          "summary": "Odea Mobil",
+          "genre": "Finans",
+          "price": 0,
+          "free": true,
+          "currency": "TRY",
+          "url": "https://play.google.com/store/apps/details?id=com.magiclick.odeabank",
+          "histogram": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "market_position": {
+        "rank_ios_finance": 0,
+        "rank_android_finance": 0,
+        "market_share_pct": 0,
+        "growth_rate_monthly": 0,
+        "category": "Bankacılık"
+      }
     }
   ],
   "download_trends": {
@@ -1945,6 +2988,318 @@
             3120,
             3240
           ]
+        },
+        "tradingview": {
+          "ios": [
+            60299549600,
+            61505540592,
+            62711531584,
+            63917522576,
+            65123513568,
+            66329504560,
+            67535495552,
+            68741486544,
+            69947477536,
+            71153468528
+          ],
+          "android": [
+            5000,
+            5100,
+            5200,
+            5300,
+            5400,
+            5500,
+            5600,
+            5700,
+            5800,
+            5900
+          ]
+        },
+        "investing": {
+          "ios": [
+            90999812200,
+            91909810322,
+            92819808444,
+            93729806566,
+            94639804688,
+            95549802810,
+            96459800932,
+            97369799054,
+            98279797176,
+            99189795298
+          ],
+          "android": [
+            10000,
+            10100,
+            10200,
+            10300,
+            10400,
+            10500,
+            10600,
+            10700,
+            10800,
+            10900
+          ]
+        },
+        "fintables": {
+          "ios": [
+            1632913774,
+            1796205151,
+            3429118925,
+            5062032699,
+            6694946473,
+            8327860247,
+            9960774021,
+            11593687795,
+            13226601569,
+            14859515343
+          ],
+          "android": [
+            100,
+            110,
+            210,
+            310,
+            410,
+            510,
+            610,
+            710,
+            810,
+            910
+          ]
+        },
+        "yahoo-finance": {
+          "ios": [
+            3284127010,
+            3612539711,
+            3940952412,
+            4269365113,
+            4597777814,
+            4926190515,
+            5254603216,
+            5583015917,
+            5911428618,
+            6239841319
+          ],
+          "android": [
+            1000,
+            1100,
+            1200,
+            1300,
+            1400,
+            1500,
+            1600,
+            1700,
+            1800,
+            1900
+          ]
+        },
+        "deniz-trader": {
+          "ios": [
+            1618468218,
+            1780315039,
+            3398783257,
+            5017251475,
+            6635719693,
+            8254187911,
+            9872656129,
+            11491124347,
+            13109592565,
+            14728060783
+          ],
+          "android": [
+            100,
+            110,
+            210,
+            310,
+            410,
+            510,
+            610,
+            710,
+            810,
+            910
+          ]
+        },
+        "matriks-iq": {
+          "ios": [
+            1446245060,
+            2169367590,
+            3615612650,
+            5061857710,
+            6508102770,
+            7954347830,
+            9400592890,
+            10846837950,
+            12293083010,
+            13739328070
+          ],
+          "android": [
+            100,
+            150,
+            250,
+            350,
+            450,
+            550,
+            650,
+            750,
+            850,
+            950
+          ]
+        },
+        "tacirler": {
+          "ios": [
+            1611550436,
+            1772705479,
+            3384255915,
+            4995806351,
+            6607356787,
+            8218907223,
+            9830457659,
+            11442008095,
+            13053558531,
+            14665108967
+          ],
+          "android": [
+            100,
+            110,
+            210,
+            310,
+            410,
+            510,
+            610,
+            710,
+            810,
+            910
+          ]
+        },
+        "paribu": {
+          "ios": [
+            7241001760,
+            8689202112,
+            10137402464,
+            11585602816,
+            13033803168,
+            14482003520,
+            15930203872,
+            17378404224,
+            18826604576,
+            20274804928
+          ],
+          "android": [
+            500,
+            600,
+            700,
+            800,
+            900,
+            1000,
+            1100,
+            1200,
+            1300,
+            1400
+          ]
+        },
+        "bloomberg": {
+          "ios": [
+            2819410970,
+            3101352067,
+            3383293164,
+            3665234261,
+            3947175358,
+            4229116455,
+            4511057552,
+            4792998649,
+            5074939746,
+            5356880843
+          ],
+          "android": [
+            1000,
+            1100,
+            1200,
+            1300,
+            1400,
+            1500,
+            1600,
+            1700,
+            1800,
+            1900
+          ]
+        },
+        "a1-capital": {
+          "ios": [
+            1241915554,
+            1366107109,
+            2608022663,
+            3849938217,
+            5091853771,
+            6333769325,
+            7575684879,
+            8817600433,
+            10059515987,
+            11301431541
+          ],
+          "android": [
+            100,
+            110,
+            210,
+            310,
+            410,
+            510,
+            610,
+            710,
+            810,
+            910
+          ]
+        },
+        "piapiri": {
+          "ios": [
+            1605946348,
+            1686243665,
+            3292190013,
+            4898136361,
+            6504082709,
+            8110029057,
+            9715975405,
+            11321921753,
+            12927868101,
+            14533814449
+          ],
+          "android": [
+            100,
+            105,
+            205,
+            305,
+            405,
+            505,
+            605,
+            705,
+            805,
+            905
+          ]
+        },
+        "odeabank": {
+          "ios": [
+            634414038,
+            1268828076,
+            1903242114,
+            2537656152,
+            3172070190,
+            3806484228,
+            4440898266,
+            5075312304,
+            5709726342,
+            6344140380
+          ],
+          "android": [
+            100,
+            200,
+            300,
+            400,
+            500,
+            600,
+            700,
+            800,
+            900,
+            1000
+          ]
         }
       }
     },
@@ -2100,6 +3455,222 @@
             61200,
             64800,
             67200
+          ]
+        },
+        "tradingview": {
+          "ios": [
+            3000,
+            3150,
+            3300,
+            3450,
+            3600,
+            3750
+          ],
+          "android": [
+            10000,
+            10500,
+            11000,
+            11500,
+            12000,
+            12500
+          ]
+        },
+        "investing": {
+          "ios": [
+            6000,
+            6150,
+            6300,
+            6450,
+            6600,
+            6750
+          ],
+          "android": [
+            20000,
+            20500,
+            21000,
+            21500,
+            22000,
+            22500
+          ]
+        },
+        "fintables": {
+          "ios": [
+            150,
+            156,
+            306,
+            456,
+            606,
+            756
+          ],
+          "android": [
+            500,
+            520,
+            1020,
+            1520,
+            2020,
+            2520
+          ]
+        },
+        "yahoo-finance": {
+          "ios": [
+            600,
+            750,
+            900,
+            1050,
+            1200,
+            1350
+          ],
+          "android": [
+            2000,
+            2500,
+            3000,
+            3500,
+            4000,
+            4500
+          ]
+        },
+        "deniz-trader": {
+          "ios": [
+            150,
+            156,
+            306,
+            456,
+            606,
+            756
+          ],
+          "android": [
+            500,
+            520,
+            1020,
+            1520,
+            2020,
+            2520
+          ]
+        },
+        "matriks-iq": {
+          "ios": [
+            150,
+            180,
+            330,
+            480,
+            630,
+            780
+          ],
+          "android": [
+            500,
+            600,
+            1100,
+            1600,
+            2100,
+            2600
+          ]
+        },
+        "tacirler": {
+          "ios": [
+            150,
+            156,
+            306,
+            456,
+            606,
+            756
+          ],
+          "android": [
+            500,
+            520,
+            1020,
+            1520,
+            2020,
+            2520
+          ]
+        },
+        "paribu": {
+          "ios": [
+            300,
+            450,
+            600,
+            750,
+            900,
+            1050
+          ],
+          "android": [
+            1000,
+            1500,
+            2000,
+            2500,
+            3000,
+            3500
+          ]
+        },
+        "bloomberg": {
+          "ios": [
+            600,
+            750,
+            900,
+            1050,
+            1200,
+            1350
+          ],
+          "android": [
+            2000,
+            2500,
+            3000,
+            3500,
+            4000,
+            4500
+          ]
+        },
+        "a1-capital": {
+          "ios": [
+            150,
+            156,
+            306,
+            456,
+            606,
+            756
+          ],
+          "android": [
+            500,
+            520,
+            1020,
+            1520,
+            2020,
+            2520
+          ]
+        },
+        "piapiri": {
+          "ios": [
+            150,
+            153,
+            303,
+            453,
+            603,
+            753
+          ],
+          "android": [
+            500,
+            510,
+            1010,
+            1510,
+            2010,
+            2510
+          ]
+        },
+        "odeabank": {
+          "ios": [
+            150,
+            210,
+            360,
+            510,
+            660,
+            810
+          ],
+          "android": [
+            500,
+            700,
+            1200,
+            1700,
+            2200,
+            2700
           ]
         }
       }
@@ -2525,6 +4096,99 @@
         true,
         true
       ]
+    },
+    "tradingview": {
+      "Gelişmiş Grafikler": true,
+      "Teknik Göstergeler": true,
+      "Sosyal Ağ": true,
+      "Sanal Portföy": true,
+      "Pine Script": true,
+      "Alarm": true,
+      "Çoklu Borsa": true,
+      "Tarayıcı": true
+    },
+    "investing": {
+      "Canlı Veri": true,
+      "Portföy Takibi": true,
+      "Ekonomik Takvim": true,
+      "Finans Haberleri": true,
+      "Teknik Analiz": true,
+      "Fiyat Alarmı": true,
+      "Hisse Tarayıcı": true,
+      "Karşılaştırma": true
+    },
+    "fintables": {
+      "Canlı Borsa": true,
+      "Hisse Analizi": true,
+      "Fon Analizi": true,
+      "Bilanço": true,
+      "Temettü": true,
+      "Sanal Portföy": true,
+      "KAP Haber": true,
+      "Ekonomik Ajanda": true
+    },
+    "yahoo-finance": {
+      "Canlı Borsa": true,
+      "Portföy Takibi": true,
+      "Haber Akışı": true,
+      "Teknik Analiz": true,
+      "Finansal Tablolar": true,
+      "Opsiyon Zinciri": true
+    },
+    "deniz-trader": {
+      "BIST İşlem": true,
+      "Canlı Veri": true,
+      "Teknik Analiz": true,
+      "İzleme Listesi": true,
+      "Periyodik Emir": true
+    },
+    "matriks-iq": {
+      "Gelişmiş Grafik": true,
+      "Teknik Gösterge": true,
+      "VİOP": true,
+      "Forex": true,
+      "RSS Haber": true,
+      "MatrixIQ Asistan": true
+    },
+    "tacirler": {
+      "BIST İşlem": true,
+      "Canlı Veri": true,
+      "Teknik Analiz": true,
+      "VİOP": true,
+      "Portföy": true
+    },
+    "paribu": {
+      "Kripto Alım-Satım": true,
+      "Anlık Fiyat": true,
+      "Portföy": true,
+      "Haber": true,
+      "Grafik": true
+    },
+    "bloomberg": {
+      "Canlı Veri": true,
+      "Haber Akışı": true,
+      "Video İçerik": true,
+      "Portföy": true,
+      "TV Canlı Yayın": true
+    },
+    "a1-capital": {
+      "BIST İşlem": true,
+      "VİOP": true,
+      "Canlı Veri": true,
+      "Portföy Yönetimi": true
+    },
+    "piapiri": {
+      "BIST İşlem": true,
+      "ABD Borsaları": true,
+      "Sanal Portföy": true,
+      "Canlı Veri": true,
+      "Sosyal Özellikler": true
+    },
+    "odeabank": {
+      "Mobil Bankacılık": true,
+      "Para Transferi": true,
+      "Ödeme": true,
+      "Yatırım": true
     }
   },
   "imported_apps": 21
