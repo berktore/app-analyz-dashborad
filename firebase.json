@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "source": "functions",
+    "codebase": "infox-analytics",
+    "ignore": ["node_modules", ".git"],
+    "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run lint"]
+  },
+  "database": {
+    "rules": "database.rules.json"
+  }
+}

@@ -724,6 +724,14 @@ function toggleTheme(){
   <div class="tab-content active" id="tab-overview">
     <div class="spotlight" id="infoXSpotlight"></div>
     <div class="metrics" id="overviewMetrics" style="grid-template-columns:repeat(4,1fr)"></div>
+    <div id="analyticsSection" style="display:none">
+      <div class="section-title" style="margin:20px 0 12px;font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Kullanıcı Analitiği (infoX)</div>
+      <div class="metrics" id="analyticsMetrics" style="grid-template-columns:repeat(5,1fr)"></div>
+      <div class="chart-row">
+        <div class="chart-box"><div class="ctitle">Platform Bazlı DAU</div><canvas id="ovAnalyticsDau" height="80"></canvas></div>
+        <div class="chart-box"><div class="ctitle">Platform Bazlı Oturum</div><canvas id="ovAnalyticsSessions" height="80"></canvas></div>
+      </div>
+    </div>
     <div class="chart-row">
       <div class="chart-box"><div class="ctitle">Yorum Duygu Dağılımı</div><div style="height:200px;display:flex;align-items:center;justify-content:center"><canvas id="ovReviewSentiment" style="max-width:260px"></canvas></div></div>
       <div class="chart-box"><div class="ctitle">Yorum & Değerlendirme Sayısı</div><div style="height:200px"><canvas id="ovReviewCounts"></canvas></div></div>
@@ -918,7 +926,9 @@ async function init() {
     var dtData = dtSnap.val();
     var fcSnap = await rtdb.ref('feature_comparison').once('value');
     var fcData = fcSnap.val();
-    DATA = { meta: metaData, apps: [], download_trends: dtData, feature_comparison: fcData };
+    var anSnap = await rtdb.ref('analytics').once('value');
+    var anData = anSnap.val();
+    DATA = { meta: metaData, apps: [], download_trends: dtData, feature_comparison: fcData, analytics: anData };
     for (var k in appsData) DATA.apps.push(appsData[k]);
   } catch(e) {
     document.body.innerHTML = '<div style="padding:40px;text-align:center;color:var(--red)">Veri yüklenemedi: ' + e.message + '</div>';
@@ -1024,6 +1034,23 @@ function renderOverview() {
     {v:formatNum(r.total_reviews_analyzed||0),l:'İncelenen Yorum',c:'var(--text)'}
   ].map(x=>`<div class="metric-card"><div class="label">${x.l}</div><div class="value" style="color:${x.c}">${x.v}</div></div>`).join('');
 
+  var an = DATA.analytics;
+  var anSec = document.getElementById('analyticsSection');
+  var anLat = an?.latest;
+  if (anLat && anLat.dau > 0) {
+    anSec.style.display = 'block';
+    function fmtTime(sec) { var m = Math.floor(sec/60); var s = Math.round(sec%60); return m+':'+(s<10?'0':'')+s; }
+    document.getElementById('analyticsMetrics').innerHTML = [
+      {v:formatNum(anLat.dau),l:'DAU (Günlük)',c:'var(--accent)'},
+      {v:formatNum(anLat.wau),l:'WAU (Haftalık)',c:'var(--blue)'},
+      {v:formatNum(anLat.mau),l:'MAU (Aylık)',c:'var(--green)'},
+      {v:formatNum(anLat.sessions),l:'Oturum',c:'var(--yellow)'},
+      {v:fmtTime(anLat.avgSessionDuration),l:'Ort. Oturum Süresi',c:'var(--text)'}
+    ].map(x=>'<div class="metric-card"><div class="label">'+x.l+'</div><div class="value" style="color:'+x.c+'">'+x.v+'</div></div>').join('');
+  } else {
+    anSec.style.display = 'none';
+  }
+
   const iosDl = ios.userRatingCount || 0;
   const andDl = and.realInstalls || 0;
   document.getElementById('downloadBreakdown').innerHTML = [
@@ -1046,6 +1073,29 @@ function renderOverview() {
         borderColor:[C.ios,C.and],borderWidth:1.5,borderRadius:4
       }]
     }});
+
+    if (anLat && anLat.dau > 0) {
+      var platDau = anLat.byPlatform || { ios: 0, android: 0 };
+      var platSess = anLat.byPlatform || { ios: 0, android: 0 };
+      var dpData = [platDau.ios?.activeUsers||0, platDau.android?.activeUsers||0];
+      var spData = [platSess.ios?.sessions||0, platSess.android?.sessions||0];
+      niceChart('ovAnalyticsDau',{type:'bar',data:{
+        labels:['iOS','Android'],
+        datasets:[{
+          label:'Aktif Kullanıcı', data: dpData,
+          backgroundColor:[C.iosBg, C.andBg],
+          borderColor:[C.ios, C.and], borderWidth:1.5, borderRadius:4
+        }]
+      }, plugins:{legend:{display:false}}});
+      niceChart('ovAnalyticsSessions',{type:'bar',data:{
+        labels:['iOS','Android'],
+        datasets:[{
+          label:'Oturum', data: spData,
+          backgroundColor:[C.iosBg, C.andBg],
+          borderColor:[C.ios, C.and], borderWidth:1.5, borderRadius:4
+        }]
+      }, plugins:{legend:{display:false}}});
+    }
   },50);
 
   document.getElementById('ovPraisesComplaints').innerHTML = `
