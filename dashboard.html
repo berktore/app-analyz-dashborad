@@ -1121,7 +1121,7 @@ function renderAnalytics() {
   var anLat = an?.latest;
   var container = document.getElementById('analyticsContent');
 
-  if (!anLat || anLat.dau === 0 || anLat.note) {
+  if (!anLat || ((!anLat.dau || anLat.dau === 0) && !anLat.totalDownloads && !anLat.uninstalls && anLat.note)) {
     container.innerHTML =
       '<div class="card" style="padding:40px;text-align:center">' +
         '<div style="font-size:2rem;margin-bottom:12px;opacity:0.4">📊</div>' +
@@ -1140,7 +1140,7 @@ function renderAnalytics() {
   function fmtTime(sec) { var m = Math.floor(sec/60); var s = Math.round(sec%60); return m+':'+(s<10?'0':'')+s; }
 
   container.innerHTML =
-    '<div class="metrics" id="anMetrics" style="grid-template-columns:repeat(6,1fr)"></div>' +
+    '<div class="metrics" id="anMetrics" style="grid-template-columns:repeat(4,1fr)"></div>' +
 
     '<div class="chart-row">' +
       '<div class="chart-box"><div class="ctitle">Platform Bazlı Aktif Kullanıcı</div><canvas id="anPlatDau" height="100"></canvas></div>' +
@@ -1152,14 +1152,20 @@ function renderAnalytics() {
         '<div class="chart-box"><div class="ctitle">Haftalık Yükleme</div><canvas id="anWeeklyInstall" height="80"></canvas></div>' +
         '<div class="chart-box"><div class="ctitle">Aylık Yükleme</div><canvas id="anMonthlyInstall" height="80"></canvas></div>' +
       '</div>' +
-    '</div>';
+    '</div>' +
+    '<div class="chart-box" style="margin-bottom:16px"><div class="ctitle">İndirme vs Kaldırma Karşılaştırması</div><canvas id="anDownloadVsUninstall" height="100"></canvas></div>';
+
+  var totalDownloads = anLat.totalDownloads || ((iosStore.userRatingCount||0) + (andStore.realInstalls||0)) || 0;
+  var uninstalls = anLat.uninstalls || 0;
 
   document.getElementById('anMetrics').innerHTML = [
-    {v:formatNum(anLat.dau), l:'DAU (Günlük)', c:'var(--accent)'},
-    {v:formatNum(anLat.wau), l:'WAU (Haftalık)', c:'var(--blue)'},
-    {v:formatNum(anLat.mau), l:'MAU (Aylık)', c:'var(--green)'},
-    {v:formatNum(anLat.sessions), l:'Oturum', c:'var(--yellow)'},
-    {v:fmtTime(anLat.avgSessionDuration), l:'Ort. Oturum Süresi', c:'var(--text)'},
+    {v:formatNum(totalDownloads), l:'Toplam İndirme', c:'var(--accent)'},
+    {v:formatNum(uninstalls), l:'Kaldırma (Uninstall)', c:'var(--red)'},
+    {v:formatNum(anLat.dau), l:'DAU (Günlük)', c:'var(--blue)'},
+    {v:formatNum(anLat.wau), l:'WAU (Haftalık)', c:'var(--green)'},
+    {v:formatNum(anLat.mau), l:'MAU (Aylık)', c:'var(--yellow)'},
+    {v:formatNum(anLat.sessions), l:'Oturum', c:'var(--text)'},
+    {v:fmtTime(anLat.avgSessionDuration), l:'Ort. Oturum Süresi', c:'var(--muted)'},
     {v:formatNum(anLat.screenViews), l:'Ekran Gör.', c:'var(--muted)'}
   ].map(function(x) {
     return '<div class="metric-card"><div class="label">'+x.l+'</div><div class="value" style="color:'+x.c+'">'+x.v+'</div></div>';
@@ -1179,10 +1185,10 @@ function renderAnalytics() {
   var mData = dt?.monthly?.datasets?.infox;
 
   document.getElementById('anInstallMetrics').innerHTML = [
-    {v:iosStore.userRatingCount||0, l:'iOS Değerlendirme', c:'var(--accent)'},
-    {v:andStore.installs||(andStore.realInstalls||0), l:'Android Yükleme', c:'var(--blue)'},
-    {v:andStore.realInstalls||0, l:'Gerçek Yükleme (Android)', c:'var(--green)'},
-    {v:formatNum((iosStore.userRatingCount||0)+(andStore.realInstalls||0)), l:'Toplam', c:'var(--text)'}
+    {v:formatNum(totalDownloads), l:'Toplam İndirme', c:'var(--accent)'},
+    {v:formatNum(uninstalls), l:'Kaldırma (Uninstall)', c:'var(--red)'},
+    {v:iosStore.userRatingCount||0, l:'iOS Değerlendirme', c:'var(--blue)'},
+    {v:andStore.installs||(andStore.realInstalls||0), l:'Android Yükleme', c:'var(--green)'}
   ].map(function(x) {
     return '<div class="metric-card"><div class="label">'+x.l+'</div><div class="value" style="color:'+x.c+'">'+x.v+'</div></div>';
   }).join('');
@@ -1221,6 +1227,11 @@ function renderAnalytics() {
     } else {
       document.getElementById('anMonthlyInstall').parentElement.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);font-size:.8rem">Aylık veri yok</div>';
     }
+
+    niceChart('anDownloadVsUninstall',{type:'bar',data:{
+      labels:['İndirme','Kaldırma'],
+      datasets:[{label:'Adet', data:[totalDownloads, uninstalls], backgroundColor:[c.iosBg, 'rgba(220,38,38,0.12)'], borderColor:[c.ios, '#dc2626'], borderWidth:1.5, borderRadius:6}]
+    }, plugins:{legend:{display:false}}});
   }, 100);
 }
 
